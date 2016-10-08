@@ -1,0 +1,9 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\JogadorJogoDaVelha.Inicio.resources
+obj\Debug\JogadorJogoDaVelha.JogoDaVelha.resources
+obj\Debug\JogadorJogoDaVelha.Properties.Resources.resources
+obj\Debug\JogadorJogoDaVelha.csproj.GenerateResource.Cache
+bin\Debug\JogadorJogoDaVelha.exe
+bin\Debug\JogadorJogoDaVelha.pdb
+obj\Debug\JogadorJogoDaVelha.exe
+obj\Debug\JogadorJogoDaVelha.pdb

@@ -1,0 +1,80 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BF16FB89-1FD5-4F81-80FB-7E7BFFFDC5CE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Servidor</RootNamespace>
+    <AssemblyName>Servidor</AssemblyName>
+    <ApplicationIcon>servidor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="manager\Action.cs" />
+    <Compile Include="manager\AddAction.cs" />
+    <Compile Include="manager\Board.cs" />
+    <Compile Include="manager\CheckersGame.cs" />
+    <Compile Include="manager\CheckersPiece.cs" />
+    <Compile Include="manager\ChessGame.cs" />
+    <Compile Include="manager\ChessPiece.cs" />
+    <Compile Include="manager\NovoJogoGame.cs" />
+    <Compile Include="manager\NovoJogoPiece.cs" />
+    <Compile Include="manager\DeflexionGame.cs" />
+    <Compile Include="manager\DeflexionPiece.cs" />
+    <Compile Include="manager\Game.cs" />
+    <Compile Include="manager\MoveAction.cs" />
+    <Compile Include="manager\MoveAndEatAction.cs" />
+    <Compile Include="manager\NullPiece.cs" />
+    <Compile Include="manager\Piece.cs" />
+    <Compile Include="manager\Position.cs" />
+    <Compile Include="manager\RotateAction.cs" />
+    <Compile Include="manager\TictactoeGame.cs" />
+    <Compile Include="manager\TictactoePiece.cs" />
+    <Compile Include="netGamaManager\AddressPort.cs" />
+    <Compile Include="netGamaManager\AnswerMessage.cs" />
+    <Compile Include="netGamaManager\GameServer.cs" />
+    <Compile Include="netGamaManager\RequestMessage.cs" />
+    <Compile Include="netGamaManager\TCPServer.cs" />
+    <Compile Include="netGamaManager\UDPServer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="servidor.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

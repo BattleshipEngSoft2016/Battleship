@@ -1,0 +1,5 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\Servidor.exe
+bin\Debug\Servidor.pdb
+obj\Debug\Servidor.exe
+obj\Debug\Servidor.pdb

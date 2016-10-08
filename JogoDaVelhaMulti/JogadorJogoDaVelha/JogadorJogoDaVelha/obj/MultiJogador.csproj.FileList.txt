@@ -1,0 +1,11 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\MultiJogador.csproj.GenerateResource.Cache
+obj\Debug\Multijogador.JogoDaVelha.resources
+obj\Debug\Multijogador.Properties.Resources.resources
+obj\Debug\Multijogador.Inicio.resources
+bin\Debug\Multijogador.exe
+bin\Debug\Multijogador.pdb
+obj\Debug\Multijogador.exe
+obj\Debug\Multijogador.pdb
+obj\Debug\Multijogador.JogadorGenerico.resources
+obj\Debug\Multijogador.JogadorGenericoFiguras.resources

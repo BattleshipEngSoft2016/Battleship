@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="Servidor.manager.Action" Collapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\Action.cs</FileName>
+      <HashCode>AABAAAAAAABBEIAAAAAIAAAAEAAAAAAAAAAAAAAAgIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.AddAction" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\AddAction.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAgAAAAAAAAAAAAAAYAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.Board" Collapsed="true">
+    <Position X="4.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\Board.cs</FileName>
+      <HashCode>ICQAAAIAAAAAAAoAAAAIAAIBAAgACAAAICBAAACAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.CheckersGame" Collapsed="true">
+    <Position X="7.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\CheckersGame.cs</FileName>
+      <HashCode>AAIQAAAAAAAgAACQgCIICNgAAQBAAIgAABAAAEACAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.CheckersPiece" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\CheckersPiece.cs</FileName>
+      <HashCode>AAAAAAAAAAABAAAAAAAIBAAAAAQAAAAAAAAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.ChessGame" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\ChessGame.cs</FileName>
+      <HashCode>KAISAAAAgAAgAACQgCIIANgAYADAAAAIAAAACUACQAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.ChessPiece" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\ChessPiece.cs</FileName>
+      <HashCode>AAAAAQAAAgAAAABAAAAIQAAAAAQBAAAAAAAAAgBAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.DeflexionGame" Collapsed="true">
+    <Position X="2.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\DeflexionGame.cs</FileName>
+      <HashCode>AEIAAIAAAQAgAACEgCIYANgAAQQAAAGAABAAAEACAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.DeflexionPiece" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\DeflexionPiece.cs</FileName>
+      <HashCode>AAABAAAAAAAAAAAgAAAJQgAgAAwBAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.Game" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\Game.cs</FileName>
+      <HashCode>IAIEAkAAIAAgAACIiiMYAAEQARFMIkAAAHgAgCCiEAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.MoveAction" Collapsed="true">
+    <Position X="5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\MoveAction.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAgwAAEAAAAAAAAAAgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.MoveAndEatAction" Collapsed="true">
+    <Position X="4.75" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>manager\MoveAndEatAction.cs</FileName>
+      <HashCode>AAAAAAAAgAAAAAAAAAAIAAAAAAAAwAAAAAAAAAAAgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.NullPiece" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\NullPiece.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.Piece" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\Piece.cs</FileName>
+      <HashCode>AgAAAAAAAAEAgQAAACAIAACAAAQAAAAAAAAAAAAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.Position" Collapsed="true">
+    <Position X="6.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\Position.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.RotateAction" Collapsed="true">
+    <Position X="2.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\RotateAction.cs</FileName>
+      <HashCode>BAAAAAAAAAAAAAAAAAAIAAAAAgAAAAAAAAAAAAAAYAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.TictactoeGame" Collapsed="true">
+    <Position X="5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\TictactoeGame.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAAAAgCIIANAAAAAAAAAAAAAAAEACAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.manager.TictactoePiece" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>manager\TictactoePiece.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.netGameManager.AddressPort" Collapsed="true">
+    <Position X="8.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>netGamaManager\AddressPort.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAIAAAgAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.netGameManager.AnswerMessage" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>netGamaManager\AnswerMessage.cs</FileName>
+      <HashCode>BJQQFAAAAAAAAAwkDoAIMOAAACEAECQABAEBoAQKGAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.netGameManager.GameServer" Collapsed="true">
+    <Position X="2.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>netGamaManager\GameServer.cs</FileName>
+      <HashCode>AAAIAEAMIAgAAgQgIFBJIAABEQmCAAIQAhAAAEAALEA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.netGameManager.RequestMessage" Collapsed="true">
+    <Position X="2.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>netGamaManager\RequestMessage.cs</FileName>
+      <HashCode>BAIAAAAAAAEAAAIAAAALAAAAAAIAAAQAAAABAAQAcAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.netGamaManager.TCPServer" Collapsed="true">
+    <Position X="4.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>netGamaManager\TCPServer.cs</FileName>
+      <HashCode>AAAAAAAAAQAAAEEAAAAAAAAAAIAAAAgAAAAgAAAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.netGamaManager.UDPServer" Collapsed="true">
+    <Position X="6.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>netGamaManager\UDPServer.cs</FileName>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAgAAAAAgAIAEgAAAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Servidor.Program" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>
