@@ -1,0 +1,373 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Share your list!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css"/>
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="assets/js/jquery-1.12.0.min.js"></script>
+  <script src="assets/js/jquery.dataTables.min.js"></script>
+  <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  -->
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  
+	<script src="assets/js/jquery-ui.min.js"></script>
+  
+</head>
+
+<script>
+
+    var counter = 0;
+
+    $(document).ready(function () {
+        var tbLista = $('#listas').DataTable({
+        });
+
+        $('#listas > tbody > tr').dblclick(function () {
+            carregarItens('list');
+        });
+
+        $('#listas tbody').on('click', 'tr', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            }
+            else {
+                tbLista.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+
+
+        $("[type=checkbox]").change(function () {
+
+            $checkbox = $(this);
+            $icon = $checkbox.siblings("[class*=icon-]");
+
+            checked = $checkbox.is(":checked");
+
+            if (checked)
+                $icon.toggleClass('fa fa-lg fa-square-o', !checked).toggleClass('fa fa-lg fa-check-square', checked);
+            else
+                $icon.toggleClass('fa fa-lg fa-check-square', checked).toggleClass('fa fa-lg fa-square-o', !checked);
+
+
+        });
+
+    });
+
+    function carregarItens(from) {
+        var effect = "slide"
+        var duration = 500;
+        $('#div_lista').toggle(effect, { direction: "left" }, 800);
+        $('#div_itens').toggle(effect, { direction: "right" }, 800);
+
+        if (from == 'list') {
+            var t = $('#itens_lista').DataTable();
+
+            $('#itens_lista tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    t.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+
+        }
+
+        /*var counter = 1;
+ 
+		$('#addRow').on( 'click', function () {
+			t.row.add( [
+				counter +'.1',
+				counter +'.2',
+				counter +'.3',
+				counter +'.4',
+				counter +'.5',
+				counter +'.6'
+			] ).draw( false );
+	 
+			counter++;
+		} );*/
+
+        /*var bodyModal = document.querySelector("#modalFundo");
+		bodyModal.innerHTML = "<div id='itens-modal' class='itens-modal'>" + document.querySelector("#div_itens").innerHTML + "<div>";
+		bodyModal.style.display = "block"
+		
+		var t = $('#itens_lista').DataTable({
+			
+			 
+		
+		});
+		
+		var counter = 1;
+ 
+		$('#addRow').on( 'click', function () {
+			t.row.add( [
+				counter +'.1',
+				counter +'.2',
+				counter +'.3',
+				counter +'.4',
+				counter +'.5',
+				counter +'.6'
+			] ).draw( false );
+	 
+			counter++;
+		} );*/
+
+    }
+
+    function addItems() {
+        var t = $('#itens_lista').DataTable();
+
+        t.row.add([
+            counter + '.1',
+            counter + '.2',
+            counter + '.3',
+            counter + '.4',
+            counter + '.5',
+            counter + '.6'
+        ]).draw(false);
+
+        counter++;
+    }
+
+</script>
+
+<style>	
+	.modalFundo{
+		width:100%;
+		height:100%;
+		background-color:rgba(0, 0, 0, 0.63);
+		position:absolute;
+		z-index:1;
+		display:none;
+	}
+	
+	#div_itens{
+		display:none;
+	}
+	
+	.itens-modal{
+		z-index:9999;
+		background-color:#fff;
+		width: 80%;
+		padding: 15px;
+		padding-top: 3px;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%); 
+		-webkit-transform: translateX(-50%);
+		border-radius: 5px;
+		margin-top: 10px;
+	}
+	
+	#itens-lista td {
+		overflow: hidden; /* this is what fixes the expansion */
+		text-overflow: ellipsis; /* not supported in all browsers, but I accepted the tradeoff */
+		white-space: nowrap;
+	}
+	
+	.divMaster{
+		position:relative;
+	}
+	.contents{
+		position:absolute;
+		width:100%;
+	}
+	
+	table{
+		text-align:center;
+	}
+	
+	.filters > ul{
+		list-style-type:none;
+		margin-bottom:0 !important;
+		margin-top:0 !important;
+	}
+	
+	
+	
+	[type=checkbox] { display: none; }
+	label { cursor: pointer; }
+	[class*=icon-].icon-fixed-width { text-align: left; }
+
+
+</style>
+
+<body>
+
+	<div id="modalFundo" class="modalFundo">
+	
+	</div>
+	
+	<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body" id="modal-body">
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+   </div>
+
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>                        
+		  </button>
+		  <a class="navbar-brand" href="#">Share your list</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a href="#">Minhas Listas</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	
+<div class="container divMaster">
+
+	<div id="div_lista" class="contents">
+		<h3>Minhas listas</h3>
+		<div class="btn-group" role="group" aria-label="...">
+				 <button type="button" class="btn btn-default">Adicionar Lista</button>
+				 <button type="button" class="btn btn-default">Editar Lista</button>
+				 <button type="button" class="btn btn-default">Excluir Lista</button>
+		</div><br><br>
+		<table id="listas" class="display nowrap" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Lista  &nbsp;&nbsp;<i class="fa fa-lg fa-list" aria-hidden="true"></i></th>
+					<th>Chave de Acesso &nbsp;&nbsp;<i class="fa fa-lg fa-key" aria-hidden="true"></i></th>
+					<th>Status &nbsp;&nbsp;<i class="fa fa-lg fa-question-circle" aria-hidden="true"></i></th>
+					<th>Dono &nbsp;&nbsp; <i class="fa fa-lg fa-user"></i></th>
+					<th>Editável? &nbsp;&nbsp;<i class="fa fa-lg fa-pencil" aria-hidden="true"></i></th>
+					<th><i class="fa fa-lg fa-tag" aria-hidden="true"></i></th>
+					<th>Ver participantes&nbsp;&nbsp;<i class="fa fa-lg fa-users" aria-hidden="true"></i></th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Lista</th>
+					<th>Chave de Acesso</th>
+					<th>Status</th>
+					<th>Dono</th>
+					<th>Edição?</th>
+					<th>TAG</th>
+					<th>Ver participantes</th>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Churrasco</td>
+					<td>cUfbBsNtyEhj</td>
+					<td>Ativa</td>
+					<td>Karine Limp</td>
+					<td>Sim</td>
+					<td>Churras Praia</td>
+					<td><button type="button" class="btn btn-default"><i class="fa fa-lg  fa-eye" aria-hidden="true"></i></button></td>
+				</tr>
+				<tr>
+					<td>Casamento</td>
+					<td>CzY3sBBjaha6</td>
+					<td>Finalizada</td>
+					<td>Mário Neto</td>
+					<td>Não</td>
+					<td>Mario s2 Virginia</td>
+					<td><button type="button" class="btn btn-default"><i class="fa fa-lg  fa-eye" aria-hidden="true"></i></button></td>
+				</tr>
+				<tr>
+					<td>Café da manhã</td>
+					<td>ytFtR9SdS5Y2</td>
+					<td>Ativa</td>
+					<td>Thais Midori</td>
+					<td>Sim</td>
+					<td>Café equipe</td>
+					<td><button type="button" class="btn btn-default"><i class="fa fa-lg  fa-eye" aria-hidden="true"></i></button></td>
+				</tr>
+				<tr>
+					<td>Festa</td>
+					<td>g7DdS5hSzQMc</td>
+					<td>Ativa</td>
+					<td>Allyson Dias</td>
+					<td>Não</td>
+					<td>Aniversário 21 anos</td>
+					<td><button type="button" class="btn btn-default"><i class="fa fa-lg  fa-eye" aria-hidden="true"></i></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+    <div id="div_itens"  class="contents">
+	  <h3>Itens da lista</h3>
+	   <button type="button" id="backToList" class="btn btn-default" onclick="carregarItens('item');">Voltar &nbsp;<i class="fa fa-lg fa-arrow-left" aria-hidden="true"></i></button>
+	  <br><br>
+	  <div class="btn-group" role="group" aria-label="...">
+				 <button type="button" class="btn btn-default">Adicionar Item</button>
+				 <button type="button" class="btn btn-default">Editar Item</button>
+				 <button type="button" class="btn btn-default">Excluir Item</button>
+		</div><br><br>
+	  <br><br>
+	  <table id="itens_lista" class="display nowrap" cellspacing="0" width="100%" data-role="table" class="ui-responsive">
+			<thead>
+				<tr>
+					<th>Descrição</th>
+					<th>Quantidade</th>
+					<th>Marcar item</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Descrição</th>
+					<th>Quantidade</th>
+					<th>Marcar Item</th>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Refrigerante</td>
+					<td>3</td>
+					<td class="filters">
+							<!--<i class="fa fa-lg fa-square-o" onclick="this.className = fa fa-check-square;"></i>-->
+							
+							<ul>
+								<li>
+									<label>
+										<input type="checkbox" /><i class="icon-fixed-width fa fa-lg fa-square-o"></i> Marcar
+									</label>
+								</li>
+							</ul>
+	  
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+</body>
+</html>

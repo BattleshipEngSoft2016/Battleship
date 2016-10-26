@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Battleship</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css"/>
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/Site.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="assets/js/jquery-1.12.0.min.js"></script>
+  <script src="assets/js/jquery.dataTables.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script src="assets/js/Site.js"></script>
+  <script src="assets/js/nivel.js"></script>
+  
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">WarShip</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="DefaultBack.html">Home</a></li>
+                <li><a href="Skin.html">Skins</a></li>
+                <li><a href="#">Níveis</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+              </ul>
+            </div>
+		</div>
+	</nav>
+	
+	<div class="body-content">
+	
+        <h3>Níveis</h3>
+
+        <div class="modal fade" id="modalIndex" role="dialog">
+            <div class="modal-dialog">
+    
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer"></div>
+              </div>
+      
+            </div>
+        </div>
+    
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" onclick="addNivel();">Incluir Nivel</button>
+            <button type="button" class="btn btn-default" onclick="editNivel();">Editar Nivel</button>
+            <button type="button" class="btn btn-default" onclick="delNivel();">Excluir Nivel</button>
+        </div>
+        <br />
+        <br />
+
+        <table id="niveis" class="display nowrap ui-responsive" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Nivel  &nbsp;&nbsp;<i class="fa fa-lg fa-table fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Ativo &nbsp;&nbsp;<i class="fa fa-lg fa-exclamation-circle fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Data de criação &nbsp;&nbsp;<i class="fa fa-lg fa-calendar fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Tamanho &nbsp;&nbsp;<i class="fa fa-lg fa-expand fa-blue-pastel" aria-hidden="true"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div id="criarNivel">
+            
+			<div id="alertNivelExist" style="width: 100%; float: left; display: none;" class="alert alert-danger fade in"></div>
+            
+			<div class="form-group">
+                <label class="" for="lblNomNivel">Nome do Nivel</label>
+                <input type="text" id="txtNomNivel" maxlength="50" class="form-control" placeholder="Nome do Nivel..." onchange="removeClass(this);" />
+            </div>
+
+            <div class="form-group">
+                <label class="" id="lblStatusNivel" for="cmbStatusNivel">Ativo</label>
+                <select id="cmbStatusNivel" class="form-control">
+                    <option value="1" selected>Sim</option>
+                    <option value="0">Não</option>
+                </select>
+            </div>
+			
+			<div class="form-group">
+                <label class="" for="lblTamanhoNivel">Tamanho do Tabuleiro</label>
+                <input type="number" id="txtTamanhoNivel" maxlength="3" class="form-control" placeholder="Tamanho do Tabuleiro..." onchange="removeClass(this);" />
+            </div>
+     
+        </div>
+	</div>
+		
+		<footer class="container-fluid text-center" style="margin-top:20px;">
+					<p>&copy; Battleship 2016</p>
+		</footer>
+		
+</body>
+	
+</html>
