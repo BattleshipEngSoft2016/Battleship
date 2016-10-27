@@ -50,7 +50,7 @@
 									 @Html.ValidationMessageFor(m => m.UserName)
 									</div>
 									<div class="form-group">
-									@Html.LabelFor(m => m.Password)
+									@Html.LabelFor(m => m.Password, new { @class= "sr-only" } )
 									@Html.PasswordFor(m => m.Password, new { @class="form-password form-control password", @id="txtPassword" , @placeholder="Senha..."})
 									@Html.ValidationMessageFor(m => m.Password)									
 									</div>
