@@ -27,14 +27,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">WarShip</a>
-              @Html.ActionLink("your logo here", "Index", "Home", new {@class = "navbar-brand"})
+              @Html.ActionLink("WarShip", "Index", "Home", new {@class = "navbar-brand"})
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav">
-                <li class="active">@Html.ActionLink("your logo here", "Index", "Home")</li>
-                <li>@Html.ActionLink("your logo here", "Index", "Skins")</li>
-                <li>@Html.ActionLink("your logo here", "Index", "Niveis")</li>
+                <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Skins", "Index", "Skin")</li>
+                <li>@Html.ActionLink("Niveis", "Index", "Nivel")</li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li>@Html.Partial("_LoginPartial")</li>
@@ -43,14 +42,13 @@
         </div>
     </nav>
 
-    @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
-        </section>
+       @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
 
-    @RenderSection("scripts", required: false)
-    
-    <footer class="container-fluid text-center" style="margin-top:20px;">
+        @RenderSection("scripts", required: false)
+    <footer class="container-fluid text-center layout-footer" style="margin-top:20px;">
                 <p>&copy; Battleship 2016</p>
     </footer>
 </body>
