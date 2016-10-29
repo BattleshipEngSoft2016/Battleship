@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "index";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        @*   $(function() {
+            usuarios = @Html.Raw(ViewBag.Usuarios);
+            });*@
+    </script>
+
+  <script src="http://localhost:5471/assets/js/Site.js"></script>
+  <script src="http://localhost:5471/assets/js/skin.js"></script>
+        }
+
+	<div class="body-content">
+		<h3>Skins</h3>
+
+        <div class="modal fade" id="modalIndex" role="dialog">
+            <div class="modal-dialog">
+    
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer"></div>
+              </div>
+      
+            </div>
+        </div>
+    
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" onclick="addSkin();">Incluir Skin</button>
+            <button type="button" class="btn btn-default" onclick="editSkin();">Editar Skin</button>
+            <button type="button" class="btn btn-default" onclick="delSkin();">Excluir Skin</button>
+        </div>
+        <br />
+        <br />
+
+        <table id="skins" class="display nowrap ui-responsive" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Skin  &nbsp;&nbsp;<i class="fa fa-lg fa-ship fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Ativa &nbsp;&nbsp;<i class="fa fa-lg fa-exclamation-circle fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Data de criação &nbsp;&nbsp;<i class="fa fa-lg fa-calendar fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Valor &nbsp;&nbsp;<i class="fa fa-lg fa-usd fa-blue-pastel" aria-hidden="true"></i></th>
+					<th>Coordenada &nbsp;&nbsp;<i class="fa fa-lg fa-arrows-alt fa-blue-pastel" aria-hidden="true"></i></th>
+					<th>Destroyer  &nbsp;&nbsp; <img src="http://localhost:5471/assets/images/ship-destroyer.png" alt="Destroyer" height="24" width="24"></th>
+					<th>Encouraçado  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-encouracado.png" alt="Encouraçado" height="24" width="24"></th>
+					<th>Cruzador  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-cruise.png" alt="Cruzador" height="24" width="24"></th>
+					<th>Submarino  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-submarine.png" alt="Submarino" height="24" width="24"></th>
+                    <!--<th>Ver imagens &nbsp;&nbsp;<i class="fa fa-lg fa-file-image-o fa-blue-pastel" aria-hidden="true"></i></th>-->
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div id="criarSkin">
+            <div id="alertSkinExist" style="width: 100%; float: left; display: none;" class="alert alert-danger fade in"></div>
+            <div class="form-group">
+                <label class="" for="lblNomSkin">Nome da Skin</label>
+                <input type="text" id="txtNomSkin" maxlength="50" class="form-control" placeholder="Nome da skin..." onchange="removeClass(this);" />
+            </div>
+
+            <div class="form-group">
+                <label class="" for="lblValor">Valor</label>
+                <input type="text" id="txtValor" class="form-control" placeholder="Valor da skin..." maxlength="4" onchange="removeClass(this);" />
+            </div>
+
+            <div class="form-group">
+                <label class="" id="lblStatusSkin" for="cmbStatusSkin">Ativa</label>
+                <select id="cmbStatusSkin" class="form-control">
+                    <option value="1" selected>Sim</option>
+                    <option value="0">Não</option>
+                </select>
+            </div>
+
+             <div class="form-group">
+                <label class="" for="lblCoordenadas">Coordenadas</label>
+                <input type="file" id="txtCoordenadas" class="form-control" placeholder="Escolha a imagem..." onchange="removeClass(this);" />
+            </div>
+
+            <div class="form-group">
+                <label class="" for="lblDestroyer">Destroyer</label>
+                <input type="file" id="txtDestroyer" class="form-control" placeholder="Escolha a imagem..." onchange="removeClass(this);" />
+            </div>
+
+            <div class="form-group">
+                <label class="" for="lblEncouracado">Encouraçado</label>
+                <input type="file" id="txtEncouracado" class="form-control" placeholder="Escolha a imagem..." onchange="removeClass(this);" />
+            </div>
+
+            <div class="form-group">
+                <label class="" for="lblCruzador">Cruzador</label>
+                <input type="file" id="txtCruzador" class="form-control" placeholder="Escolha a imagem..." onchange="removeClass(this);" />
+            </div>
+
+            <div class="form-group">
+                <label class="" for="lblSubmarino">Submarino</label>
+                <input type="file" id="txtSubmarino" class="form-control" placeholder="Escolha a imagem..." onchange="removeClass(this);" />
+            </div>
+
+
+        </div>
+	</div>
+
+
+
+
+		
