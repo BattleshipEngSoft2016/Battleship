@@ -5,8 +5,73 @@
 @section scripts {
     <script type="text/javascript">
         $(function() {
-             niveis = @Html.Raw(ViewBag.Niveis);
-            });
+            niveis = @Html.Raw(ViewBag.Niveis);
+
+            for(var nI=0;nI<niveis.length;nI++){
+                var newRow = $('#niveis').dataTable().fnAddData([
+                        "",
+                        niveis[nI].Id,
+                        niveis[nI].Nome,
+                        niveis[nI].QtdColunas,
+                        niveis[nI].QtdLinhas,
+                        niveis[nI].QtdNav01,
+                        niveis[nI].QtdNav02,
+                        niveis[nI].QtdNav03,
+                        niveis[nI].QtdNav04,
+                        niveis[nI].QtdNav05,
+                        niveis[nI].TempoJogada,
+                        niveis[nI].TempoPosicionamento
+                ]);
+
+                var oSettings = $('#niveis').dataTable().fnSettings();
+                var nTr = oSettings.aoData[newRow[0]].nTr;
+                $(nTr).addClass('linhaTabela');
+                $('td', nTr)[1].setAttribute('class', 'idNivel');
+                $('td', nTr)[2].setAttribute('class', 'nome');
+                $('td', nTr)[3].setAttribute('class', 'qtdColunas');
+                $('td', nTr)[4].setAttribute('class', 'qtdLinhas');
+                $('td', nTr)[5].setAttribute('class', 'qtdNav01');
+                $('td', nTr)[6].setAttribute('class', 'qtdNav02');
+                $('td', nTr)[7].setAttribute('class', 'qtdNav03');
+                $('td', nTr)[8].setAttribute('class', 'qtdNav04');
+                $('td', nTr)[9].setAttribute('class', 'qtdNav05');
+                $('td', nTr)[10].setAttribute('class', 'tempoJogada');
+                $('td', nTr)[11].setAttribute('class', 'tempoPosicionamento');
+            }
+        });
+
+        var tbSkin = $('#niveis').DataTable({
+            responsive: true,
+            "language": {
+                "lengthMenu": "Exibir _MENU_ niveis por página",
+                "zeroRecords": "Desculpe, não encontrei registros",
+                "info": "Exibindo página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem informações disponíveis",
+                "infoFiltered": "(Total de _MAX_ registros)",
+                "search": "Pesquisar:",
+                "paginate": {
+                    "previous": "Página anterior",
+                    "next": "Próxima página"
+                },
+                "sDom": 'T<"clear">lfrtip',
+                "oTableTools": {
+                    "sRowSelect": "single"
+                }
+            },
+            responsive: {
+                details: {
+                    type: 'column'
+                }
+            },
+            columnDefs: [{
+                className: 'control',
+                orderable: false,
+                targets: 0
+            }],
+            order: [1, 'asc']
+
+        });
+
     </script>
 
   <script src="http://localhost:5471/assets/js/Site.js"></script>
@@ -47,9 +112,18 @@
                     <th></th>
                     <th>ID</th>
                     <th>Nivel  &nbsp;&nbsp;<i class="fa fa-lg fa-table fa-blue-pastel" aria-hidden="true"></i></th>
-                    <th>Ativo &nbsp;&nbsp;<i class="fa fa-lg fa-exclamation-circle fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Qtd Colunas  &nbsp;&nbsp;<i class="fa fa-lg fa-table fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Qtd Linhas  &nbsp;&nbsp;<i class="fa fa-lg fa-table fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Qtd Porta-aviões  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-aircraft-carrier.png" alt="Porta aviões" height="24" width="24"></th>
+                    <th>Qtd Destroiers  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-destroyer.png" alt="Destroyer" height="24" width="24"></th>
+                    <th>Qtd Encouraçados  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-encouracado.png" alt="Encouraçado" height="24" width="24"></th>
+                    <th>Qtd Cruzadores  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-cruise.png" alt="Cruzador" height="24" width="24"></th>
+                    <th>Qtd Submarinos  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-submarine.png" alt="Submarino" height="24" width="24"></th>
+                    <th>Tempo de jogada  &nbsp;&nbsp;<i class="fa fa-lg fa-clock-o fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Tempo de posicionamento  &nbsp;&nbsp;<i class="fa fa-lg fa-clock-o fa-blue-pastel" aria-hidden="true"></i></th>
+                    <!--<th>Ativo &nbsp;&nbsp;<i class="fa fa-lg fa-exclamation-circle fa-blue-pastel" aria-hidden="true"></i></th>
                     <th>Data de criação &nbsp;&nbsp;<i class="fa fa-lg fa-calendar fa-blue-pastel" aria-hidden="true"></i></th>
-                    <th>Tamanho &nbsp;&nbsp;<i class="fa fa-lg fa-expand fa-blue-pastel" aria-hidden="true"></i></th>
+                    <th>Tamanho &nbsp;&nbsp;<i class="fa fa-lg fa-expand fa-blue-pastel" aria-hidden="true"></i></th>-->
                 </tr>
             </thead>
             <tbody>
