@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Jogo_BackOffice.Models;
+using Newtonsoft.Json;
 
 namespace Jogo_BackOffice.Controllers
 {
@@ -13,8 +11,26 @@ namespace Jogo_BackOffice.Controllers
 
         public ActionResult Index()
         {
-            return View();
+
+            using (var db = new NiveisContext())
+            {
+                ViewBag.Niveis = JsonConvert.SerializeObject(db.Niveis);  
+                return View();
+            }
+
         }
 
+        [HttpPost]
+        public JsonResult Cadastrar(NivelModel vm)
+        {
+            
+            using (var db = new NiveisContext())
+            {
+                db.Niveis.Add(new Nivel() { });
+
+            }
+
+            return Json(new { Sucesso = true });
+        }
     }
 }

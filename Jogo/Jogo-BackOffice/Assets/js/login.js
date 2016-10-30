@@ -1,6 +1,6 @@
 ﻿jQuery(document).ready(function() {
 
-    $.backstretch("http://localhost:2121/Assets/img/backgrounds/1.jpg");
+    $.backstretch("http://localhost:5471/Assets/img/backgrounds/1.jpg");
 
     $('input[type="text"], input[type="password"], textarea').blur(function () {
         if ($(this).val() != "") {
