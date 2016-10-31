@@ -56,7 +56,7 @@ CREATE TABLE [dbo].[webpages_UsersInRoles] (
 
 CREATE TABLE TB_GAME_SETTINGS (
 	 ID_CONFIGURACAO			INT NOT NULL
-	,DS_NOME_CONFIGURACAO		VARCHAR(20) NOT NULL	-- Nome que ir· aparecer na hora de selecionar o tipo de jogo
+	,DS_NOME_CONFIGURACAO		VARCHAR(20) NOT NULL	-- Nome que ir√° aparecer na hora de selecionar o tipo de jogo
 	,QT_COLUNAS					TINYINT					-- Quantidade de colunas
 	,QT_LINHAS					TINYINT					-- Quantidade de linhas
 	,QT_NAVIO1					TINYINT					-- Quantidade de navios 1x1
@@ -64,25 +64,25 @@ CREATE TABLE TB_GAME_SETTINGS (
 	,QT_NAVIO3					TINYINT					-- Quantidade de navios 1x3
 	,QT_NAVIO4					TINYINT					-- Quantidade de navios 1x4
 	,QT_NAVIO5					TINYINT					-- Quantidade de navios 1x5
-	,NR_TEMPO_POSICIONAMENTO	SMALLINT				-- Tempo em segundos para o jogador posicionar os navios antes do inÌcio do jogo
-	,NR_TEMPO_JOGADA			TINYINT					-- Tempo em segundos para o jogador realizar um ataque ao advers·rio
+	,NR_TEMPO_POSICIONAMENTO	SMALLINT				-- Tempo em segundos para o jogador posicionar os navios antes do in√≠cio do jogo
+	,NR_TEMPO_JOGADA			TINYINT					-- Tempo em segundos para o jogador realizar um ataque ao advers√°rio
 	,CONSTRAINT TB_GAME_SETTINGS_PK PRIMARY KEY (ID_CONFIGURACAO)
 )
 --
 INSERT INTO TB_GAME_SETTINGS VALUES
- (1, 'F·cil', 10, 10, 0, 1, 2, 1, 1, 10, 120)
-,(2, 'MÈdio', 12, 12, 0, 1, 2, 1, 1, 10, 120)
-,(3, 'DifÌcil', 15, 15, 0, 1, 2, 1, 1, 10, 120)
+ (1, 'F√°cil', 10, 10, 0, 1, 2, 1, 1, 10, 120)
+,(2, 'M√©dio', 12, 12, 0, 1, 2, 1, 1, 10, 120)
+,(3, 'Dif√≠cil', 15, 15, 0, 1, 2, 1, 1, 10, 120)
 --
 --
 CREATE TABLE TB_USUARIOS (
 	 ID_USUARIO					INT IDENTITY(1, 1) NOT NULL
 	,DS_LOGIN					VARCHAR(20) NOT NULL	-- Login do jogador
 	,DS_SENHA					VARCHAR(20) NOT NULL	-- Senha do jogador
-	,QT_MOEDAS_DISPONIVEIS		INT						/* Quantidade de moedas disponÌveis atualmente: sempre que ele comprar ou ganhar moedas, 
-															È atualizada esta quantidade e quando ele as usa, diminui */
+	,QT_MOEDAS_DISPONIVEIS		INT						/* Quantidade de moedas dispon√≠veis atualmente: sempre que ele comprar ou ganhar moedas, 
+															√© atualizada esta quantidade e quando ele as usa, diminui */
 	,ID_SKIN_TEMA				TINYINT					-- Id do skin de tema escolhido por jogador
-	,ID_SKIN_AUDIO				TINYINT					-- Id do skin de ·udio escolhido pelo jogador
+	,ID_SKIN_AUDIO				TINYINT					-- Id do skin de √°udio escolhido pelo jogador
 	,CONSTRAINT TB_USERS_PK PRIMARY KEY (ID_USUARIO)
 )
 --
@@ -92,9 +92,9 @@ INSERT INTO TB_USUARIOS (DS_LOGIN, DS_SENHA, QT_MOEDAS_DISPONIVEIS, ID_SKIN_TEMA
 --
 CREATE TABLE TB_PARTIDAS (
 	 ID_PARTIDA					BIGINT IDENTITY(1, 1) NOT NULL
-	,DT_INICIO					DATETIME				-- Data/hora do inÌcio da partida
-	,DT_FIM						DATETIME				-- Data/hora do tÈrmino da partida
-	,NR_PLAYER_VENCEDOR			TINYINT					-- N˙mero do Player que ganhou: ou Player 1 ou 2
+	,DT_INICIO					DATETIME				-- Data/hora do in√≠cio da partida
+	,DT_FIM						DATETIME				-- Data/hora do t√©rmino da partida
+	,NR_PLAYER_VENCEDOR			TINYINT					-- N√∫mero do Player que ganhou: ou Player 1 ou 2
 	,CONSTRAINT TB_PARTIDAS_PK PRIMARY KEY (ID_PARTIDA)
 )
 --
@@ -102,8 +102,8 @@ CREATE TABLE TB_PARTIDAS (
 CREATE TABLE TB_JOGADAS (
 	 ID_JOGADA					BIGINT IDENTITY(1, 1) NOT NULL
 	,ID_PARTIDA					BIGINT NOT NULL		-- Id da partida
-	,NR_PLAYER					TINYINT				-- N˙mero do Player: 1 ou 2
-	,ID_USUARIO					INT					-- Id do usu·rio
+	,NR_PLAYER					TINYINT				-- N√∫mero do Player: 1 ou 2
+	,ID_USUARIO					INT					-- Id do usu√°rio
 	,QT_NAVIOS_ACERTADOS		TINYINT				-- Quantidade de navios acertados por este jogador nesta partida
 	,QT_PORDERES_USADOS			TINYINT				-- Quantidade de poderes utilizados por este jogador nesta partida
 	,CONSTRAINT TB_JOGADAS_PK PRIMARY KEY (ID_JOGADA)
@@ -118,14 +118,14 @@ CREATE TABLE TB_TIPO_SKINS (
 --
 INSERT INTO TB_TIPO_SKINS VALUES
  (1, 'Tema')
-,(2, '¡udio')
+,(2, '√Åudio')
 --
 --
 CREATE TABLE TB_INVENTARIO (
 	 ID_INVENTARIO				BIGINT IDENTITY(1, 1) NOT NULL
-	,ID_USUARIO					INT NOT NULL		-- Id do usu·rio
+	,ID_USUARIO					INT NOT NULL		-- Id do usu√°rio
 	,ID_TIPO_SKIN				TINYINT				-- Id do tipo de skin
-	,ID_SKIN_DISPONIVEL			INT					-- Id do usu·rio
+	,ID_SKIN_DISPONIVEL			INT					-- Id do usu√°rio
 	,CONSTRAINT TB_INVENTARIO_PK PRIMARY KEY (ID_INVENTARIO)
 )
 --
@@ -139,12 +139,32 @@ CREATE TABLE TB_SKINS_TEMA (
 	 ID_SKIN_TEMA		INT
 	,DS_NOME_SKIN_TEMA	VARCHAR(30)
 	,DS_DESCRICAO_TEMA	VARCHAR(200)
+	,NR_VALOR_SKIN_TEMA     INT
+	,DS_IMG_COORDENADA	VARCHAR(255)
+	,DS_IMG_NAVIO1		VARCHAR(255)
+	,DS_IMG_NAVIO2		VARCHAR(255)
+	,DS_IMG_NAVIO3		VARCHAR(255)
+	,DS_IMG_NAVIO4		VARCHAR(255)
+	,DS_IMG_NAVIO5		VARCHAR(255)
 	,CONSTRAINT TB_SKINS_TEMA_PK PRIMARY KEY (ID_SKIN_TEMA)
 )
 --
 INSERT INTO TB_SKINS_TEMA VALUES
- (1, 'Padr„o', 'Skin padr„o.')
-,(2, 'Espacial', 'Skin espacial.')
+ (1, 'Padr√£o', 'Skin padr√£o.', 1500,
+  ,'http://localhost:5471/assets/images/skin/coordenada_padrao.png'
+  ,'http://localhost:5471/assets/images/skin/navio1_padrao.png'
+  ,'http://localhost:5471/assets/images/skin/navio2_padrao.png'
+  ,'http://localhost:5471/assets/images/skin/navio3_padrao.png'
+  ,'http://localhost:5471/assets/images/skin/navio4_padrao.png'
+  ,'http://localhost:5471/assets/images/skin/navio5_padrao.png')
+
+,(2, 'Espacial', 'Skin espacial.', 3000,
+  ,'http://localhost:5471/assets/images/skin/coordenada_espacial.png'
+  ,'http://localhost:5471/assets/images/skin/navio1_espacial.png'
+  ,'http://localhost:5471/assets/images/skin/navio2_espacial.png'
+  ,'http://localhost:5471/assets/images/skin/navio3_espacial.png'
+  ,'http://localhost:5471/assets/images/skin/navio4_espacial.png'
+  ,'http://localhost:5471/assets/images/skin/navio5_espacial.png')
 --
 --
 CREATE TABLE TB_SKINS_AUDIO (
@@ -155,9 +175,9 @@ CREATE TABLE TB_SKINS_AUDIO (
 )
 --
 INSERT INTO TB_SKINS_AUDIO VALUES
- (1, 'Padr„o', '¡udio padr„o.')
-,(2, 'Espacial', '¡udio espacial.')
-,(3, 'Faust„o', 'Errrrrroooou do Faust„o.')
+ (1, 'Padr√£o', '√Åudio padr√£o.')
+,(2, 'Espacial', '√Åudio espacial.')
+,(3, 'Faust√£o', 'Errrrrroooou do Faust√£o.')
 
 
 
