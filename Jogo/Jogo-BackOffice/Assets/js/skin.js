@@ -4,37 +4,6 @@ var cValueElement = "";
 var descricaoItem = "";
 
 jQuery(document).ready(function () { 
-    var tbSkin = $('#skins').DataTable({
-        responsive: true,
-        "language": {
-            "lengthMenu": "Exibir _MENU_ skins por página",
-            "zeroRecords": "Desculpe, não encontrei registros",
-            "info": "Exibindo página _PAGE_ de _PAGES_",
-            "infoEmpty": "Sem informações disponíveis",
-            "infoFiltered": "(Total de _MAX_ registros)",
-            "search": "Pesquisar:",
-            "paginate": {
-                "previous": "Página anterior",
-                "next": "Próxima página"
-            },
-            "sDom": 'T<"clear">lfrtip',
-            "oTableTools": {
-                "sRowSelect": "single"
-            }
-        },
-        responsive: {
-            details: {
-                type: 'column'
-            }
-        },
-        columnDefs: [{
-            className: 'control',
-            orderable: false,
-            targets: 0
-        }],
-        order: [1, 'asc']
-
-    });
 
     $('#skins tbody').on('click', 'tr', function () {
         if ($(this).hasClass('selected')) {
@@ -45,12 +14,14 @@ jQuery(document).ready(function () {
             $(this).addClass('selected');
         }
     });
+	
 });
 
 function addSkin() {
     document.querySelector("#txtNomSkin").value = "";
     document.querySelector("#txtValor").value = "";
     document.querySelector("#txtCoordenadas").value = "";
+    document.querySelector("#txtPortaAvioes").value = "";
     document.querySelector("#txtDestroyer").value = "";
     document.querySelector("#txtEncouracado").value = "";
     document.querySelector("#txtCruzador").value = "";
@@ -77,6 +48,10 @@ function confirmAddSkin() {
         lRet = false;
         $("#txtCoordenadas").addClass('input-error');
     }
+	if (document.querySelector("#txtPortaAvioes").value == "") {
+        lRet = false;
+        $("#txtPortaAvioes").addClass('input-error');
+    }
 	
 	if (document.querySelector("#txtDestroyer").value == "") {
         lRet = false;
@@ -100,13 +75,14 @@ function confirmAddSkin() {
 
     if (lRet) {
 		var data = "{";
-        data += "'nomeSkin':'" + document.querySelector("#txtNomSkin").value + "',";
-        data += "'valorSkin':'" + document.querySelector("#txtValor").value + "',";
-		data += "'coordenada':'" + document.querySelector("#txtCoordenadas").value + "',";
-        data += "'destroyer':'" + document.querySelector("#txtDestroyer").value + "',";
-		data += "'encouracado':'" + document.querySelector("#txtEncouracado").value + "',";
-		data += "'cruzador':'" + document.querySelector("#txtCruzador").value + "',";
-		data += "'submarino':'" + document.querySelector("#txtSubmarino").value + "'";
+        	data += "'nome':'" + document.querySelector("#txtNomSkin").value + "',";
+        	data += "'valor':'" + document.querySelector("#txtValor").value + "',";
+		data += "'imgCoordenada':'" + document.querySelector("#txtCoordenadas").value + "',";
+	    	data += "'imgNav01':'" + document.querySelector("#txtPortaAvioes").value + "',";
+        	data += "'imgNav02':'" + document.querySelector("#txtDestroyer").value + "',";
+		data += "'imgNav03':'" + document.querySelector("#txtEncouracado").value + "',";
+		data += "'imgNav04':'" + document.querySelector("#txtCruzador").value + "',";
+		data += "'imgNav05':'" + document.querySelector("#txtSubmarino").value + "'";
         data += "}";
         $.ajax({
             type: "POST",
@@ -127,33 +103,33 @@ function confirmAddSkin() {
                     var obj = output.d; //aqui prestar atenção no formato do objeto
                     obj = JSON.parse(obj.replace(/'/g, '"'));
                     count++;
-                    //var btnVerImagens = '<button type="button" id="btnImg' + count + '" class="btn btn-default" onclick="getImages(this);"><i class="fa fa-file-image-o" aria-hidden="true"></i></button>';
+               
                     var newRow = $('#skins').dataTable().fnAddData([
                         //aqui atribuir os valores que voltarem da function no ruby
 						"",
-                        obj.IdSkin,
-						obj.NomeSkin,
-                        obj.ValorSkin,
-						obj.Coordenada,
-						obj.Destroyer,
-						obj.Encouracado,
-						obj.Cruzador,
-						obj.Submarino
-                       // btnVerImagens
+                        obj.Id,
+						obj.Nome,
+                        obj.Valor,
+						obj.ImgCoordenada,
+			    obj.ImgNav01,
+						obj.ImgNav02,
+						obj.ImgNav03,
+						obj.ImgNav04,
+						obj.ImgNav05
                     ]);
 
                     var oSettings = $('#skins').dataTable().fnSettings();
                     var nTr = oSettings.aoData[newRow[0]].nTr;
                     $(nTr).addClass('linhaTabela');
                     $('td', nTr)[1].setAttribute('class', 'idSkin');
-                    $('td', nTr)[2].setAttribute('class', 'nomeSkin');
-                    $('td', nTr)[3].setAttribute('class', 'valorSkin');
-					$('td', nTr)[4].setAttribute('class', 'coordenada');
-					$('td', nTr)[5].setAttribute('class', 'destroyer');
-					$('td', nTr)[6].setAttribute('class', 'encouracado');
-					$('td', nTr)[7].setAttribute('class', 'cruzador');
-					$('td', nTr)[8].setAttribute('class', 'submarino');
-                    //$('td', nTr)[11].setAttribute('class', 'imgSkin');
+                    $('td', nTr)[2].setAttribute('class', 'nome');
+                    $('td', nTr)[3].setAttribute('class', 'valor');
+		    $('td', nTr)[4].setAttribute('class', 'imgCoordenada');
+	            $('td', nTr)[5].setAttribute('class', 'imgNav01');
+		    $('td', nTr)[6].setAttribute('class', 'imgNav02');
+		    $('td', nTr)[7].setAttribute('class', 'imgNav03');
+		    $('td', nTr)[8].setAttribute('class', 'imgNav04');
+		    $('td', nTr)[9].setAttribute('class', 'imgNav05');
 
                     closeModalBS();
 
@@ -167,13 +143,14 @@ function editSkin() {
     if (($('#skins tbody').children('.selected').length > 0) && $('#skins tbody').children('.selected').children('.nomeSkin').text() != "") {
         var row = $('#skins tbody').children('.selected');
         var cIdSkin = $(row).children('.idSkin').text();
-        var cNomeSkin = $(row).children('.nomeSkin').text();
-        var nValorSkin = $(row).children('.valorSkin').text();
-		var cCoordenada = $(row).children('.coordenada').text();
-		var cDestroyer = $(row).children('.destroyer').text();
-		var cEncouracado = $(row).children('.encouracado').text();
-		var cCruzador = $(row).children('.cruzador').text();
-		var cSubmarino = $(row).children('.submarino').text();
+        var cNomeSkin = $(row).children('.nome').text();
+        var nValorSkin = $(row).children('.valor').text();
+		var cCoordenada = $(row).children('.imgCoordenada').text();
+	        var cPortaAvioes = $(row).children('.imgNav01').text();
+		var cDestroyer = $(row).children('.imgNav02').text();
+		var cEncouracado = $(row).children('.imgNav03').text();
+		var cCruzador = $(row).children('.imgNav04').text();
+		var cSubmarino = $(row).children('.imgNav05').text();
 
         var cText = '<div id="editarSkinMod">';
         cText += document.querySelector("#criarSkin").innerHTML;
@@ -184,6 +161,7 @@ function editSkin() {
 		document.querySelector("#txtNomSkin").value = cNomeSkin ;
 		document.querySelector("#txtValor").value = nValorSkin;
 		document.querySelector("#txtCoordenadas").value = cCoordenada;
+	        document.querySelector("#txtPortaAvioes").value = cPortaAvioes;
 		document.querySelector("#txtDestroyer").value = cDestroyer;
 		document.querySelector("#txtEncouracado").value = cEncouracado;
 		document.querySelector("#txtCruzador").value = cCruzador;
@@ -211,6 +189,11 @@ function confirmEditSkin(idSkin) {
         $("#txtCoordenadas").addClass('input-error');
     }
 	
+	if (document.querySelector("#txtPortaAvioes").value == "") {
+        lRet = false;
+        $("#txtPortaAvioes").addClass('input-error');
+    }
+	
 	if (document.querySelector("#txtDestroyer").value == "") {
         lRet = false;
         $("#txtDestroyer").addClass('input-error');
@@ -233,13 +216,14 @@ function confirmEditSkin(idSkin) {
 
     if (lRet) {
         var data = "{";
-        data += "'nomeSkin':'" + document.querySelector("#txtNomSkin").value + "',";
-        data += "'valorSkin':'" + document.querySelector("#txtValor").value + "',";
-		data += "'coordenada':'" + document.querySelector("#txtCoordenadas").value + "',";
-        data += "'destroyer':'" + document.querySelector("#txtDestroyer").value + "',";
-		data += "'encouracado':'" + document.querySelector("#txtEncouracado").value + "',";
-		data += "'cruzador':'" + document.querySelector("#txtCruzador").value + "',";
-		data += "'submarino':'" + document.querySelector("#txtSubmarino").value + "',";
+        data += "'nome':'" + document.querySelector("#txtNomSkin").value + "',";
+        data += "'valor':'" + document.querySelector("#txtValor").value + "',";
+	data += "'imgCoordenada':'" + document.querySelector("#txtCoordenadas").value + "',";
+	data += "'imgNav01':'" + document.querySelector("#txtPortaAvioes").value + "',";
+        data += "'imgNav02':'" + document.querySelector("#txtDestroyer").value + "',";
+	data += "'imgNav03':'" + document.querySelector("#txtEncouracado").value + "',";
+	data += "'imgNav04':'" + document.querySelector("#txtCruzador").value + "',";
+	data += "'imgNav05':'" + document.querySelector("#txtSubmarino").value + "',";
         data += "'id':'" + idSkin + "'";
         data += "}";
         $.ajax({
@@ -262,28 +246,30 @@ function confirmEditSkin(idSkin) {
                     var table = $('#skins').DataTable();
                     var indexes = table.rows().eq(0).filter(function (rowIdx) {
                         var row = $('#skins tbody').children('.selected');
-                        var cNomeSkin = $(row).children('.nomeSkin').text();
+                        var cNomeSkin = $(row).children('.nome').text();
 
 						//precisa editar o objeto da grid, não adianta editar só o html 
                         if ((table.cell(rowIdx, 2).data().search(cNomeSkin) != -1) ) {
-						    $('#skins').dataTable().fnUpdate(obj.NomeSkin, rowIdx, 2); 
-                            $('#skins').dataTable().fnUpdate(obj.ValorSkin, rowIdx, 3); //o 4 é a data de criacao da skin
-							$('#skins').dataTable().fnUpdate(obj.Coordenada, rowIdx, 4);
-							$('#skins').dataTable().fnUpdate(obj.Destroyer, rowIdx, 5);
-							$('#skins').dataTable().fnUpdate(obj.Encouracado, rowIdx, 6);
-							$('#skins').dataTable().fnUpdate(obj.Cruzador, rowIdx, 7);
-							$('#skins').dataTable().fnUpdate(obj.Submarino, rowIdx, 8);							                           
+						    $('#skins').dataTable().fnUpdate(obj.Nome, rowIdx, 2); 
+                            $('#skins').dataTable().fnUpdate(obj.Valor, rowIdx, 3); //o 4 é a data de criacao da skin
+							$('#skins').dataTable().fnUpdate(obj.ImgCoordenada, rowIdx, 4);
+							$('#skins').dataTable().fnUpdate(obj.ImgNav01, rowIdx, 5);
+							$('#skins').dataTable().fnUpdate(obj.ImgNav02, rowIdx, 6);
+							$('#skins').dataTable().fnUpdate(obj.ImgNav03, rowIdx, 7);
+							$('#skins').dataTable().fnUpdate(obj.ImgNav04, rowIdx, 8);
+							$('#skins').dataTable().fnUpdate(obj.ImgNav05, rowIdx, 9);							                           
                         }
                     });
 
 					//agora edito o html
-                    $('#skins tbody').children('.selected').children('.nomeSkin').text(obj.NomeSkin);
-					$('#skins tbody').children('.selected').children('.valorSkin').text(obj.ValorSkin);
-					$('#skins tbody').children('.selected').children('.coordenada').text(obj.Coordenada);
-					$('#skins tbody').children('.selected').children('.destroyer').text(obj.Destroyer);
-					$('#skins tbody').children('.selected').children('.encouracado').text(obj.Encouracado);
-					$('#skins tbody').children('.selected').children('.cruzador').text(obj.Cruzador);
-					$('#skins tbody').children('.selected').children('.submarino').text(obj.Submarino);
+                    $('#skins tbody').children('.selected').children('.nomeSkin').text(obj.Nome);
+					$('#skins tbody').children('.selected').children('.valor').text(obj.Valor);
+					$('#skins tbody').children('.selected').children('.imgCoordenada').text(obj.ImgCoordenada);
+					$('#skins tbody').children('.selected').children('.imgNav01').text(obj.ImgNav01);
+					$('#skins tbody').children('.selected').children('.imgNav02').text(obj.ImgNav02);
+					$('#skins tbody').children('.selected').children('.imgNav03').text(obj.ImgNav03);
+					$('#skins tbody').children('.selected').children('.imgNav04').text(obj.ImgNav04);
+					$('#skins tbody').children('.selected').children('.imgNav05').text(obj.ImgNav05);
 
                     closeModalBS();
 					
