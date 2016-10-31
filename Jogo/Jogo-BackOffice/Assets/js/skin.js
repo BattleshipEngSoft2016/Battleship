@@ -50,12 +50,11 @@ jQuery(document).ready(function () {
 function addSkin() {
     document.querySelector("#txtNomSkin").value = "";
     document.querySelector("#txtValor").value = "";
-    document.querySelector("#cmbStatusSkin").selectedIndex = 0;
-	 document.querySelector("#txtCoordenadas").value = "";
-	 document.querySelector("#txtDestroyer").value = "";
-	 document.querySelector("#txtEncouracado").value = "";
-	 document.querySelector("#txtCruzador").value = "";
-	 document.querySelector("#txtSubmarino").value = "";
+    document.querySelector("#txtCoordenadas").value = "";
+    document.querySelector("#txtDestroyer").value = "";
+    document.querySelector("#txtEncouracado").value = "";
+    document.querySelector("#txtCruzador").value = "";
+    document.querySelector("#txtSubmarino").value = "";
     var cText = '<div id="criarSkinMod">';
     cText += document.querySelector("#criarSkin").innerHTML;
     cText += '</div>';
@@ -103,7 +102,6 @@ function confirmAddSkin() {
 		var data = "{";
         data += "'nomeSkin':'" + document.querySelector("#txtNomSkin").value + "',";
         data += "'valorSkin':'" + document.querySelector("#txtValor").value + "',";
-		data += "'isAtiva':'" + document.querySelector("#cmbStatusSkin").value + "',";
 		data += "'coordenada':'" + document.querySelector("#txtCoordenadas").value + "',";
         data += "'destroyer':'" + document.querySelector("#txtDestroyer").value + "',";
 		data += "'encouracado':'" + document.querySelector("#txtEncouracado").value + "',";
@@ -135,8 +133,6 @@ function confirmAddSkin() {
 						"",
                         obj.IdSkin,
 						obj.NomeSkin,
-						obj.StatusSkin,
-						obj.DtCriacao,
                         obj.ValorSkin,
 						obj.Coordenada,
 						obj.Destroyer,
@@ -151,14 +147,12 @@ function confirmAddSkin() {
                     $(nTr).addClass('linhaTabela');
                     $('td', nTr)[1].setAttribute('class', 'idSkin');
                     $('td', nTr)[2].setAttribute('class', 'nomeSkin');
-                    $('td', nTr)[3].setAttribute('class', 'statusSkin');
-                    $('td', nTr)[4].setAttribute('class', 'dtCriacaoSkin');
-                    $('td', nTr)[5].setAttribute('class', 'valorSkin');
-					$('td', nTr)[6].setAttribute('class', 'coordenada');
-					$('td', nTr)[7].setAttribute('class', 'destroyer');
-					$('td', nTr)[8].setAttribute('class', 'encouracado');
-					$('td', nTr)[9].setAttribute('class', 'cruzador');
-					$('td', nTr)[10].setAttribute('class', 'submarino');
+                    $('td', nTr)[3].setAttribute('class', 'valorSkin');
+					$('td', nTr)[4].setAttribute('class', 'coordenada');
+					$('td', nTr)[5].setAttribute('class', 'destroyer');
+					$('td', nTr)[6].setAttribute('class', 'encouracado');
+					$('td', nTr)[7].setAttribute('class', 'cruzador');
+					$('td', nTr)[8].setAttribute('class', 'submarino');
                     //$('td', nTr)[11].setAttribute('class', 'imgSkin');
 
                     closeModalBS();
@@ -174,8 +168,6 @@ function editSkin() {
         var row = $('#skins tbody').children('.selected');
         var cIdSkin = $(row).children('.idSkin').text();
         var cNomeSkin = $(row).children('.nomeSkin').text();
-        var cStatusSkin = $(row).children('.statusSkin').text();
-        var dDtCriacaoSkin = $(row).children('.dtCriacaoSkin').text();
         var nValorSkin = $(row).children('.valorSkin').text();
 		var cCoordenada = $(row).children('.coordenada').text();
 		var cDestroyer = $(row).children('.destroyer').text();
@@ -191,7 +183,6 @@ function editSkin() {
 		
 		document.querySelector("#txtNomSkin").value = cNomeSkin ;
 		document.querySelector("#txtValor").value = nValorSkin;
-		document.querySelector("#cmbStatusSkin").selectedIndex = cStatusSkin == 'Ativa' ? 0 : 1;
 		document.querySelector("#txtCoordenadas").value = cCoordenada;
 		document.querySelector("#txtDestroyer").value = cDestroyer;
 		document.querySelector("#txtEncouracado").value = cEncouracado;
@@ -244,7 +235,6 @@ function confirmEditSkin(idSkin) {
         var data = "{";
         data += "'nomeSkin':'" + document.querySelector("#txtNomSkin").value + "',";
         data += "'valorSkin':'" + document.querySelector("#txtValor").value + "',";
-		data += "'isAtiva':'" + document.querySelector("#cmbStatusSkin").value + "',";
 		data += "'coordenada':'" + document.querySelector("#txtCoordenadas").value + "',";
         data += "'destroyer':'" + document.querySelector("#txtDestroyer").value + "',";
 		data += "'encouracado':'" + document.querySelector("#txtEncouracado").value + "',";
@@ -276,22 +266,18 @@ function confirmEditSkin(idSkin) {
 
 						//precisa editar o objeto da grid, não adianta editar só o html 
                         if ((table.cell(rowIdx, 2).data().search(cNomeSkin) != -1) ) {
-						    var status = obj.StatusSkin == "1" ? "Ativa" : "Inativa";
 						    $('#skins').dataTable().fnUpdate(obj.NomeSkin, rowIdx, 2); 
-							$('#skins').dataTable().fnUpdate(status, rowIdx, 3);
-                            $('#skins').dataTable().fnUpdate(obj.ValorSkin, rowIdx, 5); //o 4 é a data de criacao da skin
-							$('#skins').dataTable().fnUpdate(obj.Coordenada, rowIdx, 6);
-							$('#skins').dataTable().fnUpdate(obj.Destroyer, rowIdx, 7);
-							$('#skins').dataTable().fnUpdate(obj.Encouracado, rowIdx, 8);
-							$('#skins').dataTable().fnUpdate(obj.Cruzador, rowIdx, 9);
-							$('#skins').dataTable().fnUpdate(obj.Submarino, rowIdx, 10);							                           
+                            $('#skins').dataTable().fnUpdate(obj.ValorSkin, rowIdx, 3); //o 4 é a data de criacao da skin
+							$('#skins').dataTable().fnUpdate(obj.Coordenada, rowIdx, 4);
+							$('#skins').dataTable().fnUpdate(obj.Destroyer, rowIdx, 5);
+							$('#skins').dataTable().fnUpdate(obj.Encouracado, rowIdx, 6);
+							$('#skins').dataTable().fnUpdate(obj.Cruzador, rowIdx, 7);
+							$('#skins').dataTable().fnUpdate(obj.Submarino, rowIdx, 8);							                           
                         }
                     });
 
 					//agora edito o html
-					var status = obj.StatusSkin == "1" ? "Ativa" : "Inativa";
                     $('#skins tbody').children('.selected').children('.nomeSkin').text(obj.NomeSkin);
-					$('#skins tbody').children('.selected').children('.statusSkin').text(status);
 					$('#skins tbody').children('.selected').children('.valorSkin').text(obj.ValorSkin);
 					$('#skins tbody').children('.selected').children('.coordenada').text(obj.Coordenada);
 					$('#skins tbody').children('.selected').children('.destroyer').text(obj.Destroyer);
