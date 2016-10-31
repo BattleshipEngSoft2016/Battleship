@@ -5,7 +5,70 @@
 @section scripts {
     <script type="text/javascript">
         @*   $(function() {
-            usuarios = @Html.Raw(ViewBag.Usuarios);
+            skins = @Html.Raw(ViewBag.Usuarios);
+		
+		            niveis = @Html.Raw(ViewBag.Niveis);
+
+            for(var nI=0;nI<skins.length;nI++){
+                var newRow = $('#skins').dataTable().fnAddData([
+                        "",
+                        skins[nI].Id,
+                        skins[nI].Nome,
+                        skins[nI].Valor,
+                        skins[nI].ImgCoordenada,
+                        skins[nI].ImgNav01,
+                        skins[nI].ImgNav02,
+                        skins[nI].ImgNav03,
+                        skins[nI].ImgNav04,
+                        skins[nI].ImgNav05
+                ]);
+
+                var oSettings = $('#skins').dataTable().fnSettings();
+                var nTr = oSettings.aoData[newRow[0]].nTr;
+                $(nTr).addClass('linhaTabela');
+                $('td', nTr)[1].setAttribute('class', 'idSkin');
+                $('td', nTr)[2].setAttribute('class', 'nome');
+                $('td', nTr)[3].setAttribute('class', 'valor');
+                $('td', nTr)[4].setAttribute('class', 'imgCoordenada');
+                $('td', nTr)[5].setAttribute('class', 'imgNav01');
+                $('td', nTr)[6].setAttribute('class', 'imgNav02');
+                $('td', nTr)[7].setAttribute('class', 'imgNav03');
+                $('td', nTr)[8].setAttribute('class', 'imgNav04');
+                $('td', nTr)[9].setAttribute('class', 'imgNav05');
+            }
+		
+	    var tbSkin = $('#skins').DataTable({
+            	responsive: true,
+            	"language": {
+            		"lengthMenu": "Exibir _MENU_ skins por página",
+            		"zeroRecords": "Desculpe, não encontrei registros",
+            		"info": "Exibindo página _PAGE_ de _PAGES_",
+            		"infoEmpty": "Sem informações disponíveis",
+            		"infoFiltered": "(Total de _MAX_ registros)",
+            		"search": "Pesquisar:",
+            		"paginate": {
+                		"previous": "Página anterior",
+                		"next": "Próxima página"
+            		},
+            		"sDom": 'T<"clear">lfrtip',
+            		"oTableTools": {
+                		"sRowSelect": "single"
+            		}
+        	},
+        	responsive: {
+            		details: {
+                		type: 'column'
+            		}
+        	},
+       	 	columnDefs: [{
+            		className: 'control',
+            		orderable: false,
+            		targets: 0
+        	}],
+        	order: [1, 'asc']
+
+           });
+
             });*@
     </script>
 
@@ -48,6 +111,7 @@
                     <th>Skin  &nbsp;&nbsp;<i class="fa fa-lg fa-ship fa-blue-pastel" aria-hidden="true"></i></th>                 
                     <th>Valor &nbsp;&nbsp;<i class="fa fa-lg fa-usd fa-blue-pastel" aria-hidden="true"></i></th>
 		    <th>Coordenada &nbsp;&nbsp;<i class="fa fa-lg fa-arrows-alt fa-blue-pastel" aria-hidden="true"></i></th>
+		    <th>Porta-Aviões  &nbsp;&nbsp; <img src="http://localhost:5471/assets/images/ship-aircraft-carrier.png" alt="Porta aviões" height="24" width="24"></th>
 		    <th>Destroyer  &nbsp;&nbsp; <img src="http://localhost:5471/assets/images/ship-destroyer.png" alt="Destroyer" height="24" width="24"></th>
 		    <th>Encouraçado  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-encouracado.png" alt="Encouraçado" height="24" width="24"></th>
 		    <th>Cruzador  &nbsp;&nbsp;<img src="http://localhost:5471/assets/images/ship-cruise.png" alt="Cruzador" height="24" width="24"></th>
@@ -73,6 +137,11 @@
              <div class="form-group">
                 <label class="" for="lblCoordenadas">Coordenadas</label>
                 <input type="file" id="txtCoordenadas" class="form-control" placeholder="Escolha a imagem..." onchange="removeClass(this);" />
+            </div>
+	    
+	    <div class="form-group">
+                <label class="" for="lblPortaAvioes">Porta-aviões</label>
+                <input type="file" id="txtPortaAvioes" class="form-control" placeholder="Escolha a imagem..." onchange="removeClass(this);" />
             </div>
 
             <div class="form-group">
