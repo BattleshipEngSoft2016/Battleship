@@ -4,38 +4,6 @@ var cValueElement = "";
 var descricaoItem = "";
 
 jQuery(document).ready(function () { 
-    var tbSkin = $('#niveis').DataTable({
-        responsive: true,
-        "language": {
-            "lengthMenu": "Exibir _MENU_ niveis por página",
-            "zeroRecords": "Desculpe, não encontrei registros",
-            "info": "Exibindo página _PAGE_ de _PAGES_",
-            "infoEmpty": "Sem informações disponíveis",
-            "infoFiltered": "(Total de _MAX_ registros)",
-            "search": "Pesquisar:",
-            "paginate": {
-                "previous": "Página anterior",
-                "next": "Próxima página"
-            },
-            "sDom": 'T<"clear">lfrtip',
-            "oTableTools": {
-                "sRowSelect": "single"
-            }
-        },
-        responsive: {
-            details: {
-                type: 'column'
-            }
-        },
-        columnDefs: [{
-            className: 'control',
-            orderable: false,
-            targets: 0
-        }],
-        order: [1, 'asc']
-
-    });
-
     $('#niveis tbody').on('click', 'tr', function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
@@ -47,10 +15,75 @@ jQuery(document).ready(function () {
     });
 });
 
+function validaPreenchimento() {
+    var lRet = true;
+
+    if (document.querySelector("#txtNomNivel").value == "") {
+        lRet = false;
+        $("#txtNomNivel").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtQtdColunas").value == "" || document.querySelector("#txtQtdColunas").value == "0" || document.querySelector("#txtQtdColunas").value == "1") {
+        lRet = false;
+        $("#txtQtdColunas").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtQtdLinhas").value == "" || document.querySelector("#txtQtdLinhas").value == "0" || document.querySelector("#txtQtdLinhas").value == "1") {
+        lRet = false;
+        $("#txtQtdLinhas").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtQtdPortaAvioes").value == "") {
+        lRet = false;
+        $("#txtQtdPortaAvioes").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtQtdDestroiers").value == "") {
+        lRet = false;
+        $("#txtQtdDestroiers").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtQtdEncouracados").value == "") {
+        lRet = false;
+        $("#txtQtdEncouracados").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtQtdCruzadores").value == "") {
+        lRet = false;
+        $("#txtQtdCruzadores").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtQtdSubmarinos").value == "") {
+        lRet = false;
+        $("#txtQtdSubmarinos").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtTempoJogada").value == "" || document.querySelector("#txtTempoJogada").value < 10 ) {
+        lRet = false;
+        $("#txtTempoJogada").addClass('input-error');
+    }
+
+    if (document.querySelector("#txtTempoPosicionamento").value == "" || document.querySelector("#txtTempoPosicionamento").value < 10) {
+        lRet = false;
+        $("#txtTempoPosicionamento").addClass('input-error');
+    }
+
+    return lRet;
+    
+}
+
 function addNivel() {
     document.querySelector("#txtNomNivel").value = "";
-    document.querySelector("#cmbStatusNivel").selectedIndex = 0;
-	 document.querySelector("#txtTamanhoNivel").value = "";
+    document.querySelector("#txtQtdColunas").value = "";
+    document.querySelector("#txtQtdLinhas").value = "";
+    document.querySelector("#txtQtdPortaAvioes").value = "";
+    document.querySelector("#txtQtdDestroiers").value = "";
+    document.querySelector("#txtQtdEncouracados").value = "";
+    document.querySelector("#txtQtdCruzadores").value = "";
+    document.querySelector("#txtQtdSubmarinos").value = "";
+    document.querySelector("#txtTempoJogada").value = "";
+    document.querySelector("#txtTempoPosicionamento").value = "";
+    
     var cText = '<div id="criarNivelMod">';
     cText += document.querySelector("#criarNivel").innerHTML;
     cText += '</div>';
@@ -59,26 +92,24 @@ function addNivel() {
 }
 
 function confirmAddNivel() {
-    var lRet = true;
-    if (document.querySelector("#txtNomNivel").value == "") {
-        lRet = false;
-        $("#txtNomNivel").addClass('input-error');
-    }
-    if (document.querySelector("#txtTamanhoNivel").value == "" || document.querySelector("#txtTamanhoNivel").value == "0" || document.querySelector("#txtTamanhoNivel").value == "1") {
-        lRet = false;
-        $("#txtTamanhoNivel").addClass('input-error');
-    }
 
-    if (lRet) {
+    if (validaPreenchimento()) {
 		var data = "{";
-        data += "'nomeNivel':'" + document.querySelector("#txtNomNivel").value + "',";
-        data += "'tamanhoNivel':'" + document.querySelector("#txtTamanhoNivel").value + "',";
-		data += "'isAtivo':'" + document.querySelector("#cmbStatusNivel").value + "'";
+        data += "'nome':'" + document.querySelector("#txtNomNivel").value + "',";
+        data += "'qtdColunas':'" + document.querySelector("#txtQtdColunas").value + "',";
+        data += "'qtdLinhas':'" + document.querySelector("#txtQtdLinhas").value + "',";
+        data += "'qtdPortaAvioes':'" + document.querySelector("#txtQtdPortaAvioes").value + "',";
+        data += "'qtdDestroiers':'" + document.querySelector("#txtQtdDestroiers").value + "',";
+        data += "'qtdEncouracados':'" + document.querySelector("#txtQtdEncouracados").value + "',";
+        data += "'qtdCruzadores':'" + document.querySelector("#txtQtdCruzadores").value + "',";
+        data += "'qtdSubmarinos':'" + document.querySelector("#txtQtdSubmarinos").value + "',";
+        data += "'tempoJogada':'" + document.querySelector("#txtTempoJogada").value + "',";
+        data += "'tempoPosicionamento':'" + document.querySelector("#txtTempoPosicionamento").value + "'";
         data += "}";
         $.ajax({
             type: "POST",
             data: data,
-            url: "Index.aspx/CriarNivel",  //COLOCAR URL RUBY
+            url: "Index.aspx/CriarNivel",  //COLOCAR URL CONTROLLER
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 
@@ -91,28 +122,39 @@ function confirmAddNivel() {
                 }
                 else {
                     $('#alertNivelExist').hide();
-                    var obj = output.d; //aqui prestar atenção no formato do objeto
+                    var niveis = output.d; //aqui prestar atenção no formato do objeto
                     obj = JSON.parse(obj.replace(/'/g, '"'));
                     count++;
 					
                     var newRow = $('#niveis').dataTable().fnAddData([
-                        //aqui atribuir os valores que voltarem da function no ruby
-						"",
-                        obj.IdNivel,
-						obj.NomeNivel,
-						obj.StatusNivel,
-						obj.DtCriacao,
-                        obj.TamanhoNivel					
+                       "",
+                       niveis[nI].Id,
+                       niveis[nI].Nome,
+                       niveis[nI].QtdColunas,
+                       niveis[nI].QtdLinhas,
+                       niveis[nI].QtdNav01,
+                       niveis[nI].QtdNav02,
+                       niveis[nI].QtdNav03,
+                       niveis[nI].QtdNav04,
+                       niveis[nI].QtdNav05,
+                       niveis[nI].TempoJogada,
+                       niveis[nI].TempoPosicionamento
                     ]);
 
                     var oSettings = $('#niveis').dataTable().fnSettings();
                     var nTr = oSettings.aoData[newRow[0]].nTr;
                     $(nTr).addClass('linhaTabela');
                     $('td', nTr)[1].setAttribute('class', 'idNivel');
-                    $('td', nTr)[2].setAttribute('class', 'nomeNivel');
-                    $('td', nTr)[3].setAttribute('class', 'statusNivel');
-                    $('td', nTr)[4].setAttribute('class', 'dtCriacaoNivel');
-                    $('td', nTr)[5].setAttribute('class', 'tamanhoNivel');
+                    $('td', nTr)[2].setAttribute('class', 'nome');
+                    $('td', nTr)[3].setAttribute('class', 'qtdColunas');
+                    $('td', nTr)[4].setAttribute('class', 'qtdLinhas');
+                    $('td', nTr)[5].setAttribute('class', 'qtdNav01');
+                    $('td', nTr)[6].setAttribute('class', 'qtdNav02');
+                    $('td', nTr)[7].setAttribute('class', 'qtdNav03');
+                    $('td', nTr)[8].setAttribute('class', 'qtdNav04');
+                    $('td', nTr)[9].setAttribute('class', 'qtdNav05');
+                    $('td', nTr)[10].setAttribute('class', 'tempoJogada');
+                    $('td', nTr)[11].setAttribute('class', 'tempoPosicionamento');
 
                     closeModalBS();
 
@@ -126,10 +168,16 @@ function editNivel() {
     if (($('#niveis tbody').children('.selected').length > 0) && $('#niveis tbody').children('.selected').children('.nomeNivel').text() != "") {
         var row = $('#niveis tbody').children('.selected');
         var cIdNivel = $(row).children('.idNivel').text();
-        var cNomeNivel = $(row).children('.nomeNivel').text();
-        var cStatusNivel = $(row).children('.statusNivel').text();
-        var dDtCriacaoNivel = $(row).children('.dtCriacaoNivel').text();
-        var nTamanhoNivel = $(row).children('.tamanhoNivel').text();
+        var cNomeNivel = $(row).children('.nome').text();
+        var nQtdColunas = $(row).children('.qtdColunas').text();
+        var nQtdLinhas = $(row).children('.qtdLinhas').text();
+        var nQtdPortaAvioes = $(row).children('.qtdNav01').text();
+        var nQtdDestroiers = $(row).children('.qtdNav02').text();
+        var nQtdEncouracados = $(row).children('.qtdNav03').text();
+        var nQtdCruzadores = $(row).children('.qtdNav04').text();
+        var nQtdSubmarinos = $(row).children('.qtdNav05').text();
+        var nTempoJogada = $(row).children('.tempoJogada').text();
+        var nTempoPosicionamento = $(row).children('.tempoPosicionamento').text();
 
         var cText = '<div id="editarNivelMod">';
         cText += document.querySelector("#criarNivel").innerHTML;
@@ -138,36 +186,42 @@ function editNivel() {
         modalBS(cText, 'Editar Nivel', '#fff', '#000', 'Confirmar~confirmEditNivel("' + cIdNivel + '")@Cancelar~closeModalBS()');
 		
 		document.querySelector("#txtNomSkin").value = cNomeNivel ;
-		document.querySelector("#cmbStatusNivel").selectedIndex = cStatusNivel == 'Ativo' ? 0 : 1;
-		document.querySelector("#txtTamanhoNivel").value = nTamanhoNivel;
+		document.querySelector("#txtQtdColunas").value = nQtdColunas;
+		document.querySelector("#txtQtdLinhas").value = nQtdLinhas;
+		document.querySelector("#txtQtdPortaAvioes").value = nQtdPortaAvioes;
+		document.querySelector("#txtQtdDestroiers").value = nQtdDestroiers;
+		document.querySelector("#txtQtdEncouracados").value = nQtdEncouracados;
+		document.querySelector("#txtQtdCruzadores").value = nQtdCruzadores;
+		document.querySelector("#txtQtdSubmarinos").value = nQtdSubmarinos;
+		document.querySelector("#txtTempoJogada").value = nTempoJogada;
+		document.querySelector("#txtTempoPosicionamento").value = nTempoPosicionamento;
     }
     else
         modalBS('<p>Selecione um nivel clicando na linha correspondente da tabela abaixo!</p>', '<i class="fa fa-times-circle" aria-hidden="true"></i> &nbsp; Erro', '#FF3919', '#fff', 'OK~closeModalBS()', true);
 }
 
 function confirmEditNivel(idNivel) {
-    var lRet = true;
-	
-     if (document.querySelector("#txtNomNivel").value == "") {
-        lRet = false;
-        $("#txtNomNivel").addClass('input-error');
-    }
-    if (document.querySelector("#txtTamanhoNivel").value == "" || document.querySelector("#txtTamanhoNivel").value == "0" || document.querySelector("#txtTamanhoNivel").value == "1") {
-        lRet = false;
-        $("#txtTamanhoNivel").addClass('input-error');
-    }
 
-    if (lRet) {
+    if (validaPreenchimento()) {
+
         var data = "{";
-       data += "'nomeNivel':'" + document.querySelector("#txtNomNivel").value + "',";
-        data += "'tamanhoNivel':'" + document.querySelector("#txtTamanhoNivel").value + "',";
-		data += "'isAtivo':'" + document.querySelector("#cmbStatusNivel").value + "',";
+        data += "'nome':'" + document.querySelector("#txtNomNivel").value + "',";
+        data += "'qtdColunas':'" + document.querySelector("#txtQtdColunas").value + "',";
+        data += "'qtdLinhas':'" + document.querySelector("#txtQtdLinhas").value + "',";
+        data += "'qtdPortaAvioes':'" + document.querySelector("#txtQtdPortaAvioes").value + "',";
+        data += "'qtdDestroiers':'" + document.querySelector("#txtQtdDestroiers").value + "',";
+        data += "'qtdEncouracados':'" + document.querySelector("#txtQtdEncouracados").value + "',";
+        data += "'qtdCruzadores':'" + document.querySelector("#txtQtdCruzadores").value + "',";
+        data += "'qtdSubmarinos':'" + document.querySelector("#txtQtdSubmarinos").value + "',";
+        data += "'tempoJogada':'" + document.querySelector("#txtTempoJogada").value + "',";
+        data += "'tempoPosicionamento':'" + document.querySelector("#txtTempoPosicionamento").value + "',";
         data += "'id':'" + idNivel + "'";
         data += "}";
+
         $.ajax({
             type: "POST",
             data: data,
-            url: "Index.aspx/EditarNivel", //COLOCAR URL RUBY
+            url: "Index.aspx/EditarNivel", //COLOCAR URL
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 
@@ -177,28 +231,41 @@ function confirmEditNivel(idNivel) {
                     $('#alertNivelExist').show();
                 } else {
 
-                    var obj = JSON.parse(output.d); //aqui prestar atenção no formato do objeto
+                    var niveis = JSON.parse(output.d); //aqui prestar atenção no formato do objeto
 					
                     var table = $('#niveis').DataTable();
                     var indexes = table.rows().eq(0).filter(function (rowIdx) {
                         var row = $('#niveis tbody').children('.selected');
-                        var cNomeSkin = $(row).children('.nomeNivel').text();
+                        var cNomeSkin = $(row).children('.nome').text();
 
 						//precisa editar o objeto da grid, não adianta editar só o html 
                         if ((table.cell(rowIdx, 2).data().search(cNomeSkin) != -1) ) {
-						    var status = obj.StatusNivel == "1" ? "Ativo" : "Inativo";
-						    $('#niveis').dataTable().fnUpdate(obj.NomeNivel, rowIdx, 2); 
-							$('#niveis').dataTable().fnUpdate(status, rowIdx, 3);
-                            $('#niveis').dataTable().fnUpdate(obj.TamanhoNivel, rowIdx, 5); //o 4 é a data de criacao do nivel					                           
+                            $('#niveis').dataTable().fnUpdate(niveis.Nome, rowIdx, 2);
+                            $('#niveis').dataTable().fnUpdate(niveis.QtdColunas, rowIdx, 3);
+                            $('#niveis').dataTable().fnUpdate(niveis.QtdLinhas, rowIdx, 4);
+                            $('#niveis').dataTable().fnUpdate(niveis.QtdNav01, rowIdx, 5);
+                            $('#niveis').dataTable().fnUpdate(niveis.QtdNav02, rowIdx, 6);
+                            $('#niveis').dataTable().fnUpdate(niveis.QtdNav03, rowIdx, 7);
+                            $('#niveis').dataTable().fnUpdate(niveis.QtdNav04, rowIdx, 8);
+                            $('#niveis').dataTable().fnUpdate(niveis.QtdNav05, rowIdx, 9);
+                            $('#niveis').dataTable().fnUpdate(niveis.TempoJogada, rowIdx, 10);
+                            $('#niveis').dataTable().fnUpdate(niveis.TempoPosicionamento, rowIdx, 11);
+									                           
                         }
                     });
 
 					//agora edito o html
-					var status = obj.StatusNivel == "1" ? "Ativo" : "Inativo";
-                    $('#niveis tbody').children('.selected').children('.nomeNivel').text(obj.NomeNivel);
-					$('#niveis tbody').children('.selected').children('.statusNivel').text(status);
-					$('#niveis tbody').children('.selected').children('.tamanhoNivel').text(obj.TamanhoNivel);
-
+                    $('#niveis tbody').children('.selected').children('.nome').text(niveis.Nome);
+                    $('#niveis tbody').children('.selected').children('.qtdColunas').text(niveis.QtdColunas);
+                    $('#niveis tbody').children('.selected').children('.qtdLinhas').text(niveis.QtdLinhas);
+                    $('#niveis tbody').children('.selected').children('.qtdNav01').text(niveis.QtdNav01);
+                    $('#niveis tbody').children('.selected').children('.qtdNav02').text(niveis.QtdNav02);
+                    $('#niveis tbody').children('.selected').children('.qtdNav03').text(niveis.QtdNav03);
+                    $('#niveis tbody').children('.selected').children('.qtdNav04').text(niveis.QtdNav04);
+                    $('#niveis tbody').children('.selected').children('.qtdNav05').text(niveis.QtdNav05);
+                    $('#niveis tbody').children('.selected').children('.tempoJogada').text(niveis.TempoJogada);
+                    $('#niveis tbody').children('.selected').children('.tempoPosicionamento').text(niveis.TempoPosicionamento);
+                    
                     closeModalBS();
 					
                 }
@@ -225,7 +292,7 @@ function confirmDelSkin() {
     $.ajax({
         type: "POST",
         data: data,
-        url: "Index.aspx/ExcluirNivel", //COLOCAR URL RUBY
+        url: "Index.aspx/ExcluirNivel", //COLOCAR URL
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
 
