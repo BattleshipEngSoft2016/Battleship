@@ -109,7 +109,7 @@ function confirmAddNivel() {
         $.ajax({
             type: "POST",
             data: data,
-            url: "Index.aspx/CriarNivel",  //COLOCAR URL CONTROLLER
+            url: "/Nivel/Cadastrar",  //COLOCAR URL CONTROLLER
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 
@@ -292,7 +292,7 @@ function confirmDelSkin() {
     $.ajax({
         type: "POST",
         data: data,
-        url: "Index.aspx/ExcluirNivel", //COLOCAR URL
+        url: "/Excluir", 
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
 

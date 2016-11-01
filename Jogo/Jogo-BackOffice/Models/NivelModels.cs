@@ -15,18 +15,19 @@ namespace Jogo_BackOffice.Models
             : base("DefaultConnection")
         {
 
+
+
         }
 
         public DbSet<Nivel> Niveis { get; set; }
     }
 
-        [Table("Niveis")]
-        public class Nivel
-        { 
+    [Table("Niveis")]
+    public class Nivel
+    {
 
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        [Column("ID_CONFIGURACAO")]
+        [Key, Column("ID_CONFIGURACAO")]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Column("DS_NOME_CONFIGURACAO")]
@@ -43,7 +44,7 @@ namespace Jogo_BackOffice.Models
 
         [Column("QT_NAVIO2")]
         public byte QtdNav02 { get; set; }
-            
+
         [Column("QT_NAVIO3")]
         public byte QtdNav03 { get; set; }
 
@@ -59,35 +60,79 @@ namespace Jogo_BackOffice.Models
         [Column("NR_TEMPO_JOGADA")]
         public byte TempoJogada { get; set; }
 
-            public Nivel()
-            {
-                
-            }
+        public Nivel()
+        {
+
         }
+
+        public Nivel(NivelModel vm)
+        {
+
+            Nome = vm.nome;
+
+            QtdColunas = vm.qtdColunas;
+
+            QtdLinhas = vm.qtdLinhas;
+
+            QtdNav01 = vm.qtdPortaAvioes;
+            
+            QtdNav02 = vm.qtdDestroiers;
+
+            QtdNav03 = vm.qtdEncouracados;
+
+            QtdNav04 = vm.qtdCruzadores;
+
+            QtdNav05 = vm.qtdSubmarinos;
+
+
+        }
+
+        public void AtualizarDominio(NivelModel vm)
+        {
+            Nome = vm.nome;
+
+            QtdColunas = vm.qtdColunas;
+
+            QtdLinhas = vm.qtdLinhas;
+
+            QtdNav01 = vm.qtdPortaAvioes;
+
+            QtdNav02 = vm.qtdDestroiers;
+
+            QtdNav03 = vm.qtdEncouracados;
+
+            QtdNav04 = vm.qtdCruzadores;
+
+            QtdNav05 = vm.qtdSubmarinos;
+
+        }
+    }
 
 
 
     public class NivelModel
     {
-        public virtual string Nome { get; set; }
+        public virtual int id { get; set; }
 
-        public virtual byte QtdColunas { get; set; }
+        public virtual string nome { get; set; }
 
-        public virtual byte QtdLinhas { get; set; }
+        public virtual byte qtdColunas { get; set; }
 
-        public virtual byte QtdNav01 { get; set; }
+        public virtual byte qtdLinhas { get; set; }
 
-        public virtual byte QtdNav02 { get; set; }
+        public virtual byte qtdPortaAvioes { get; set; }
 
-        public virtual byte QtdNav03 { get; set; }
+        public virtual byte qtdDestroiers { get; set; }
 
-        public virtual byte QtdNav04 { get; set; }
+        public virtual byte qtdEncouracados { get; set; }
 
-        public virtual byte QtdNav05 { get; set; }
+        public virtual byte qtdCruzadores { get; set; }
 
-        public virtual Int16 TempoPosicionamento { get; set; }
+        public virtual byte qtdSubmarinos { get; set; }
 
-        public virtual byte TempoJogada { get; set; }
+        public virtual Int16 tempoPosicionamento { get; set; }
+
+        public virtual byte tempoJogada { get; set; }
 
 
     }

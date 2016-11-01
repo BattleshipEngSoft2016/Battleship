@@ -20,7 +20,7 @@ namespace Jogo_BackOffice.Controllers
             }
         }
 
-        public JsonResult Cadastrar()
+        public JsonResult Cadastrar(SkinModel vm)
         {
             try
             {
@@ -38,6 +38,55 @@ namespace Jogo_BackOffice.Controllers
             {
                 return Json(new { Sucesso = false });
             }
+        }
+
+        [HttpPost]
+        public JsonResult Excluir(int id)
+        {
+
+            using (var db = new SkinsContext())
+            {
+                var item = db.Skins.FirstOrDefault(x => x.Id == id);
+
+                db.Skins.Remove(item);
+
+                db.SaveChanges();
+            }
+
+            return Json(new { Sucesso = true });
+
+
+        }
+
+        public JsonResult Editar(int id, SkinModel vm)
+        {
+
+            try
+            {
+                using (var db = new SkinsContext())
+                {
+                    var item = db.Skins.FirstOrDefault(x => x.Id == id);
+
+                    if (item != null)
+                    {
+                        item.AtulizarDominio(vm);
+
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        return Json(new { Sucesso = false });
+                    }
+
+                }
+
+                return Json(new { Sucesso = true });
+            }
+            catch (Exception)
+            {
+                return Json(new { Sucesso = false });
+            }
+
         }
 
 

@@ -87,7 +87,7 @@ function confirmAddSkin() {
         $.ajax({
             type: "POST",
             data: data,
-            url: "Index.aspx/CriarSkin",  //COLOCAR URL RUBY
+            url: "Skin/Cadastrar",  
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 

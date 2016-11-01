@@ -4,10 +4,8 @@
 
 @section scripts {
     <script type="text/javascript">
-        @*   $(function() {
-            skins = @Html.Raw(ViewBag.Usuarios);
-		
-		            niveis = @Html.Raw(ViewBag.Niveis);
+         $(function() {
+            skins = @Html.Raw(ViewBag.Skins);
 
             for(var nI=0;nI<skins.length;nI++){
                 var newRow = $('#skins').dataTable().fnAddData([
@@ -15,12 +13,13 @@
                         skins[nI].Id,
                         skins[nI].Nome,
                         skins[nI].Valor,
-                        skins[nI].ImgCoordenada,
-                        skins[nI].ImgNav01,
-                        skins[nI].ImgNav02,
-                        skins[nI].ImgNav03,
-                        skins[nI].ImgNav04,
-                        skins[nI].ImgNav05
+                        skins[nI].ImagemCoordenada,
+                        skins[nI].ImagemNav01,
+                        skins[nI].ImagemNav02,
+                        skins[nI].ImagemNav03,
+                        skins[nI].ImagemNav04,
+                        skins[nI].ImagemNav05          
+
                 ]);
 
                 var oSettings = $('#skins').dataTable().fnSettings();
@@ -69,7 +68,7 @@
 
            });
 
-            });*@
+            });
     </script>
 
   <script src="http://localhost:5471/assets/js/Site.js"></script>

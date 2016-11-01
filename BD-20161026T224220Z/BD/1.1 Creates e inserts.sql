@@ -150,7 +150,7 @@ CREATE TABLE TB_SKINS_TEMA (
 )
 --
 INSERT INTO TB_SKINS_TEMA VALUES
- (1, 'Padrão', 'Skin padrão.', 1500,
+ (1, 'Padrão', 'Skin padrão.', 1500
   ,'http://localhost:5471/assets/images/skin/coordenada_padrao.png'
   ,'http://localhost:5471/assets/images/skin/navio1_padrao.png'
   ,'http://localhost:5471/assets/images/skin/navio2_padrao.png'
@@ -158,13 +158,14 @@ INSERT INTO TB_SKINS_TEMA VALUES
   ,'http://localhost:5471/assets/images/skin/navio4_padrao.png'
   ,'http://localhost:5471/assets/images/skin/navio5_padrao.png')
 
-,(2, 'Espacial', 'Skin espacial.', 3000,
+,(2, 'Espacial', 'Skin espacial.', 3000
   ,'http://localhost:5471/assets/images/skin/coordenada_espacial.png'
   ,'http://localhost:5471/assets/images/skin/navio1_espacial.png'
   ,'http://localhost:5471/assets/images/skin/navio2_espacial.png'
   ,'http://localhost:5471/assets/images/skin/navio3_espacial.png'
   ,'http://localhost:5471/assets/images/skin/navio4_espacial.png'
   ,'http://localhost:5471/assets/images/skin/navio5_espacial.png')
+  
 --
 --
 CREATE TABLE TB_SKINS_AUDIO (
