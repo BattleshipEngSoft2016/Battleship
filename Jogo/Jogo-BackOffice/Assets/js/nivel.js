@@ -3,7 +3,7 @@ var cElement = "";
 var cValueElement = "";
 var descricaoItem = "";
 
-jQuery(document).ready(function () { 
+jQuery(document).ready(function () {
     $('#niveis tbody').on('click', 'tr', function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
@@ -58,7 +58,7 @@ function validaPreenchimento() {
         $("#txtQtdSubmarinos").addClass('input-error');
     }
 
-    if (document.querySelector("#txtTempoJogada").value == "" || document.querySelector("#txtTempoJogada").value < 10 ) {
+    if (document.querySelector("#txtTempoJogada").value == "" || document.querySelector("#txtTempoJogada").value < 10) {
         lRet = false;
         $("#txtTempoJogada").addClass('input-error');
     }
@@ -69,7 +69,7 @@ function validaPreenchimento() {
     }
 
     return lRet;
-    
+
 }
 
 function addNivel() {
@@ -83,7 +83,7 @@ function addNivel() {
     document.querySelector("#txtQtdSubmarinos").value = "";
     document.querySelector("#txtTempoJogada").value = "";
     document.querySelector("#txtTempoPosicionamento").value = "";
-    
+
     var cText = '<div id="criarNivelMod">';
     cText += document.querySelector("#criarNivel").innerHTML;
     cText += '</div>';
@@ -94,7 +94,7 @@ function addNivel() {
 function confirmAddNivel() {
 
     if (validaPreenchimento()) {
-		var data = "{";
+        var data = "{";
         data += "'nome':'" + document.querySelector("#txtNomNivel").value + "',";
         data += "'qtdColunas':'" + document.querySelector("#txtQtdColunas").value + "',";
         data += "'qtdLinhas':'" + document.querySelector("#txtQtdLinhas").value + "',";
@@ -109,36 +109,38 @@ function confirmAddNivel() {
         $.ajax({
             type: "POST",
             data: data,
-            url: "/Nivel/Cadastrar",  //COLOCAR URL CONTROLLER
+            url: "http://localhost:5471/Nivel/Cadastrar",  //COLOCAR URL CONTROLLER
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 
             success: function (output) {
-                if (output.d == "JAEXISTE") {
-
-                    document.getElementById("alertNivelExist").innerHTML = "<i class='fa fa-times-circle' aria-hidden='true'></i>&nbsp;<strong>Oops! &nbsp; </strong>Nivel já existente com esse nome!";
+                if (output.Sucesso == false) {
+                    if (output.Mensagem == "JAEXISTE")     
+                        document.getElementById("alertNivelExist").innerHTML = "<i class='fa fa-times-circle' aria-hidden='true'></i>&nbsp;<strong>Oops! &nbsp; </strong>Nivel já existente com esse nome!";
+                     else 
+                        document.getElementById("alertNivelExist").innerHTML = "<i class='fa fa-times-circle' aria-hidden='true'></i>&nbsp;<strong>Oops! &nbsp; </strong> Ocorreu um Erro !!";
                     $('#alertNivelExist').show();
 
-                }
+                } 
                 else {
                     $('#alertNivelExist').hide();
-                    var niveis = output.d; //aqui prestar atenção no formato do objeto
-                    obj = JSON.parse(obj.replace(/'/g, '"'));
+                    var niveis = JSON.parse(output.Dados.replace(/'/g, '"')); //aqui prestar atenção no formato do objeto
+
                     count++;
-					
+
                     var newRow = $('#niveis').dataTable().fnAddData([
                        "",
-                       niveis[nI].Id,
-                       niveis[nI].Nome,
-                       niveis[nI].QtdColunas,
-                       niveis[nI].QtdLinhas,
-                       niveis[nI].QtdNav01,
-                       niveis[nI].QtdNav02,
-                       niveis[nI].QtdNav03,
-                       niveis[nI].QtdNav04,
-                       niveis[nI].QtdNav05,
-                       niveis[nI].TempoJogada,
-                       niveis[nI].TempoPosicionamento
+                       niveis.Id,
+                       niveis.Nome,
+                       niveis.QtdColunas,
+                       niveis.QtdLinhas,
+                       niveis.QtdNav01,
+                       niveis.QtdNav02,
+                       niveis.QtdNav03,
+                       niveis.QtdNav04,
+                       niveis.QtdNav05,
+                       niveis.TempoJogada,
+                       niveis.TempoPosicionamento
                     ]);
 
                     var oSettings = $('#niveis').dataTable().fnSettings();
@@ -160,9 +162,9 @@ function confirmAddNivel() {
 
                 }
             }
-       });
-    } return lRet;
-} 
+        });
+    } return true;
+}
 
 function editNivel() {
     if (($('#niveis tbody').children('.selected').length > 0) && $('#niveis tbody').children('.selected').children('.nomeNivel').text() != "") {
@@ -184,17 +186,17 @@ function editNivel() {
         cText += '</div>';
 
         modalBS(cText, 'Editar Nivel', '#fff', '#000', 'Confirmar~confirmEditNivel("' + cIdNivel + '")@Cancelar~closeModalBS()');
-		
-		document.querySelector("#txtNomSkin").value = cNomeNivel ;
-		document.querySelector("#txtQtdColunas").value = nQtdColunas;
-		document.querySelector("#txtQtdLinhas").value = nQtdLinhas;
-		document.querySelector("#txtQtdPortaAvioes").value = nQtdPortaAvioes;
-		document.querySelector("#txtQtdDestroiers").value = nQtdDestroiers;
-		document.querySelector("#txtQtdEncouracados").value = nQtdEncouracados;
-		document.querySelector("#txtQtdCruzadores").value = nQtdCruzadores;
-		document.querySelector("#txtQtdSubmarinos").value = nQtdSubmarinos;
-		document.querySelector("#txtTempoJogada").value = nTempoJogada;
-		document.querySelector("#txtTempoPosicionamento").value = nTempoPosicionamento;
+
+        document.querySelector("#txtNomSkin").value = cNomeNivel;
+        document.querySelector("#txtQtdColunas").value = nQtdColunas;
+        document.querySelector("#txtQtdLinhas").value = nQtdLinhas;
+        document.querySelector("#txtQtdPortaAvioes").value = nQtdPortaAvioes;
+        document.querySelector("#txtQtdDestroiers").value = nQtdDestroiers;
+        document.querySelector("#txtQtdEncouracados").value = nQtdEncouracados;
+        document.querySelector("#txtQtdCruzadores").value = nQtdCruzadores;
+        document.querySelector("#txtQtdSubmarinos").value = nQtdSubmarinos;
+        document.querySelector("#txtTempoJogada").value = nTempoJogada;
+        document.querySelector("#txtTempoPosicionamento").value = nTempoPosicionamento;
     }
     else
         modalBS('<p>Selecione um nivel clicando na linha correspondente da tabela abaixo!</p>', '<i class="fa fa-times-circle" aria-hidden="true"></i> &nbsp; Erro', '#FF3919', '#fff', 'OK~closeModalBS()', true);
@@ -232,14 +234,14 @@ function confirmEditNivel(idNivel) {
                 } else {
 
                     var niveis = JSON.parse(output.d); //aqui prestar atenção no formato do objeto
-					
+
                     var table = $('#niveis').DataTable();
                     var indexes = table.rows().eq(0).filter(function (rowIdx) {
                         var row = $('#niveis tbody').children('.selected');
                         var cNomeSkin = $(row).children('.nome').text();
 
-						//precisa editar o objeto da grid, não adianta editar só o html 
-                        if ((table.cell(rowIdx, 2).data().search(cNomeSkin) != -1) ) {
+                        //precisa editar o objeto da grid, não adianta editar só o html 
+                        if ((table.cell(rowIdx, 2).data().search(cNomeSkin) != -1)) {
                             $('#niveis').dataTable().fnUpdate(niveis.Nome, rowIdx, 2);
                             $('#niveis').dataTable().fnUpdate(niveis.QtdColunas, rowIdx, 3);
                             $('#niveis').dataTable().fnUpdate(niveis.QtdLinhas, rowIdx, 4);
@@ -250,11 +252,11 @@ function confirmEditNivel(idNivel) {
                             $('#niveis').dataTable().fnUpdate(niveis.QtdNav05, rowIdx, 9);
                             $('#niveis').dataTable().fnUpdate(niveis.TempoJogada, rowIdx, 10);
                             $('#niveis').dataTable().fnUpdate(niveis.TempoPosicionamento, rowIdx, 11);
-									                           
+
                         }
                     });
 
-					//agora edito o html
+                    //agora edito o html
                     $('#niveis tbody').children('.selected').children('.nome').text(niveis.Nome);
                     $('#niveis tbody').children('.selected').children('.qtdColunas').text(niveis.QtdColunas);
                     $('#niveis tbody').children('.selected').children('.qtdLinhas').text(niveis.QtdLinhas);
@@ -265,9 +267,9 @@ function confirmEditNivel(idNivel) {
                     $('#niveis tbody').children('.selected').children('.qtdNav05').text(niveis.QtdNav05);
                     $('#niveis tbody').children('.selected').children('.tempoJogada').text(niveis.TempoJogada);
                     $('#niveis tbody').children('.selected').children('.tempoPosicionamento').text(niveis.TempoPosicionamento);
-                    
+
                     closeModalBS();
-					
+
                 }
             }
         });
@@ -292,18 +294,18 @@ function confirmDelSkin() {
     $.ajax({
         type: "POST",
         data: data,
-        url: "/Excluir", 
+        url: "/Excluir",
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
 
         success: function (output) {
-        
-                var row = $('#niveis tbody').children('.selected')
-                var nRow = row[0];
-                $('#niveis').dataTable().fnDeleteRow(nRow);
-                modalBS('<p>Nivel excluído com sucesso</p>', '<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; Sucesso', '#25A947', '#fff', 'OK~closeModalBS()', true);
-            
+
+            var row = $('#niveis tbody').children('.selected');
+            var nRow = row[0];
+            $('#niveis').dataTable().fnDeleteRow(nRow);
+            modalBS('<p>Nivel excluído com sucesso</p>', '<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; Sucesso', '#25A947', '#fff', 'OK~closeModalBS()', true);
+
         }
     });
-    
+
 }

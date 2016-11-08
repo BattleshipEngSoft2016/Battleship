@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Jogo_BackOffice.Models;
@@ -27,21 +28,44 @@ namespace Jogo_BackOffice.Controllers
         {
             try
             {
+                Nivel nivelRetorno;
+
                 using (var db = new NiveisContext())
                 {
-                 
-                    var item = new Nivel(vm); //{Id = id+1};
 
-                    db.Niveis.Add(item);
+                    if(db.Niveis.Any())
+                    {
+                        var id = db.Niveis.OrderByDescending(x => x.Id).First().Id;
 
-                    db.SaveChanges();
+                        var item = new Nivel(vm) { Id = id + 1 };
+
+                        db.Niveis.Add(item);
+
+                        db.SaveChanges();
+
+                        nivelRetorno = item;
+
+                    }
+                    else
+                    {
+                        var item = new Nivel(vm);
+
+                        db.Niveis.Add(item);
+
+                        db.SaveChanges();
+
+                        nivelRetorno = item;
+
+                    }
+                    
+
                 }
 
-                return Json(new { Sucesso = true });
+                return Json(new { Sucesso = true, Mensagem = "Sucesso", Dados = JsonConvert.SerializeObject(nivelRetorno) });
             }
             catch (Exception ex)
             {
-                return Json(new { Sucesso = false });
+                return Json(new { Sucesso = false, Mensagem = "Erro" });
             }
          
         }

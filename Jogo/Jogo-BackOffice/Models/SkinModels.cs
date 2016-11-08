@@ -54,6 +54,31 @@ namespace Jogo_BackOffice.Models
         [Column("DS_IMG_NAVIO5")]
         public string ImagemNav05 { get; set; }
 
+        public Skin()
+        {
+            
+        }
+
+        public Skin(SkinModel vm)
+        {
+            Nome = vm.Nome;
+
+            Valor = vm.Valor;
+
+            ImagemCoordenada = vm.ImagemCoordenada;
+
+            ImagemNav01 = vm.ImagemNav01;
+
+            ImagemNav02 = vm.ImagemNav02;
+
+            ImagemNav03 = vm.ImagemNav03;
+
+            ImagemNav04 = vm.ImagemNav04;
+
+            ImagemNav05 = vm.ImagemNav05;
+
+        }
+
         public void AtulizarDominio(SkinModel vm)
         {
 

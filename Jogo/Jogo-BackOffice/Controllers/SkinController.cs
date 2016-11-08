@@ -24,19 +24,45 @@ namespace Jogo_BackOffice.Controllers
         {
             try
             {
+
+
+                Skin skinRetorno;
+
+
                 using (var db = new SkinsContext())
-                {
-                    db.Skins.Add(new Skin() { });
+                
 
-                    db.SaveChanges();
-                }
+                    if (db.Skins.Any())
+                    {
+                        var id = db.Skins.OrderByDescending(x => x.Id).First().Id;
 
-                return Json(new { Sucesso = true });
+                        var item = new Skin(vm) { Id = id + 1 };
+
+                        db.Skins.Add(item);
+
+                        db.SaveChanges();
+
+                        skinRetorno = item;
+
+                    }
+                    else
+                    {
+                        var item = new Skin(vm);
+
+                        db.Skins.Add(item);
+
+                        db.SaveChanges();
+
+                        skinRetorno = item;
+
+                    }
+
+                return Json(new { Sucesso = true, Mensagem= "Sucesso", Dados = skinRetorno });
         
             }
             catch (Exception)
             {
-                return Json(new { Sucesso = false });
+                return Json(new { Sucesso = false, Mensagem = "Erro" });
             }
         }
 

@@ -87,14 +87,20 @@ function confirmAddSkin() {
         $.ajax({
             type: "POST",
             data: data,
-            url: "Skin/Cadastrar",  
+            url: "http://localhost:5471/Skin/Cadastrar",
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 
             success: function (output) {
-                if (output.d == "JAEXISTE") {
+                if (output.Sucesso == true) {
+                    if (output.Mensagem == "JAEXISTE") {
 
-                    document.getElementById("alertSkinExist").innerHTML = "<i class='fa fa-times-circle' aria-hidden='true'></i>&nbsp;<strong>Oops! &nbsp; </strong>Skin já existente com esse nome!";
+                        document.getElementById("alertSkinExist").innerHTML = "<i class='fa fa-times-circle' aria-hidden='true'></i>&nbsp;<strong>Oops! &nbsp; </strong>Skin já existente com esse nome!";
+                        
+                    } else {
+                        document.getElementById("alertSkinExist").innerHTML = "<i class='fa fa-times-circle' aria-hidden='true'></i>&nbsp;<strong>Oops! &nbsp; </strong> Error!";                        
+                    }
+                    
                     $('#alertSkinExist').show();
 
                 }
@@ -229,7 +235,7 @@ function confirmEditSkin(idSkin) {
         $.ajax({
             type: "POST",
             data: data,
-            url: "Index.aspx/EditarSkin", //COLOCAR URL RUBY
+            url: "/Skin/Editar", //COLOCAR URL RUBY
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 
@@ -240,8 +246,6 @@ function confirmEditSkin(idSkin) {
                 } else {
 
                     var obj = JSON.parse(output.d); //aqui prestar atenção no formato do objeto
-					
-					
 
                     var table = $('#skins').DataTable();
                     var indexes = table.rows().eq(0).filter(function (rowIdx) {
@@ -302,8 +306,8 @@ function confirmDelSkin() {
         dataType: "JSON",
 
         success: function (output) {
-        
-                var row = $('#skins tbody').children('.selected')
+
+            var row = $('#skins tbody').children('.selected');
                 var nRow = row[0];
                 $('#skins').dataTable().fnDeleteRow(nRow);
                 modalBS('<p>Skin excluída com sucesso</p>', '<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; Sucesso', '#25A947', '#fff', 'OK~closeModalBS()', true);
@@ -312,3 +316,7 @@ function confirmDelSkin() {
     });
     
 }
+
+
+//var img = $('<img />', { src: 'http://webpage.com/images/' + $('#imagename').val() + '.png' });
+//img.appendTo('body');
