@@ -4,7 +4,8 @@
 
 @section scripts {
     <script type="text/javascript">
-         $(function() {
+        $(function() {
+ 
             skins = @Html.Raw(ViewBag.Skins);
 
             for(var nI=0;nI<skins.length;nI++){
@@ -13,12 +14,12 @@
                         skins[nI].Id,
                         skins[nI].Nome,
                         skins[nI].Valor,
-                        skins[nI].ImagemCoordenada,
-                        skins[nI].ImagemNav01,
-                        skins[nI].ImagemNav02,
-                        skins[nI].ImagemNav03,
-                        skins[nI].ImagemNav04,
-                        skins[nI].ImagemNav05          
+                        '<img src="' + skins[nI].ImagemCoordenada +'" width="24" height="24" >',
+                        '<img src="' + skins[nI].ImagemNav01 + '" width="24" height="24" >',
+                        '<img src="' +skins[nI].ImagemNav02 +'" width="24" height="24" >',
+                        '<img src="' + skins[nI].ImagemNav03 + '" width="24" height="24" >',
+                        '<img src="' + skins[nI].ImagemNav04 + '" width="24" height="24" >',
+                        '<img src="' + skins[nI].ImagemNav05 + '" width="24" height="24" >'          
 
                 ]);
 
@@ -36,7 +37,7 @@
                 $('td', nTr)[9].setAttribute('class', 'imgNav05');
             }
 		
-	    var tbSkin = $('#skins').DataTable({
+	   /* var tbSkin = $('#skins').DataTable({
             	responsive: true,
             	"language": {
             		"lengthMenu": "Exibir _MENU_ skins por página",
@@ -66,7 +67,17 @@
         	}],
         	order: [1, 'asc']
 
-           });
+	    });*/
+             
+	    $('#skins tbody').on('click', 'tr', function () {
+	        if ($(this).hasClass('selected')) {
+	            $(this).removeClass('selected');
+	        }
+	        else {
+	            $('#skins tbody').find('.selected').removeClass('selected');
+	            $(this).addClass('selected');
+	        }
+	    });
 
             });
     </script>

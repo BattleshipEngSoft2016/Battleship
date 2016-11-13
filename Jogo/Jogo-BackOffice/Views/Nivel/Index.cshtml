@@ -40,7 +40,7 @@
             }
         });
 
-        var tbSkin = $('#niveis').DataTable({
+        var tbNiveis = $('#niveis').DataTable({
             responsive: true,
             "language": {
                 "lengthMenu": "Exibir _MENU_ niveis por página",
@@ -70,6 +70,18 @@
             }],
             order: [1, 'asc']
 
+        });
+        
+        $('#niveis tbody').on('click', 'tr', function () {
+            console.log('xxxxxxxx');
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            }
+            else {
+                tbNiveis.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                console.log($(this).attr('class'));
+            }
         });
 
     </script>

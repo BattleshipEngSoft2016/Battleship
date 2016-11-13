@@ -20,6 +20,7 @@ namespace Jogo_BackOffice.Controllers
             }
         }
 
+        [HttpPost]
         public JsonResult Cadastrar(SkinModel vm)
         {
             try
@@ -66,7 +67,7 @@ namespace Jogo_BackOffice.Controllers
             }
         }
 
-        [HttpPost]
+       
         public JsonResult Excluir(int id)
         {
 
@@ -84,6 +85,7 @@ namespace Jogo_BackOffice.Controllers
 
         }
 
+        [HttpPost]
         public JsonResult Editar(int id, SkinModel vm)
         {
 

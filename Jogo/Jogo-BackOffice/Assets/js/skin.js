@@ -3,20 +3,6 @@ var cElement = "";
 var cValueElement = "";
 var descricaoItem = "";
 
-jQuery(document).ready(function () { 
-
-    $('#skins tbody').on('click', 'tr', function () {
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-        }
-        else {
-            tbSkin.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-    });
-	
-});
-
 function addSkin() {
     document.querySelector("#txtNomSkin").value = "";
     document.querySelector("#txtValor").value = "";
@@ -77,12 +63,12 @@ function confirmAddSkin() {
 		var data = "{";
         	data += "'nome':'" + document.querySelector("#txtNomSkin").value + "',";
         	data += "'valor':'" + document.querySelector("#txtValor").value + "',";
-		data += "'imgCoordenada':'" + document.querySelector("#txtCoordenadas").value + "',";
-	    	data += "'imgNav01':'" + document.querySelector("#txtPortaAvioes").value + "',";
-        	data += "'imgNav02':'" + document.querySelector("#txtDestroyer").value + "',";
-		data += "'imgNav03':'" + document.querySelector("#txtEncouracado").value + "',";
-		data += "'imgNav04':'" + document.querySelector("#txtCruzador").value + "',";
-		data += "'imgNav05':'" + document.querySelector("#txtSubmarino").value + "'";
+		data += "'imagemCoordenada':'" + encodeURI(document.querySelector("#txtCoordenadas").value) + "',";
+		data += "'imagemNav01':'" + encodeURI(document.querySelector("#txtPortaAvioes").value) + "',";
+		data += "'imagemNav02':'" + encodeURI(document.querySelector("#txtDestroyer").value) + "',";
+		data += "'imagemNav03':'" + encodeURI(document.querySelector("#txtEncouracado").value) + "',";
+		data += "'imagemNav04':'" + encodeURI(document.querySelector("#txtCruzador").value) + "',";
+		data += "'imagemNav05':'" + encodeURI(document.querySelector("#txtSubmarino").value) + "'";
         data += "}";
         $.ajax({
             type: "POST",
@@ -146,7 +132,7 @@ function confirmAddSkin() {
 } 
 
 function editSkin() {
-    if (($('#skins tbody').children('.selected').length > 0) && $('#skins tbody').children('.selected').children('.nomeSkin').text() != "") {
+    if (($('#skins tbody').children('.selected').length > 0) && $('#skins tbody').children('.selected').children('.nome').text() != "") {
         var row = $('#skins tbody').children('.selected');
         var cIdSkin = $(row).children('.idSkin').text();
         var cNomeSkin = $(row).children('.nome').text();
@@ -284,7 +270,7 @@ function confirmEditSkin(idSkin) {
 }
 
 function delSkin() {
-    if (($('#skins tbody').children('.selected').length > 0) && $('#skins tbody').children('.selected').children('.nomeSkin').text() != "")
+    if (($('#skins tbody').children('.selected').length > 0) && $('#skins tbody').children('.selected').children('.nome').text() != "")
         modalBS('<p>Tem certeza que deseja excluir esta skin?</p>', '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; Excluir Skin', '#fcfc4b', '#000', 'Confirmar~confirmDelSkin()@Cancelar~closeModalBS()', true);
     else
         modalBS('<p>Selecione uma skin clicando na linha correspondente da tabela!</p>', '<i class="fa fa-times-circle" aria-hidden="true"></i> &nbsp; Erro', '#FF3919', '#fff', 'OK~closeModalBS()', true);
@@ -301,7 +287,7 @@ function confirmDelSkin() {
     $.ajax({
         type: "POST",
         data: data,
-        url: "Index.aspx/ExcluirSkin", //COLOCAR URL RUBY
+        url: "http://localhost:5471/Skin/Excluir", //COLOCAR URL RUBY
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
 

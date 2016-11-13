@@ -61,42 +61,42 @@ namespace Jogo_BackOffice.Models
 
         public Skin(SkinModel vm)
         {
-            Nome = vm.Nome;
+            Nome = vm.nome;
 
-            Valor = vm.Valor;
+            Valor = vm.valor;
 
             ImagemCoordenada = vm.ImagemCoordenada;
 
-            ImagemNav01 = vm.ImagemNav01;
+            ImagemNav01 = vm.imagemNav01;
 
-            ImagemNav02 = vm.ImagemNav02;
+            ImagemNav02 = vm.imagemNav02;
 
-            ImagemNav03 = vm.ImagemNav03;
+            ImagemNav03 = vm.imagemNav03;
 
-            ImagemNav04 = vm.ImagemNav04;
+            ImagemNav04 = vm.imagemNav04;
 
-            ImagemNav05 = vm.ImagemNav05;
+            ImagemNav05 = vm.imagemNav05;
 
         }
 
         public void AtulizarDominio(SkinModel vm)
         {
 
-            Nome = vm.Nome;
+            Nome = vm.nome;
 
-            Valor = vm.Valor;
+            Valor = vm.valor;
 
             ImagemCoordenada = vm.ImagemCoordenada;
 
-            ImagemNav01 = vm.ImagemNav01;
+            ImagemNav01 = vm.imagemNav01;
 
-            ImagemNav02 = vm.ImagemNav02;
+            ImagemNav02 = vm.imagemNav02;
 
-            ImagemNav03 = vm.ImagemNav03;
+            ImagemNav03 = vm.imagemNav03;
 
-            ImagemNav04 = vm.ImagemNav04;
+            ImagemNav04 = vm.imagemNav04;
 
-            ImagemNav05 = vm.ImagemNav05;
+            ImagemNav05 = vm.imagemNav05;
         }
     }
 
@@ -104,23 +104,23 @@ namespace Jogo_BackOffice.Models
     public class SkinModel
     {
 
-        public virtual string Nome { get; set; }
+        public virtual string nome { get; set; }
 
-        public virtual string Descricao { get; set; }
+        public virtual string descricao { get; set; }
 
-        public virtual int Valor { get; set; }
+        public virtual int valor { get; set; }
 
         public virtual string ImagemCoordenada { get; set; }
 
-        public virtual string ImagemNav01 { get; set; }
+        public virtual string imagemNav01 { get; set; }
 
-        public virtual string ImagemNav02 { get; set; }
+        public virtual string imagemNav02 { get; set; }
 
-        public virtual string ImagemNav03 { get; set; }
+        public virtual string imagemNav03 { get; set; }
 
-        public virtual string ImagemNav04 { get; set; }
+        public virtual string imagemNav04 { get; set; }
 
-        public virtual string ImagemNav05 { get; set; } 
+        public virtual string imagemNav05 { get; set; } 
 
 
     }
