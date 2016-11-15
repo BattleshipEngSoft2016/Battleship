@@ -1,9 +1,0 @@
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\GM_JogoDaVelha.Form1.resources
-obj\Debug\GM_JogoDaVelha.Properties.Resources.resources
-obj\Debug\GM_JogoDaVelha.csproj.GenerateResource.Cache
-bin\Debug\GM_JogoDaVelha.exe
-bin\Debug\GM_JogoDaVelha.pdb
-obj\Debug\GM_JogoDaVelha.exe
-obj\Debug\GM_JogoDaVelha.pdb
-obj\Debug\GM_JogoDaVelha.JogoDaVelha.resources

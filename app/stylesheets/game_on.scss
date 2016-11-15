@@ -1,0 +1,47 @@
+#game-on {
+  .lyt-search-player,
+  .lyt-found-player,
+  .lyt-position-boats {
+    img {
+      max-height: 80px;
+    }
+    width: 502px;
+    position: absolute;
+    left: 30%;
+    top: 33%;
+    &.not-active {
+      display: none;
+    }
+    &.active {
+      display: visible;
+    }
+  }
+  .lyt-chose-skin {
+    position: absolute;
+    left: 30%;
+    top: 33%;
+    &.not-active {
+      display: none;
+    }
+    &.active {
+      display: visible;
+    }
+    select {
+      margin-bottom: 20px;
+    }
+    .lyt-main-boats div {
+      display: inline-block;
+    }
+  }
+  .lyt-main-field {
+    width: 400px;
+    background-image: url('../images/mar.jpg');
+    background-size: cover;
+  }
+
+  .temporario {
+    position: absolute;
+    left: 83%;
+    top: 90%;
+  }
+}

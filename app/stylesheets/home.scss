@@ -1,0 +1,40 @@
+#home {
+
+  .lyt-main {
+    &.active {
+      filter: brightness(30%);
+    }
+    div {
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .lyt-levels {
+    z-index: 2;
+    &.not-active {
+    display: none;
+    }
+    &.active {
+      display: visible;
+    }
+    position: absolute;
+    left: 32%;
+    top: 30%;
+    transition: all 1s ease-in-out;
+    .sh-text-title {
+      font-size: 25px;
+    }
+    .lyt-level {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      position: relative;
+      button {
+        width: 60%;
+      }
+      left: 20%;
+    }
+  }
+}

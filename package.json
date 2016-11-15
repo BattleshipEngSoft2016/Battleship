@@ -1,0 +1,29 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "game created by students",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BattleshipEngSoft2016/Battleship.git"
+  },
+  "keywords": [
+    "war-ship"
+  ],
+  "author": "Students",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BattleshipEngSoft2016/Battleship/issues"
+  },
+  "homepage": "https://github.com/BattleshipEngSoft2016/Battleship#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-prettify": "0.0.1",
+    "gulp-pug": "^3.1.0",
+    "gulp-sass": "^2.3.2"
+  }
+}

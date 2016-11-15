@@ -1,0 +1,21 @@
+#login {
+  .lyt-img-login {
+    z-index: -1;
+    max-width: 400px;
+  }
+  form {
+    margin-top: -100px;
+    input {
+      display: block;
+      margin-top: 10px;
+      border-radius: 7px;
+    }
+    h1 {
+      display: block;
+      margin: auto;
+    }
+    input.lyt-btn-align {
+      display: inline-block;
+    }
+  }
+}

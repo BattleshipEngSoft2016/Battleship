@@ -1,0 +1,70 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>WarShips</title>
+  <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Freckle+Face|Ravi+Prakash|Ruslan+Display" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../stylesheets/all.css" />
+</head>
+
+<body class="sh-background" id="game-on">
+  <header class="cmp-header text-center">
+    <img class="cmp-simple-logo" src="../images/logo-sem-vermelho.png" />
+    <div class="cmp-data-user sh-div-default">
+      <h2>JOGADOR 123</h2>
+      <p>MOEDAS: 1000</p>
+      <p>PONTOS: 2000</p>
+    </div>
+  </header>
+  <div class="lyt-div-default text-center lyt-search-player sh-div-default active">
+    <h2>PROCURANDO JOGADOR</h2>
+    <img src="../images/spin.svg" />
+  </div>
+  <div class="lyt-div-default text-center lyt-found-player sh-div-default not-active">
+    <h2>JOGADOR ENCONTRADO</h2>
+    <img src="../images/checked.png" />
+  </div>
+  <div class="lyt-div-default text-center lyt-chose-skin sh-div-default not-active">
+    <h2>ESCOLHA SUA SKIN</h2>
+    <select class="selectpicker center-block">
+      <option value="padrao">padrao</option>
+      <option value="galaxia">galaxia</option>
+      <option value="pirata">pirata</option>
+    </select>
+    <button class="center-block btn btn-success sh-text-default js-confirm-skin">CONFIRMAR</button>
+  </div>
+  <div class="lyt-div-default text-center lyt-position-boats sh-div-default not-active">
+    <h2>POSICIONE SEUS NAVIOS</h2>
+    <div class="lyt-main-boats">
+      <div class="lyt-ships text-center">
+        <div class="ship">NAVIO</div>
+        <div class="ship">NAVIO</div>
+        <div class="ship">NAVIO</div>
+      </div>
+      <div class="lyt-field text-center">
+        <div class="lyt-main-field"></div>
+      </div>
+      <div class="lyt-timer text-center">
+        <p>TEMPO RESTANTE
+          <br/><span>90 SEGUNDOS</span>
+        </p>
+        <a href="game_play.html">
+          <button class="center-block btn btn-success sh-text-default js-confirm-play">CONFIRMAR</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="temporario">
+    <button class="btn btn-primary" id="1">1</button>
+    <button class="btn btn-primary" id="2">2</button>
+    <button class="btn btn-primary" id="3">3</button>
+    <button class="btn btn-primary" id="4">4</button>
+  </div>
+  <script src="../javascripts/all.js"></script>
+</body>
+
+</html>
