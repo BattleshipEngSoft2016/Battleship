@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Jogo_BackOffice.Filters;
 using Jogo_BackOffice.Models;
 using Newtonsoft.Json;
 
 namespace Jogo_BackOffice.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class NivelController : Controller
     {
         //

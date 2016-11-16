@@ -37,6 +37,8 @@ namespace Jogo_BackOffice.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
+                WebSecurity.RequireRoles("Admin");
+
                 return RedirectToLocal(returnUrl);
             }
 

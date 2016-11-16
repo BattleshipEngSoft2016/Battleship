@@ -1,3 +1,5 @@
 <Modules>
   <Module PersistentId="38FEC019-D666-443D-9C44-00E514A0E923" ModuleId="Jogo-BackOffice" />
+  <Module PersistentId="036B8BB9-5B55-450A-865A-38D7CC1535D2" ModuleId="Jogo-Main" />
+  <Module PersistentId="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC" ModuleId="Jogo-Main_1" />
 </Modules>

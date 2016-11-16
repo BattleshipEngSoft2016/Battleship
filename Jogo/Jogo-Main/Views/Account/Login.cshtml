@@ -1,0 +1,35 @@
+﻿@model Jogo_Main.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<img class="center-block lyt-img-login" src="../images/logo.png" />
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "text-center form-login" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    
+    <h1 class="sh-text-title">LOGIN</h1>
+    //<input class="text-center center-block" type="text" name="usuario" value="USUARIO" />
+     @Html.TextBoxFor(m => m.UserName, new { @class= "text-center center-block" , @id="txtUsername", @placeholder= "USUARIO"})
+     @Html.ValidationMessageFor(m => m.UserName)
+		
+    
+    @Html.PasswordFor(m => m.Password, new { @class="text-center center-block", @id="txtPassword" , @placeholder="SENHA"})
+    @Html.ValidationMessageFor(m => m.Password)									
+							
+    
+	@Html.ActionLink("CADASTRAR", "Register", null, new{ @class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" })
+									
+      
+//    <input class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" type="button" value="CADASTRAR" />
+    <input class="btn btn-success lyt-btn-align sh-text-default btn-logar" type="submit" value="LOGAR" />
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
