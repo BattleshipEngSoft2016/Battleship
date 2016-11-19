@@ -11,46 +11,50 @@
   <link rel="stylesheet" href="../stylesheets/all.css" />
 </head>
 
-<body class="sh-background" id="home">
-  <header class="cmp-header text-center">
-    <img class="cmp-simple-logo" src="../images/logo-sem-vermelho.png" />
-    <div class="cmp-data-user sh-div-default">
-      <h2>JOGADOR 123</h2>
-      <p>MOEDAS: 1000</p>
-      <p>PONTOS: 2000</p>
+<body>
+  <section class="sh-background" id="home">
+    <header class="cmp-header text-center">
+      <img class="cmp-simple-logo" src="../images/logo-sem-vermelho.png" />
+      <div class="cmp-data-user sh-div-default js-data-user">
+        <h2>JOGADOR 123</h2>
+        <p>MOEDAS: 1000</p>
+        <p>PONTOS: 2000</p>
+      </div>
+    </header>
+    <div class="lyt-main text-center">
+      <div class="lyt-game-play sh-div-default">
+        <h2>HORA DA GUERRA</h2>
+        <button class="btn btn-primary sh-text-default js-btn-play">JOGAR</button>
+      </div>
+      <div class="lyt-store sh-div-default">
+        <h2>CUSTOMIZE-SE</h2>
+        <button class="btn btn-primary sh-text-default">COMPRAR</button>
+      </div>
+      <div class="lyt-ranking sh-div-default js-ranking">
+        <h2>RANKING</h2>
+        <ol>
+          <li>JOGADOR123 (2000)</li>
+          <li>FULANO (1500)</li>
+          <li>SNIPER (1200)</li>
+        </ol>
+      </div>
     </div>
-  </header>
-  <div class="lyt-main text-center">
-    <div class="lyt-game-play sh-div-default">
-      <h2>HORA DA GUERRA</h2>
-      <button class="btn btn-primary sh-text-default js-btn-play">JOGAR</button>
+    <div class="lyt-levels sh-div-default not-active">
+      <h2>ESCOLHA A DIFICULDADE</h2>
+      <div class="js-appended-levels">
+        <a class="lyt-level center-block" href="game_on.html?level=1">
+          <button class="btn btn-primary sh-text-title">FÁCIL</button>
+        </a>
+        <a class="lyt-level center-block" href="game_on.html?level=2">
+          <button class="btn btn-primary sh-text-title">MÉDIO</button>
+        </a>
+        <a class="lyt-level center-block" href="game_on.html?level=3">
+          <button class="btn btn-primary sh-text-title">DIFÍCIL</button>
+        </a>
+      </div>
     </div>
-    <div class="lyt-store sh-div-default">
-      <h2>CUSTOMIZE-SE</h2>
-      <button class="btn btn-primary sh-text-default">LOJA</button>
-    </div>
-    <div class="lyt-ranking sh-div-default">
-      <h2>HANKING</h2>
-      <ol>
-        <li>JOGADOR123 (2000)</li>
-        <li>FULANO (1500)</li>
-        <li>SNIPER (1200)</li>
-      </ol>
-    </div>
-  </div>
-  <div class="lyt-levels sh-div-default not-active">
-    <h2>ESCOLHA A DIFICULDADE</h2>
-    <a class="lyt-level center-block" href="game_on.html?level=1">
-      <button class="btn btn-primary sh-text-title">FÁCIL</button>
-    </a>
-    <a class="lyt-level center-block" href="game_on.html?level=2">
-      <button class="btn btn-primary sh-text-title">MÉDIO</button>
-    </a>
-    <a class="lyt-level center-block" href="game_on.html?level=3">
-      <button class="btn btn-primary sh-text-title">DIFÍCIL</button>
-    </a>
-  </div>
-  <script src="../javascripts/all.js"></script>
+    <script src="../javascripts/all.js"></script>
+  </section>
 </body>
 
 </html>
