@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<head>
+    <script src="jquery-3.1.1.min.js"></script>
+
+    <script type="text/javascript">
+        var ws;
+
+        function isEmpty(str) {
+            return (!str || 0 === str.length);
+        }
+
+        function wireEvents() {
+            $('#send').click(function () {
+                var message = $('#message').val();
+                ws.send(message);
+                message.value = '';
+            });
+
+            $('#close').click(function () {
+                
+                ws.close();
+                
+            });
+        }
+
+        function createSpan(text) {
+            var span = document.createElement('span');
+            span.innerHTML = text + '<br />';
+            return span;
+        }
+        
+
+        window.onload = function () {
+
+            $('#send').hide();
+
+            $('#close').hide();
+
+            $("#enviar").click(function () {
+                
+                var nome = $("#message").val();
+                if (isEmpty(nome)) {
+
+                    alert("Digite um nome de usuario para Entrar !!! :) ");
+
+                } else {
+
+                    wireEvents();
+
+                    $('#send').show();
+
+                    $('#close').show();
+
+                    $('#enviar').hide();
+
+                    $('#message').val("");
+
+                    var conversation = $('#conversation');
+                    var url = 'ws://localhost:5707/WebSocketsServer2.ashx?chatName=' + nome;
+
+                    ws = new WebSocket(url);
+
+                    ws.onerror = function (e) {
+                        conversation.append(createSpan('Problem with connection: ' + e.message));
+                    };
+
+                    ws.onopen = function () {
+                        //conversation.innerHTML = 'Client connected <br/>';
+                    };
+
+                    ws.onmessage = function (e) {
+                        conversation.append(createSpan(e.data));
+                    };
+
+                    ws.onclose = function () {
+                        conversation.innerHTML = 'Closed connection!';
+                    };
+
+
+                }
+
+            });
+            
+          
+        };
+        
+    </script>
+    
+
+</head>
+<body>
+    <h1>Chat Sistemas Distribuídos</h1>
+   
+    <input id="message" /> 
+    <input type="button" id ="enviar" value="Iniciar"/>
+    <input id="send" type="button" value="Send" />
+    <input id="close" type="button" value="Close Connection" />
+    <br />
+    <div id="conversation"></div>
+</body>
+</html>
