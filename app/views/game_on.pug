@@ -3,20 +3,20 @@ html
   body
     section#game-on.sh-background
       include components/_header-log-in.pug
-      .lyt-div-default.text-center.lyt-search-player.sh-div-default.active
+      .lyt-div-default.text-center.lyt-search-player.sh-div-default.active.modal
         h2 PROCURANDO JOGADOR
         img(src='../images/spin.svg')
-      .lyt-div-default.text-center.lyt-found-player.sh-div-default.not-active
+      .lyt-div-default.text-center.lyt-found-player.sh-div-default.not-active.modal
         h2 JOGADOR ENCONTRADO
         img(src='../images/checked.png')
-      .lyt-div-default.text-center.lyt-chose-skin.sh-div-default.not-active
+      .lyt-div-default.text-center.lyt-chose-skin.sh-div-default.not-active.modal
         h2 ESCOLHA SUA SKIN
         select.selectpicker.center-block
           option(value='padrao') padrao
           option(value='galaxia') galaxia
           option(value='pirata') pirata
         button.center-block.btn.btn-success.sh-text-default.js-confirm-skin CONFIRMAR
-      .lyt-div-default.text-center.lyt-position-boats.sh-div-default.not-active
+      .lyt-div-default.text-center.lyt-position-boats.sh-div-default.not-active.modal
         h2 POSICIONE SEUS NAVIOS
         .lyt-main-boats
           .lyt-ships.text-center

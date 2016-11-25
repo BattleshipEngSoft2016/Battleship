@@ -1,30 +1,41 @@
 #game-on {
+  /*
+    separei os atributos comuns de modal em uma classe só
+    o que rola com as posições é que tudo o que é relativo,
+    é relativo a alguma coisa, então só funciona se tiver
+    um elemento pai absoluto de quem herdar a referência de
+    posicionamento.
+    Então game-on é o pai absoluto, e tudo que tá dentro dele
+    vai ser relativo a ele.
+    Definindo a largura do modal, margens automáticas centralizam
+    o elemento.
+  */
+  position: absolute;
+  .modal{
+    position: relative;
+    margin: auto;
+    width: 500px;
+  }
+
   .lyt-search-player,
   .lyt-found-player,
   .lyt-position-boats {
     img {
       max-height: 80px;
     }
-    width: 502px;
-    position: absolute;
-    left: 30%;
-    top: 33%;
     &.not-active {
       display: none;
     }
     &.active {
-      display: visible;
+      display: block;
     }
   }
   .lyt-chose-skin {
-    position: absolute;
-    left: 30%;
-    top: 33%;
     &.not-active {
       display: none;
     }
     &.active {
-      display: visible;
+      display: block;
     }
     select {
       margin-bottom: 20px;
@@ -38,10 +49,13 @@
     background-image: url('../images/mar.jpg');
     background-size: cover;
   }
-
+  /*
+    exceto esse cara aqui, que tem que ficar sempre no canto direito da tela,
+    então é absoluto mesmo.
+  */
   .temporario {
     position: absolute;
-    left: 83%;
-    top: 90%;
+    bottom: 10;
+    right: 10;
   }
 }
