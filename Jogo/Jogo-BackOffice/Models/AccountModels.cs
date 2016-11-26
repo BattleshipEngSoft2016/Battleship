@@ -26,6 +26,7 @@ namespace Jogo_BackOffice.Models
         public int UserId { get; set; }
         public string UserName { get; set; }
         public bool Administrativo { get; set; }
+        public int Pontos { get; set; }
     }
 
     public class RegisterExternalLoginModel

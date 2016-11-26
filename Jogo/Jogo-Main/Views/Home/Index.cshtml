@@ -1,45 +1,49 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "WarShips";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
-        </div>
-    </section>
-}
-<h3>We suggest the following:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
-    </li>
-
-    <li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
-    </li>
-
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-    </li>
-</ol>
+<section class="sh-background" id="home">
+    <header class="cmp-header text-center">
+      <img class="cmp-simple-logo" src="../images/logo-sem-vermelho.png" />
+      <div class="cmp-data-user sh-div-default js-data-user">
+        @if (Request.IsAuthenticated)
+        {
+            <text><h2>JOGADOR @User.Identity.Name.ToUpper()</h2></text>
+        }
+        <p>MOEDAS: @ViewBag.Saldo </p>
+        <p>PONTOS: @ViewBag.Pontos</p>
+      </div>
+    </header>
+    <div class="lyt-main text-center">
+      <div class="lyt-game-play sh-div-default">
+        <h2>HORA DA GUERRA</h2>
+        <button class="btn btn-primary sh-text-default js-btn-play">JOGAR</button>
+      </div>
+      <div class="lyt-store sh-div-default">
+        <h2>CUSTOMIZE-SE</h2>
+        <button class="btn btn-primary sh-text-default">COMPRAR</button>
+      </div>
+      <div class="lyt-ranking sh-div-default js-ranking">
+        <h2>RANKING</h2>
+        <ol>
+          <li>JOGADOR123 (2000)</li>
+          <li>FULANO (1500)</li>
+          <li>SNIPER (1200)</li>
+        </ol>
+      </div>
+    </div>
+    <div class="lyt-levels sh-div-default not-active">
+      <h2>ESCOLHA A DIFICULDADE</h2>
+      <div class="js-appended-levels">
+        <a class="lyt-level center-block" href="game_on.html?level=1">
+          <button class="btn btn-primary sh-text-title">FÁCIL</button>
+        </a>
+        <a class="lyt-level center-block" href="game_on.html?level=2">
+          <button class="btn btn-primary sh-text-title">MÉDIO</button>
+        </a>
+        <a class="lyt-level center-block" href="game_on.html?level=3">
+          <button class="btn btn-primary sh-text-title">DIFÍCIL</button>
+        </a>
+      </div>
+    </div>
+    <script src="http://localhost:26532/Scripts/all.js"></script>
+  </section>

@@ -1,10 +1,25 @@
-﻿#game-on .lyt-search-player,
-#game-on .lyt-found-player,
-#game-on .lyt-position-boats {
-  width: 502px;
+﻿@charset "UTF-8";
+#game-on {
+  /*
+    separei os atributos comuns de modal em uma classe só
+    o que rola com as posições é que tudo o que é relativo,
+    é relativo a alguma coisa, então só funciona se tiver
+    um elemento pai absoluto de quem herdar a referência de
+    posicionamento.
+    Então game-on é o pai absoluto, e tudo que tá dentro dele
+    vai ser relativo a ele.
+    Definindo a largura do modal, margens automáticas centralizam
+    o elemento.
+  */
   position: absolute;
-  left: 30%;
-  top: 33%; }
+  /*
+    exceto esse cara aqui, que tem que ficar sempre no canto direito da tela,
+    então é absoluto mesmo.
+  */ }
+  #game-on .modal {
+    position: relative;
+    margin: auto;
+    width: 500px; }
   #game-on .lyt-search-player img,
   #game-on .lyt-found-player img,
   #game-on .lyt-position-boats img {
@@ -16,30 +31,23 @@
   #game-on .lyt-search-player.active,
   #game-on .lyt-found-player.active,
   #game-on .lyt-position-boats.active {
-    display: visible; }
-
-#game-on .lyt-chose-skin {
-  position: absolute;
-  left: 30%;
-  top: 33%; }
+    display: block; }
   #game-on .lyt-chose-skin.not-active {
     display: none; }
   #game-on .lyt-chose-skin.active {
-    display: visible; }
+    display: block; }
   #game-on .lyt-chose-skin select {
     margin-bottom: 20px; }
   #game-on .lyt-chose-skin .lyt-main-boats div {
     display: inline-block; }
-
-#game-on .lyt-main-field {
-  width: 400px;
-  background-image: url("images/mar.jpg");
-  background-size: cover; }
-
-#game-on .temporario {
-  position: absolute;
-  left: 83%;
-  top: 90%; }
+  #game-on .lyt-main-field {
+    width: 400px;
+    background-image: url("../images/mar.jpg");
+    background-size: cover; }
+  #game-on .temporario {
+    position: absolute;
+    bottom: 10;
+    right: 10; }
 
 #home .lyt-main.active {
   filter: brightness(30%); }
@@ -86,8 +94,12 @@
   #login form input.lyt-btn-align {
     display: inline-block; }
 
+body section {
+  width: 100%;
+  height: 100%; }
+
 .sh-background {
-  background-image: url("/images/fundo.png");
+  background-image: url("../images/fundo.png");
   background-size: 100% 100%;
   position: relative;
   font-family: 'Black Ops One', cursive;

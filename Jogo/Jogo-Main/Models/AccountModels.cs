@@ -26,6 +26,8 @@ namespace Jogo_Main.Models
         public int UserId { get; set; }
         public string UserName { get; set; }
         public bool Administrativo { get; set; }
+        public int Pontos { get; set; }
+        public decimal Saldo { get; set; }
     }
 
     public class RegisterExternalLoginModel

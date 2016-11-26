@@ -1,35 +1,35 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Models/f:AccountModels.cs" caret="1212" fromTop="22" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/f:Web.config" caret="0" fromTop="0" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Skin/f:Index.cshtml" caret="314" fromTop="12" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Models/f:SkinModels.cs" caret="1518" fromTop="11" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Home/f:About.cshtml" caret="724" fromTop="22" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/d:themes/d:base/d:minified/f:jquery-ui.min.css" caret="11113" fromTop="4" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/d:themes/d:base/f:jquery-ui.css" caret="16275" fromTop="12" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/f:all.css" caret="1900" fromTop="8" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:Error.cshtml" caret="78" fromTop="5" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/f:Site.css" caret="2912" fromTop="12" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Home/f:Index.cshtml" caret="1654" fromTop="13" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Home/f:Contact.cshtml" caret="1139" fromTop="22" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:App_Start/f:RouteConfig.cs" caret="569" fromTop="15" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:App_Start/f:RouteConfig.cs" caret="343" fromTop="14" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:App_Start/f:BundleConfig.cs" caret="0" fromTop="0" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:App_Start/f:AuthConfig.cs" caret="423" fromTop="4" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Scripts/f:jquery-1.8.2.intellisense.js" caret="0" fromTop="0" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/f:Global.asax.cs" caret="0" fromTop="0" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Shared/f:_LayoutLogin.cshtml" caret="0" fromTop="0" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Models/f:NivelModels.cs" caret="276" fromTop="6" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/f:all.css" caret="2768" fromTop="14" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Models/f:NivelModels.cs" caret="12" fromTop="0" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Scripts/f:all.js" caret="2256" fromTop="13" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/f:Site.css" caret="3575" fromTop="25" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/f:Web.config" caret="0" fromTop="0" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/f:packages.config" caret="0" fromTop="0" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Models/f:AccountModels.cs" caret="817" fromTop="10" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Controllers/f:AccountController.cs" caret="10002" fromTop="7" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:AccountController.cs" caret="11295" fromTop="3" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Models/f:AccountModels.cs" caret="397" fromTop="13" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Account/f:Login.cshtml" caret="1394" fromTop="19" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Home/f:Index.cshtml" caret="1858" fromTop="22" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:NivelController.cs" caret="585" fromTop="14" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Nivel/f:Index.cshtml" caret="678" fromTop="20" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Home/f:Index.cshtml" caret="429" fromTop="9" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:HomeController.cs" caret="462" fromTop="4" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Account/f:Manage.cshtml" caret="0" fromTop="0" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:_LoginPartial.cshtml" caret="31" fromTop="0" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/f:_ViewStart.cshtml" caret="0" fromTop="0" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:_Layout.cshtml" caret="3127" fromTop="17" />
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Account/f:Login.cshtml" caret="3067" fromTop="22" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Account/f:Login.cshtml" caret="253" fromTop="8" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Home/f:Index.cshtml" caret="2169" fromTop="22" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:_LoginPartial.cshtml" caret="354" fromTop="5" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:_Layout.cshtml" caret="15" fromTop="0" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Filters/f:InitializeSimpleMembershipAttribute.cs" caret="377" fromTop="11" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:HomeController.cs" caret="735" fromTop="16" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:NivelController.cs" caret="1318" fromTop="22" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:SkinController.cs" caret="292" fromTop="12" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Models/f:AccountModels.cs" caret="785" fromTop="11" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Models/f:NivelModels.cs" caret="1619" fromTop="6" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Controllers/f:HomeController.cs" caret="607" fromTop="10" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:AccountController.cs" caret="12966" fromTop="10" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Controllers/f:AccountController.cs" caret="12662" fromTop="9" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:Error.cshtml" caret="78" fromTop="5" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Home/f:Contact.cshtml" caret="1139" fromTop="22" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Home/f:About.cshtml" caret="724" fromTop="22" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Skin/f:Index.cshtml" caret="314" fromTop="12" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Controllers/f:HomeController.cs" caret="705" fromTop="6" />
   </RecentFiles>
   <RecentEdits>
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Assets/d:js/f:login.js" caret="79" fromTop="2" />
@@ -41,20 +41,24 @@
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Assets/d:js/f:nivel.js" caret="15095" fromTop="17" />
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Assets/d:js/f:skin.js" caret="3442" fromTop="10" />
     <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/f:Web.config" caret="880" fromTop="11" />
-    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Models/f:AccountModels.cs" caret="774" fromTop="13" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Models/f:AccountModels.cs" caret="770" fromTop="19" />
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:AccountController.cs" caret="1097" fromTop="11" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/f:all.css" caret="2094" fromTop="12" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/f:Site.css" caret="978" fromTop="12" />
     <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:App_Start/f:RouteConfig.cs" caret="477" fromTop="18" />
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Account/f:Login.cshtml" caret="2693" fromTop="22" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Account/f:Login.cshtml" caret="187" fromTop="7" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:_Layout.cshtml" caret="1405" fromTop="13" />
     <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:_LoginPartial.cshtml" caret="354" fromTop="5" />
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:HomeController.cs" caret="254" fromTop="11" />
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:NivelController.cs" caret="273" fromTop="5" />
     <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Controllers/f:SkinController.cs" caret="292" fromTop="12" />
-    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Controllers/f:HomeController.cs" caret="225" fromTop="10" />
     <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Controllers/f:AccountController.cs" caret="12817" fromTop="13" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/f:Site.css" caret="3575" fromTop="25" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Content/f:all.css" caret="3573" fromTop="23" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Shared/f:_Layout.cshtml" caret="3127" fromTop="17" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Account/f:Login.cshtml" caret="122" fromTop="7" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Scripts/f:all.js" caret="2256" fromTop="13" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Models/f:NivelModels.cs" caret="276" fromTop="9" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Models/f:AccountModels.cs" caret="817" fromTop="10" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Models/f:AccountModels.cs" caret="853" fromTop="16" />
+    <File id="38FEC019-D666-443D-9C44-00E514A0E923/d:Views/d:Home/f:Index.cshtml" caret="429" fromTop="9" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Controllers/f:HomeController.cs" caret="863" fromTop="11" />
+    <File id="4DBFC9EA-3FE3-407B-91FA-ECAAD4F86CBC/d:Views/d:Home/f:Index.cshtml" caret="470" fromTop="12" />
   </RecentEdits>
 </RecentFiles>

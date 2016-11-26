@@ -4,7 +4,8 @@
     ViewBag.Title = "Log in";
 }
 
-<img class="center-block lyt-img-login" src="../images/logo.png" />
+<section class="sh-background" id="login">
+<img class="center-block lyt-img-login" src="../images/logo.png" alt="Logo"/>
 
 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "text-center form-login" }))
 {
@@ -22,14 +23,16 @@
     @Html.ValidationMessageFor(m => m.Password)									
 							
     
-	@Html.ActionLink("CADASTRAR", "Register", null, new{ @class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" })
-									
-      
+	//@Html.ActionLink("CADASTRAR", "Register", null, new{ @class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" })
+						
+      <input class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" type="button" value="CADASTRAR" />
+     
 //    <input class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" type="button" value="CADASTRAR" />
     <input class="btn btn-success lyt-btn-align sh-text-default btn-logar" type="submit" value="LOGAR" />
 }
 
+ <section/>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}</section>
