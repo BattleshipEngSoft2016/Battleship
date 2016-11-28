@@ -1,0 +1,8 @@
+Copie os arquivos .\WarShipServer\dist\WarShipServer.jar e .\WarShipServer\dist\lib\gson-2.8.0.jar 
+para uma pasta, por exemplo c:\Server va para esta pasta e execute o comando abaixo:
+
+
+java -cp .\ -jar WarShipServer.jar
+
+Um parametro pode ser usado como porta de conexão. Se não passar parametro algum a porta utilizada sera a 7654,
+portas menores que 1024 serão ignoradas.
