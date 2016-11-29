@@ -78,20 +78,20 @@
     #home .lyt-levels .lyt-level button {
       width: 60%; }
 
-#login .lyt-img-login {
+#login .lyt-img-login, #cadastro .lyt-img-login {
   z-index: -1;
   max-width: 400px; }
 
-#login form {
+#login form, #cadastro form {
   margin-top: -100px; }
-  #login form input {
+  #login form input, #cadastro form input {
     display: block;
     margin-top: 10px;
     border-radius: 7px; }
-  #login form h1 {
+  #login form h1, #cadastro form h1 {
     display: block;
     margin: auto; }
-  #login form input.lyt-btn-align {
+  #login form input.lyt-btn-align, #cadastro form input.lyt-btn-align {
     display: inline-block; }
 
 @font-face {

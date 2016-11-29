@@ -1,0 +1,15 @@
+html
+  head
+    include components/_head.pug
+  body
+    section#cadastro.sh-background
+      img.center-block.lyt-img-login(src='../images/logo.png')
+      form.text-center.form-login(action='home.html')
+        h1.sh-text-title ENTRE PARA A GUERRA
+        input.text-center.center-block(type='text' name='usuario' value='USUARIO')
+        input.text-center.center-block(type='text' name='senha' value='SENHA')
+        input.text-center.center-block(type='text' name='email' value='EMAIL')
+        a(href='login.html')
+          input.btn.btn-danger.lyt-btn-align.sh-text-default.btn-cadastrar(type='button' value='FUGIR')
+        input.btn.btn-success.lyt-btn-align.sh-text-default.btn-logar(type='submit' value='ALISTAR-SE')
+      script(src='../javascripts/all.js')

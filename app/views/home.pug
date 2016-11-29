@@ -10,7 +10,7 @@ html
           button.btn.btn-primary.sh-text-default.js-btn-play JOGAR
         .lyt-store.sh-div-default
           h2 CUSTOMIZE-SE
-          button.btn.btn-primary.sh-text-default COMPRAR
+          button.btn.btn-primary.sh-text-default.js-btn-shop COMPRAR
         .lyt-ranking.sh-div-default.js-ranking
           h2 RANKING
           ol
@@ -26,4 +26,20 @@ html
             button.btn.btn-primary.sh-text-title MÉDIO
           a.lyt-level.center-block(href='game_on.html?level=3')
             button.btn.btn-primary.sh-text-title DIFÍCIL
-      script(src='../javascripts/all.js')
+      .lyt-shops.sh-div-default.not-active
+        .item.sell
+          img(src="")
+          h2 SKIN PIRATA
+          p PREÇO: 100 MOEDAS
+          button.btn.btn-danger COMPRAR
+        .item.sell
+          img(src="")
+          h2 SKIN FUTURO
+          p PREÇO: 100 MOEDAS
+          button.btn.btn-danger COMPRAR
+        .item.buy
+          img(src="")
+          h2 SKIN COCA-COLA
+          p PREÇO: GRÁTIS
+          button.btn.buttons COMPRADO
+    script(src='../javascripts/all.js')

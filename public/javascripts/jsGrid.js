@@ -719,7 +719,7 @@ function startGame() {
  	});*/
 	
 	$(".topPanel").css( { "display" : "block" } );
-		document.getElementsByClassName('layout')[0].innerHTML = " <div class='buttons wartime' style='width:240px;'>Pronto pra guerra!</div>";
+		document.getElementsByClassName('layout')[0].innerHTML = " <div class='buttons wartime' style='width:240px;'><a href='game_play.html'>Pronto pra guerra!</a></div>";
 			
  	$(".text").text(output.start);
  	// Generate all possible hits for Player 1
