@@ -1,41 +1,52 @@
 html
-  include components/_head.pug
+  head
+    include components/_head.pug
+    script(src='../javascripts/jsGrid.js')
+    link(href='../stylesheets/grid.css', rel='stylesheet')
   body
     section#game-on.sh-background
-      include components/_header-log-in.pug
+      header.cmp-header.text-center
+        img.cmp-simple-logo(src='../images/logo-sem-vermelho.png')
+        .cmp-data-user.sh-div-default.js-data-user
+          h2 JOGADOR 123
+          p MOEDAS: 1000
+          p PONTOS: 2000
       .lyt-div-default.text-center.lyt-search-player.sh-div-default.active.modal
         h2 PROCURANDO JOGADOR
+        |  
         img(src='../images/spin.svg')
       .lyt-div-default.text-center.lyt-found-player.sh-div-default.not-active.modal
         h2 JOGADOR ENCONTRADO
+        |  
         img(src='../images/checked.png')
       .lyt-div-default.text-center.lyt-chose-skin.sh-div-default.not-active.modal
         h2 ESCOLHA SUA SKIN
+        |  
         select.selectpicker.center-block
           option(value='padrao') padrao
           option(value='galaxia') galaxia
           option(value='pirata') pirata
+        |  
         button.center-block.btn.btn-success.sh-text-default.js-confirm-skin CONFIRMAR
       .lyt-div-default.text-center.lyt-position-boats.sh-div-default.not-active.modal
         h2 POSICIONE SEUS NAVIOS
-        .lyt-main-boats
-          .lyt-ships.text-center
-            .ship NAVIO
-            .ship NAVIO
-            .ship NAVIO
-          .lyt-field.text-center
-            .lyt-main-field
-          .lyt-timer.text-center
-            p TEMPO RESTANTE
-              br
-              span 90 SEGUNDOS
-            a(href="game_play.html")
-              button.center-block.btn.btn-success.sh-text-default.js-confirm-play CONFIRMAR
-
-
+        .board
+          .displays
+            .bottom
+              ul.grid.grid-position
+        .panel
+          .topPanel
+            .layout
+              .buttons.self Posicionar
+              .buttons.random Random
+          .console
+            span.text
       .temporario
-        button.btn.btn-primary#1 1
-        button.btn.btn-primary#2 2
-        button.btn.btn-primary#3 3
-        button.btn.btn-primary#4 4
+        button#1.btn.btn-primary 1
+        |  
+        button#2.btn.btn-primary 2
+        |  
+        button#3.btn.btn-primary 3
+        |  
+        button#4.btn.btn-primary 4
       script(src='../javascripts/all.js')

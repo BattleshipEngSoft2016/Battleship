@@ -1,6 +1,27 @@
 html
-  include components/_head.pug
+  head
+    include components/_head.pug
+    script(src='../javascripts/jsGrid.js')
+    link(href='../stylesheets/grid.css', rel='stylesheet')
   body
-    section#game-on.sh-background
-      include components/_header-log-in.pug
+    section#game-on.game-play.sh-background
+      header.cmp-header.text-center
+        img.cmp-simple-logo(src='../images/logo-sem-vermelho.png')
+        .cmp-data-user.sh-div-default.js-data-user
+          h2 JOGADOR 123
+          p MOEDAS: 1000
+          p PONTOS: 2000
       h2.sh-text-title.text-center JOGANDO CONTRA LAZY
+      .board-game
+        .displays
+          .top
+            ul.grid
+          .bottom
+            ul.grid
+      //- .panel
+      //-   .topPanel
+      //-     .layout
+      //-       .buttons.self Posicionar
+      //-       .buttons.random Random
+      //-   .console
+      //-     span.text

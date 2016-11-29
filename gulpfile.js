@@ -22,13 +22,13 @@ gulp.task('pug', function() {
 gulp.task('scripts',function() {
   return gulp.src('app/javascripts/**/*.js')
           .pipe(concat('all.js'))
-          .pipe(gulp.dest('public/javascripts'))
+          .pipe(gulp.dest('public/javascripts'));
 });
 
 gulp.task('watch', function() {
     gulp.watch('app/javascripts/**/*.js', ['scripts']);
     gulp.watch('app/stylesheets/**/*.scss', ['sass']);
-    gulp.watch('app/views/*.pug', ['pug'])
+    gulp.watch('app/views/*.pug', ['pug']);
 });
 
 gulp.task('default', ['scripts', 'sass', 'pug']);

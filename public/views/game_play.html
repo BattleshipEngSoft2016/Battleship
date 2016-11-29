@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <title>WarShips</title>
-  <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Freckle+Face|Ravi+Prakash|Ruslan+Display" rel="stylesheet" />
-  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="../assets/BlackOpsOne-Regular.ttf" rel="stylesheet" />
+  <script src="../assets/jquery-3.1.1.js"></script>
+  <link rel="stylesheet" href="../assets/bootstrap.min.css" />
+  <link rel="stylesheet" href="../assets/bootstrap-theme.min.css" />
+  <script src="bootstrap.min.js"></script>
   <link rel="stylesheet" href="../stylesheets/all.css" />
+  <script src="../javascripts/jsGrid.js"></script>
+  <link href="../stylesheets/grid.css" rel="stylesheet" />
 </head>
 
 <body>
-  <section class="sh-background" id="game-on">
+  <section class="game-play sh-background" id="game-on">
     <header class="cmp-header text-center">
       <img class="cmp-simple-logo" src="../images/logo-sem-vermelho.png" />
       <div class="cmp-data-user sh-div-default js-data-user">
@@ -22,6 +24,16 @@
       </div>
     </header>
     <h2 class="sh-text-title text-center">JOGANDO CONTRA LAZY</h2>
+    <div class="board-game">
+      <div class="displays">
+        <div class="top">
+          <ul class="grid"></ul>
+        </div>
+        <div class="bottom">
+          <ul class="grid"></ul>
+        </div>
+      </div>
+    </div>
   </section>
 </body>
 

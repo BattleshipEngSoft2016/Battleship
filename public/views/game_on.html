@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <title>WarShips</title>
-  <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Freckle+Face|Ravi+Prakash|Ruslan+Display" rel="stylesheet" />
-  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="../assets/BlackOpsOne-Regular.ttf" rel="stylesheet" />
+  <script src="../assets/jquery-3.1.1.js"></script>
+  <link rel="stylesheet" href="../assets/bootstrap.min.css" />
+  <link rel="stylesheet" href="../assets/bootstrap-theme.min.css" />
+  <script src="bootstrap.min.js"></script>
   <link rel="stylesheet" href="../stylesheets/all.css" />
+  <script src="../javascripts/jsGrid.js"></script>
+  <link href="../stylesheets/grid.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -22,15 +24,15 @@
       </div>
     </header>
     <div class="lyt-div-default text-center lyt-search-player sh-div-default active modal">
-      <h2>PROCURANDO JOGADOR</h2>
+      <h2>PROCURANDO JOGADOR</h2> 
       <img src="../images/spin.svg" />
     </div>
     <div class="lyt-div-default text-center lyt-found-player sh-div-default not-active modal">
-      <h2>JOGADOR ENCONTRADO</h2>
+      <h2>JOGADOR ENCONTRADO</h2> 
       <img src="../images/checked.png" />
     </div>
     <div class="lyt-div-default text-center lyt-chose-skin sh-div-default not-active modal">
-      <h2>ESCOLHA SUA SKIN</h2>
+      <h2>ESCOLHA SUA SKIN</h2> 
       <select class="selectpicker center-block">
         <option value="padrao">padrao</option>
         <option value="galaxia">galaxia</option>
@@ -40,22 +42,21 @@
     </div>
     <div class="lyt-div-default text-center lyt-position-boats sh-div-default not-active modal">
       <h2>POSICIONE SEUS NAVIOS</h2>
-      <div class="lyt-main-boats">
-        <div class="lyt-ships text-center">
-          <div class="ship">NAVIO</div>
-          <div class="ship">NAVIO</div>
-          <div class="ship">NAVIO</div>
+      <div class="board">
+        <div class="displays">
+          <div class="bottom">
+            <ul class="grid grid-position"></ul>
+          </div>
         </div>
-        <div class="lyt-field text-center">
-          <div class="lyt-main-field"></div>
+      </div>
+      <div class="panel">
+        <div class="topPanel">
+          <div class="layout">
+            <div class="buttons self">Posicionar</div>
+            <div class="buttons random">Random</div>
+          </div>
         </div>
-        <div class="lyt-timer text-center">
-          <p>TEMPO RESTANTE
-            <br/><span>90 SEGUNDOS</span>
-          </p>
-          <a href="game_play.html">
-            <button class="center-block btn btn-success sh-text-default js-confirm-play">CONFIRMAR</button>
-          </a>
+        <div class="console"><span class="text"></span>
         </div>
       </div>
     </div>
