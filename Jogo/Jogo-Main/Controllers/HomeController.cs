@@ -21,7 +21,7 @@ namespace Jogo_Main.Controllers
             using (var db = new UsersContext())
             {
 
-             ViewBag.Ranking = JsonConvert.SerializeObject(db.UserProfiles.Select(x => new {x.UserName, x.Pontos}).OrderBy(x => x.Pontos).Take(5));
+                ViewBag.Ranking = JsonConvert.SerializeObject(db.UserProfiles.Select(x => new {x.UserName , x.Pontos}  ).OrderBy(x => x.Pontos).Take(5));
 
              var id = WebSecurity.GetUserId(User.Identity.Name);
 

@@ -77,3 +77,4 @@ C:\Projeto\git\Battleship\Jogo\Jogo-Main\bin\zh-Hant\System.Spatial.resources.dl
 C:\Projeto\git\Battleship\Jogo\Jogo-Main\obj\Debug\Jogo-Main.dll
 C:\Projeto\git\Battleship\Jogo\Jogo-Main\obj\Debug\Jogo-Main.pdb
 C:\Projeto\git\Battleship\Jogo\Jogo-Main\obj\Debug\Jogo-Main.csprojResolveAssemblyReference.cache
+C:\Projeto\git\Battleship\Jogo\Jogo-Main\bin\Microsoft.WebSockets.dll

@@ -24,30 +24,20 @@
       </div>
       <div class="lyt-ranking sh-div-default js-ranking">
         <h2>RANKING</h2>
-        <ol>
-          <li>JOGADOR123 (2000)</li>
-          <li>FULANO (1500)</li>
-          <li>SNIPER (1200)</li>
+        <ol id ="rankOl">
+         
         </ol>
       </div>
     </div>
     <div class="lyt-levels sh-div-default not-active">
       <h2>ESCOLHA A DIFICULDADE</h2>
       <div class="js-appended-levels">
-        <!--<a class="lyt-level center-block" href="game_on.html?level=1">
-          <button class="btn btn-primary sh-text-title">FÁCIL</button>
-        </a>
-        <a class="lyt-level center-block" href="game_on.html?level=2">
-          <button class="btn btn-primary sh-text-title">MÉDIO</button>
-        </a>
-        <a class="lyt-level center-block" href="game_on.html?level=3">
-          <button class="btn btn-primary sh-text-title">DIFÍCIL</button>
-        </a>-->
-      </div>
+        </div>
     </div>
     <script src="http://localhost:26532/Scripts/all.js"></script>
     <script>
         var niveis = @Html.Raw(ViewBag.Niveis);
+        var rank = @Html.Raw(ViewBag.Ranking);
         var cHtm = '';
         window.onload = function () {
             var divNiveis = document.getElementsByClassName("js-appended-levels")[0];
@@ -57,6 +47,14 @@
                 cHtm += '</a>';
                 divNiveis.innerHTML += cHtm;
             }
+            
+            var olElem = document.getElementById("rankOl");
+            for(var i=0; i<rank.length;i++) {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(rank[0].UserName + "(" + rank[0].Pontos + ")"));
+                olElem.appendChild(li);
+            }
+            
         }
     </script>
   </section>
