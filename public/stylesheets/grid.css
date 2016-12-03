@@ -41,9 +41,11 @@ html {
 .top {
 	width: 320px;
 	height: 320px;
-	background: #008B8B;
-	border-left: 1px solid #8DEEEE;
-	border-bottom: 1px solid #8DEEEE;
+	/*background: #008B8B;*/
+	background-image: url('../images/mar.jpg');
+	background-size: cover;
+	border-left: 2px solid #f00/*#8DEEEE*/;
+	border-bottom: 2px solid #f00/*#8DEEEE*/;
 	float: right;
 	margin: 0px 30px 0px 0px;
 
@@ -52,9 +54,13 @@ html {
 .bottom {
 	width: 320px;
 	height: 320px;
-	background: #008B8B;
-	border-left: 1px solid #8DEEEE;
-	border-bottom: 1px solid #8DEEEE;
+	/*background: #008B8B;*/
+	background-image: url('../images/mar.jpg');
+	background-size: cover;
+	/*border-left: 1px solid #8DEEEE;
+	border-bottom: 1px solid #8DEEEE;*/
+	border-left: 2px solid;
+	border-bottom: 2px solid;
 	float:left;
 	margin: 0px 30px 0px 0px;
 }
@@ -75,39 +81,52 @@ html {
 .aTops {
 	width: 29px;
 	height: 29px;
-	border-top: 1px solid #8DEEEE;
-	border-right: 1px solid #8DEEEE;
+	border-top: 2px solid /*#8DEEEE*/;
+	border-right: 2px solid /*#8DEEEE*/;
 	display: table-cell;
 	vertical-align: middle;
 
 	font-weight: bold;
-	color: white;
+	color: black;
 	text-align: center;
+}
+
+.top > .aTops{
+	border-top: 2px solid #f00;
+	border-right: 2px solid #f00;
 }
 
 .aLeft {
 	position: relative;
 	width: 29px;
 	height: 29px;
-	border-top: 1px solid #8DEEEE;
-	border-right: 1px solid #8DEEEE;
+	border-top: 2px solid /*#8DEEEE*/;
+	border-right: 2px solid /*#8DEEEE*/;
 	display: table;
-	line-height: 25px;
+	line-height: 28px;
 
 	font-weight: bold;
-	color: white;
+	color: black;
 	text-align: center;
+}
+
+.top > .aLeft{
+	border-top: 2px solid #f00;
+	border-right: 2px solid #f00;
 }
 
 .points {
 	position: relative;
 	width: 29px;
 	height: 29px;
-	border-top: 1px solid #8DEEEE;
-	border-right: 1px solid #8DEEEE;
+	border-top: 2px solid /*#8DEEEE*/;
+	border-right: 2px solid /*#8DEEEE*/;
 	display: inline-block;
+}
 
-
+.top > .grid > .points{
+	border-top: 2px solid #f00;
+	border-right: 2px solid #f00;
 }
 
 .highlight {
@@ -115,7 +134,8 @@ html {
 }
 
 .hidezero {
-	color: #008B8B;
+	color: /*#008B8B*/;
+	color: black;
 }
 
 .hole {
@@ -197,7 +217,7 @@ html {
 }
 
 .border-nav{
-	border-left: 1px solid #8DEEEE;
+	border-left: 1px solid /*#8DEEEE*/;
 }
 
 .porta_avioes {

@@ -1,5 +1,7 @@
 #home {
-
+  h2 {
+    font-size: 35px;
+  }
   .lyt-main {
     &.active {
       filter: brightness(30%);
@@ -38,5 +40,58 @@
     }
   }
 
+  .lyt-shops {
+    img {
+      width: 70px;
+      height: 80px;
+    }
+    padding: 10px;
+    z-index: 2;
+    &.not-active {
+    display: none;
+    }
+    &.active {
+      display: visible;
+    }
+    position: absolute;
+    left: 20%;
+    top: 30%;
+    transition: all 1s ease-in-out;
+    .sh-text-title {
+      font-size: 25px;
+    }
+    .item.sell {
+      display: inline-block;
+      background-color: #0040ff;
+      button.sec-sell {
+        width: 60%;
+      }
+    }
+    .item {
+      padding: 10px;
+      margin: 15px;
+      border-radius: 15px;
+    }
+
+    .item.buy {
+      display: inline-block;
+      background-color: #595959;
+    }
+  }
+
+  h2 {
+    margin-top: 5px;
+  }
+
+  .preview {
+    img, button {
+      display: block;
+      margin: auto;
+    }
+  }
+
+  .preview, .sec-sell, .sec-buy {
+    display: inline-block;
+  }
   
 }

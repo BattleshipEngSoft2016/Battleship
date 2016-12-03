@@ -1,7 +1,7 @@
 // Variables
 var playerFleet, cpuFleet;
 var attemptedHits = [];
-
+var jsonShips = [];
 // Object Constructors
 function Fleet(name) {
 	this.name = name;
@@ -486,8 +486,8 @@ $(document).ready(function() {
 			$(".grid").append("<li class='points offset2 " + i + "'></li>");
 		}
 		if (i == 11) {
-			$(".top").prepend("<span class='aTops hidezero'>" + Math.abs(i - 11) + "</span>");
-			$(".bottom").prepend("<span class='aTops hidezero'>" + Math.abs(i - 11) + "</span>");
+			$(".top").prepend("<span class='aTops hidezero'></span>");
+			$(".bottom").prepend("<span class='aTops hidezero'></span>");
 		}
 		if (i > 90) {
 			$(".top").append("<span class='aLeft'>" + 
@@ -496,8 +496,47 @@ $(document).ready(function() {
 								String.fromCharCode(97 + (i - 91)).toUpperCase() + "</span>");
 		}
 	}
+	
+	var lis = $(".bottom > .grid > li");
+	var j = 0;
+	var aux = 0;
+	for(i = 0; i < lis.length; i++){
+		if(j < 10){
+			lis[i].id = String.fromCharCode(97 + aux) + (j+1);
+			j++
+		}
+		else{
+			j = 0;
+			aux++;
+			lis[i].id = String.fromCharCode(97 + aux) + (j+1);
+			j++;
+		}
+	}
+	
+	var lis = $(".top > .grid > li");
+	var j = 0;
+	var aux = 0;
+	for(i = 0; i < lis.length; i++){
+		if(j < 10){
+			lis[i].id = String.fromCharCode(97 + aux) + (j+1);
+			lis[i].addEventListener("click", hit, false);
+			j++
+		}
+		else{
+			j = 0;
+			aux++;
+			lis[i].id = String.fromCharCode(97 + aux) + (j+1);
+			lis[i].addEventListener("click", hit, false);
+			j++;
+		}
+	}
+	
 	$(".text").text(output.welcome);
 })
+
+var hit = function hit(){
+	alert(this.id);
+}
 
 // Start the game setup
 $(document).ready(function() {
@@ -631,7 +670,10 @@ function setShip(location, ship, orientation, genericFleet, type) {
 			genericFleet.ships[genericFleet.currentShip].populateHorzHits(location);
 			$(".text").text(output.placed(genericFleet.ships[genericFleet.currentShip].name + " foi"));
 			var j = 1;
+			var fleet = {type:"", positions:[], horizontal:true};
 			for (var i = location; i < (location + ship.length); i++) {
+				fleet.type = genericFleet.ships[genericFleet.currentShip].name;
+				fleet.positions.push($(".bottom ." + i)[0].id);
 				$(".bottom ." + i).addClass(genericFleet.ships[genericFleet.currentShip].name);
 				$(".bottom ." + i).addClass(genericFleet.ships[genericFleet.currentShip].name+j);
 				$(".bottom ." + i).addClass("horz-ship");
@@ -647,17 +689,20 @@ function setShip(location, ship, orientation, genericFleet, type) {
 				if (type == "random") randomSetup(genericFleet);
 				else placeShip(genericFleet.ships[genericFleet.currentShip], genericFleet);
 			}
-			
+			jsonShips.push(fleet);
 		} else {
 			var inc = 0;
 			genericFleet.ships[genericFleet.currentShip].populateVertHits(location);
 			$(".text").text(output.placed(genericFleet.ships[genericFleet.currentShip].name + " foi"));
 			var j = 1;
+			var fleet = {type:"", positions:[], horizontal:false};
 			for (var i = location; i < (location + ship.length); i++) {
+				fleet.type = genericFleet.ships[genericFleet.currentShip].name;
+				fleet.positions.push($(".bottom ." + (location + inc))[0].id);
 				$(".bottom ." + (location + inc)).addClass(genericFleet.ships[genericFleet.currentShip].name);
 				$(".bottom ." + (location + inc)).addClass(genericFleet.ships[genericFleet.currentShip].name+j);
 				$(".bottom ." + (location + inc)).addClass("vert-ship");
-				$(".bottom ." + i).addClass("border-nav");
+				if(i == location) $(".bottom ." + i).addClass("border-nav");
 				$(".bottom ." + (location + inc)).children().removeClass("hole");
 				j++;
 				inc = inc + 10;
@@ -671,6 +716,7 @@ function setShip(location, ship, orientation, genericFleet, type) {
 				if (type == "random") randomSetup(genericFleet);
 				else placeShip(genericFleet.ships[genericFleet.currentShip], genericFleet);
 			}
+			jsonShips.push(fleet);
 		}
 	} else {
 		if (type == "random") randomSetup(genericFleet);
@@ -719,8 +765,8 @@ function startGame() {
  	});*/
 	
 	$(".topPanel").css( { "display" : "block" } );
-		document.getElementsByClassName('layout')[0].innerHTML = " <div class='buttons wartime' style='width:240px;'><a href='game_play.html'>Pronto pra guerra!</a></div>";
-			
+		document.getElementsByClassName('layout')[0].innerHTML = " <div class='buttons wartime' style='width:240px;'>Pronto pra guerra!</div>";
+	
  	$(".text").text(output.start);
  	// Generate all possible hits for Player 1
  	//for (var i = 0; i < 100; i++) bot.randPool[i] = i + 1;

@@ -49,6 +49,9 @@
     bottom: 10;
     right: 10; }
 
+#home h2 {
+  font-size: 35px; }
+
 #home .lyt-main.active {
   filter: brightness(30%); }
 
@@ -78,6 +81,45 @@
     #home .lyt-levels .lyt-level button {
       width: 60%; }
 
+#home .lyt-shops {
+  padding: 10px;
+  z-index: 2;
+  position: absolute;
+  left: 20%;
+  top: 30%;
+  transition: all 1s ease-in-out; }
+  #home .lyt-shops img {
+    width: 70px;
+    height: 80px; }
+  #home .lyt-shops.not-active {
+    display: none; }
+  #home .lyt-shops.active {
+    display: visible; }
+  #home .lyt-shops .sh-text-title {
+    font-size: 25px; }
+  #home .lyt-shops .item.sell {
+    display: inline-block;
+    background-color: #0040ff; }
+    #home .lyt-shops .item.sell button.sec-sell {
+      width: 60%; }
+  #home .lyt-shops .item {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 15px; }
+  #home .lyt-shops .item.buy {
+    display: inline-block;
+    background-color: #595959; }
+
+#home h2 {
+  margin-top: 5px; }
+
+#home .preview img, #home .preview button {
+  display: block;
+  margin: auto; }
+
+#home .preview, #home .sec-sell, #home .sec-buy {
+  display: inline-block; }
+
 #login .lyt-img-login, #cadastro .lyt-img-login {
   z-index: -1;
   max-width: 400px; }
@@ -101,7 +143,7 @@
 body section {
   width: 100%;
   min-height: 100%;
-  padding-bottom: 10px; }
+  padding-bottom: 20px; }
 
 .sh-background {
   background-image: url("../images/fundo.png");
