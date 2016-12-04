@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "WarShips";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section class="sh-background" id="home">
     <header class="cmp-header text-center">
@@ -51,7 +52,7 @@
             var olElem = document.getElementById("rankOl");
             for(var i=0; i<rank.length;i++) {
                 var li = document.createElement("li");
-                li.appendChild(document.createTextNode(rank[0].UserName + "(" + rank[0].Pontos + ")"));
+                li.appendChild(document.createTextNode(rank[i].UserName + "(" + rank[i].Pontos + ")"));
                 olElem.appendChild(li);
             }
             

@@ -7,7 +7,7 @@ namespace Jogo_Main.Models
 {
     public enum TipoMensagem
     {
-        TipoMontagem = 1,
-        TipoJogada = 2
+        Montagem = 1,
+        Jogada = 2
     }
 }

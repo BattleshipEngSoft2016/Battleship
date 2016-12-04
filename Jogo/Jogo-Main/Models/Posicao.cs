@@ -30,7 +30,7 @@ namespace Jogo_Main.Models
     {
         public int IdBarco { get; set; }
 
-        public int TipoBarco { get; set; }
+        public string TipoBarco { get; set; }
 
         public List<Coordenada> Coordenadas { get; set; }
 
@@ -46,7 +46,18 @@ namespace Jogo_Main.Models
             Coordenadas = envio.Coordenadas.Select(x => new Coordenada(x)).ToList();
         }
 
-    
+        public void Afundar(string p)
+        {
+            var firstOrDefault = Coordenadas.FirstOrDefault(x => x.Valor == p);
+
+            if (firstOrDefault != null)
+                firstOrDefault.Destruido = true;
+        }
+
+        public bool Destruido()
+        {
+            return Coordenadas.All(x => x.Destruido);
+        }
     }
 
 

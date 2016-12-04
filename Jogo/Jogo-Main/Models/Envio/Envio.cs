@@ -9,18 +9,25 @@ namespace Jogo_Main.Models
     {
         public int TipoMensagem { get; set; }
 
-        public List<EnvioBarco> Objeto { get; set; }
+        public List<System.Object> Objeto { get; set; }
 
+        public Envio()
+        {
+            
+        }
     }
 
     public class EnvioBarco
     {
         public int IdBarco { get; set; }
 
-        public int TipoBarco { get; set; }
+        public string TipoBarco { get; set; }
 
         public List<string> Coordenadas { get; set; }
 
-
+        public EnvioBarco()
+        {
+            
+        }
     }
 }

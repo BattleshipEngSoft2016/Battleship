@@ -198,7 +198,9 @@
     <Compile Include="Models\Envio\Envio.cs" />
     <Compile Include="Models\NivelModels.cs" />
     <Compile Include="Models\Posicao.cs" />
+    <Compile Include="Models\Retorno\Retorno.cs" />
     <Compile Include="Models\TipoMensagem.cs" />
+    <Compile Include="Models\TipoMensagemRetorno.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebSocketsServer2.ashx.cs">
       <DependentUpon>WebSocketsServer2.ashx</DependentUpon>
@@ -300,7 +302,7 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
