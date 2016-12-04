@@ -267,6 +267,48 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\aeronave\1.png" />
+    <Content Include="Images\aeronave\2.png" />
+    <Content Include="Images\aeronave\3.png" />
+    <Content Include="Images\aeronave\4.png" />
+    <Content Include="Images\aeronave\5.png" />
+    <Content Include="Images\checked.png" />
+    <Content Include="Images\coca-mar.jpg" />
+    <Content Include="Images\cocacola_loja.jpg" />
+    <Content Include="Images\coca\Coca129.png" />
+    <Content Include="Images\coca\Coca229.png" />
+    <Content Include="Images\coca\Coca329.png" />
+    <Content Include="Images\coca\Coca429.png" />
+    <Content Include="Images\coca\Coca529.png" />
+    <Content Include="Images\espacial_loja.jpg" />
+    <Content Include="Images\fundo.png" />
+    <Content Include="Images\galaxia.jpg" />
+    <Content Include="Images\logo-sem-vermelho.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\mar.jpg" />
+    <Content Include="Images\mar2.jpg" />
+    <Content Include="Images\normal\1.png" />
+    <Content Include="Images\normal\2.png" />
+    <Content Include="Images\normal\3.png" />
+    <Content Include="Images\normal\4.png" />
+    <Content Include="Images\normal\5.png" />
+    <Content Include="Images\piratas_loja.jpg" />
+    <Content Include="Images\pirata\1.png" />
+    <Content Include="Images\pirata\2.png" />
+    <Content Include="Images\pirata\3.png" />
+    <Content Include="Images\pirata\4.png" />
+    <Content Include="Images\pirata\5.png" />
+    <Content Include="Images\porta_avioes.png" />
+    <Content Include="Images\spin.svg" />
+    <Content Include="Images\sushi-mar.jpg" />
+    <Content Include="Images\sushi\1.png" />
+    <Content Include="Images\sushi\2.png" />
+    <Content Include="Images\sushi\3.png" />
+    <Content Include="Images\sushi\4.png" />
+    <Content Include="Images\sushi\5.png" />
+    <Content Include="Images\sushi_loja.jpg" />
+    <Content Include="javascripts\all.js" />
+    <Content Include="javascripts\jsGrid.js" />
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -282,6 +324,8 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="stylesheets\all.css" />
+    <Content Include="stylesheets\grid.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -325,6 +369,7 @@
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="WebSocketsServer2.ashx" />
+    <Content Include="Views\Shared\_LayoutHeadGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

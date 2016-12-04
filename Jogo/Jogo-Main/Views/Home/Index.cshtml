@@ -12,6 +12,16 @@
         }
         <p>MOEDAS: @ViewBag.Saldo </p>
         <p>PONTOS: @ViewBag.Pontos</p>
+        <button class="btn btn-primary">
+          @if (Request.IsAuthenticated) {
+              <text>
+                  @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                      @Html.AntiForgeryToken()
+                      <a id="click" href="javascript:document.getElementById('logoutForm').submit()">SAIR</a>
+                  }
+              </text>
+          } 
+        </button>
       </div>
     </header>
     <div class="lyt-main text-center">
@@ -31,11 +41,113 @@
       </div>
     </div>
     <div class="lyt-levels sh-div-default not-active">
+      <button class="btn btn-danger btn-close">X</button>
       <h2>ESCOLHA A DIFICULDADE</h2>
       <div class="js-appended-levels">
         </div>
     </div>
-    <script src="http://localhost:26532/Scripts/all.js"></script>
+    <div class="lyt-shops sh-div-default not-active">
+      <button class="btn btn-danger btn-close">X</button>
+      <h2 class="text-center">LOJA SKINS</h2>
+      <div class="item sell">
+        <div class="preview">
+          <img src="../Images/piratas_loja.jpg" />
+          <button class="pirata btn btn-success btn-preview">VER</button>
+        </div>
+        <div class="sec-sell">
+          <h2>SKIN PIRATA</h2>
+          <p>PREÇO: 100 MOEDAS</p>
+          <button class="btn btn-danger">COMPRAR</button>
+        </div>
+      </div>
+      <div class="item sell">
+        <div class="preview">
+          <img src="../Images/espacial_loja.jpg" />
+          <button class="espacial btn btn-success btn-preview">VER</button>
+        </div>
+        <div class="sec-sell">
+          <h2>SKIN FUTURO</h2>
+          <p>PREÇO: 100 MOEDAS</p>
+          <button class="btn btn-danger">COMPRAR</button>
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="item buy">
+        <div class="preview">
+          <img src="../Images/cocacola_loja.jpg" />
+          <button class="coca btn btn-success btn-preview">VER</button>
+        </div>
+        <div class="sec-buy">
+          <h2>SKIN COCA</h2>
+          <p>PREÇO: GRÁTIS</p>
+          <button class="btn buttons">COMPRADO</button>
+        </div>
+      </div>
+      <div class="item sell">
+        <div class="preview">
+          <img src="../Images/sushi_loja.jpg" />
+          <button class="sushi btn btn-success btn-preview">VER</button>
+        </div>
+        <div class="sec-sell">
+          <h2>SKIN SUSHI</h2>
+          <p>PREÇO: 100 MOEDAS</p>
+          <button class="btn btn-danger">COMPRAR</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-pirates modal-loja sh-div-default not-active">
+      <button class="btn btn-danger btn-close">X</button>
+      <div class="plan">
+        <img src="../Images/mar.jpg" />
+      </div>
+      <div class="ships">
+        <img class="center-block" src="../Images/pirata/5.png" />
+        <img class="center-block" src="../Images/pirata/4.png" />
+        <img class="center-block" src="../Images/pirata/3.png" />
+        <img class="center-block" src="../Images/pirata/2.png" />
+        <img class="center-block" src="../Images/pirata/1.png" />
+      </div>
+    </div>
+    <div class="modal-space modal-loja sh-div-default not-active">
+      <button class="btn btn-danger btn-close">X</button>
+      <div class="plan">
+        <img src="../Images/galaxia.jpg" />
+      </div>
+      <div class="ships">
+        <img class="center-block" src="../Images/aeronave/5.png" />
+        <img class="center-block" src="../Images/aeronave/4.png" />
+        <img class="center-block" src="../Images/aeronave/3.png" />
+        <img class="center-block" src="../Images/aeronave/2.png" />
+        <img class="center-block" src="../Images/aeronave/1.png" />
+      </div>
+    </div>
+    <div class="modal-coca modal-loja sh-div-default not-active">
+      <button class="btn btn-danger btn-close">X</button>
+      <div class="plan">
+        <img src="../Images/coca-mar.jpg" />
+      </div>
+      <div class="ships">
+        <img class="center-block" src="../Images/coca/Coca529.png" />
+        <img class="center-block" src="../Images/coca/Coca429.png" />
+        <img class="center-block" src="../Images/coca/Coca329.png" />
+        <img class="center-block" src="../Images/coca/Coca229.png" />
+        <img class="center-block" src="../Images/coca/Coca129.png" />
+      </div>
+    </div>
+    <div class="modal-sushi modal-loja sh-div-default not-active">
+      <button class="btn btn-danger btn-close">X</button>
+      <div class="plan">
+        <img src="../Images/sushi-mar.jpg" />
+      </div>
+      <div class="ships">
+        <img class="center-block" src="../Images/sushi/5.png" />
+        <img class="center-block" src="../Images/sushi/4.png" />
+        <img class="center-block" src="../Images/sushi/3.png" />
+        <img class="center-block" src="../Images/sushi/2.png" />
+        <img class="center-block" src="../Images/sushi/1.png" />
+      </div>
+    </div>
+    
     <script>
         var niveis = @Html.Raw(ViewBag.Niveis);
         var rank = @Html.Raw(ViewBag.Ranking);
