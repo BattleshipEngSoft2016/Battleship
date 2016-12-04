@@ -19,7 +19,10 @@ namespace Jogo_Main.Controllers
                 ViewBag.Skins = JsonConvert.SerializeObject(db.Skins.Select(x => new { x.Id, x.Nome }));
             }
 
-            ViewBag.NivelId = nivelId;
+            using (var db = new NiveisContext())
+            {
+                ViewBag.Nivel = JsonConvert.SerializeObject(db.Niveis.FirstOrDefault(x => x.Id  == nivelId));
+            }
 
             return View();
         }
