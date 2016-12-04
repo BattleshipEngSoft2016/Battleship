@@ -44,13 +44,13 @@ namespace Jogo_Main.Controllers
             }
 
 
-            ViewBag.Dados = tabuleiro.Dados;
-
             ViewBag.Skin = JsonConvert.SerializeObject(skin);
 
             ViewBag.Nivel = JsonConvert.SerializeObject(nivel);
 
             ViewBag.Tabuleiro = tabuleiro.Dados;
+
+            ViewBag.UserId = user.UserId;
 
 
             return View();
