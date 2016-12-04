@@ -2,8 +2,38 @@
 
 @{
     ViewBag.Title = "title";
-  //  Layout = "_Layout";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+  //  Layout = "_LayoutHeadGame";
+    Layout = "~/Views/Shared/_LayoutHeadGame.cshtml";
 }
 
-<h2>title</h2>
+<section class="game-play sh-background" id="game-on">
+    <header class="cmp-header text-center">
+      <img class="cmp-simple-logo" src="../Images/logo-sem-vermelho.png" />
+      <div class="cmp-data-user sh-div-default js-data-user">
+        <h2>JOGADOR 123</h2>
+        <p>MOEDAS: 1000</p>
+        <p>PONTOS: 2000</p>
+          <button class="btn btn-primary">
+              @if (Request.IsAuthenticated) {
+              <text>
+                  @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                      @Html.AntiForgeryToken()
+                      <a id="click" href="javascript:document.getElementById('logoutForm').submit()">SAIR</a>
+                  }
+              </text>
+          }
+          </button>
+      </div>
+    </header>
+    <h2 class="sh-text-title text-center">JOGANDO CONTRA LAZY</h2>
+    <div class="board-game">
+      <div class="displays">
+        <div class="top">
+          <ul class="grid"></ul>
+        </div>
+        <div class="bottom">
+          <ul class="grid"></ul>
+        </div>
+      </div>
+    </div>
+  </section>

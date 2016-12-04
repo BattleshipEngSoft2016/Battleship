@@ -1,9 +1,58 @@
 ﻿@{
     ViewBag.Title = "title";
-    //Layout = "_Layout";
+    //Layout = "_LayoutHeadGame";
+    Layout = "~/Views/Shared/_LayoutHeadGame.cshtml";
 }
 
-<section class="sh-background" id="home">
+<section class="sh-background" id="game-on">
+    <header class="cmp-header text-center">
+      <img class="cmp-simple-logo" src="../Images/logo-sem-vermelho.png" />
+      <div class="cmp-data-user sh-div-default js-data-user">
+        <h2>JOGADOR 123</h2>
+        <p>MOEDAS: 1000</p>
+        <p>PONTOS: 2000</p>
+          <button class="btn btn-primary">
+              @if (Request.IsAuthenticated) {
+              <text>
+                  @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                      @Html.AntiForgeryToken()
+                      <a id="click" href="javascript:document.getElementById('logoutForm').submit()">SAIR</a>
+                  }
+              </text>
+          }
+          </button>
+      </div>
+    </header>
+   
+    <div class="lyt-div-default text-center lyt-chose-skin sh-div-default active modal">
+      <h2>ESCOLHA SUA SKIN</h2> 
+      <select class="selectpicker center-block">
+        <option value="padrao">padrao</option>
+        <option value="galaxia">galaxia</option>
+        <option value="pirata">pirata</option>
+      </select>
+      <button class="center-block btn btn-success sh-text-default js-confirm-skin">CONFIRMAR</button>
+    </div>
+    <div class="lyt-div-default text-center lyt-position-boats sh-div-default not-active modal">
+      <h2>POSICIONE SEUS NAVIOS</h2>
+      <div class="board">
+        <div class="displays">
+          <div class="bottom">
+            <ul class="grid grid-position"></ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="topPanel">
+          <div class="layout">
+            <div class="buttons self">Posicionar</div>
+            <div class="buttons random">Random</div>
+          </div>
+        </div>
+        <div class="console"><span class="text"></span>
+        </div>
+      </div>
+    </div>
     
-</section>
+  </section>
 
