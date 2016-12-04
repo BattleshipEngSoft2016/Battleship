@@ -1,0 +1,208 @@
+﻿@charset "UTF-8";
+button a {
+    text-decoration: none;
+    color: white;
+}
+html {
+   width: 100%;
+   height: 100%; 
+}
+body {
+   width: 100%;
+   height: 100%; 
+}
+#game-on {
+  position: absolute; }
+  #game-on .modal {
+    position: relative;
+    margin: auto;
+    width: 800px; }
+  #game-on .lyt-search-player img,
+  #game-on .lyt-found-player img,
+  #game-on .lyt-position-boats img {
+    max-height: 80px; }
+  #game-on .lyt-search-player.not-active,
+  #game-on .lyt-found-player.not-active,
+  #game-on .lyt-position-boats.not-active {
+    display: none; }
+  #game-on .lyt-search-player.active,
+  #game-on .lyt-found-player.active,
+  #game-on .lyt-position-boats.active {
+    display: block; }
+  #game-on .lyt-chose-skin.not-active {
+    display: none; }
+  #game-on .lyt-chose-skin.active {
+    display: block; }
+  #game-on .lyt-chose-skin select {
+    margin-bottom: 20px; }
+  #game-on .lyt-chose-skin .lyt-main-boats div {
+    display: inline-block; }
+  #game-on .lyt-main-field {
+    width: 400px;
+    background-image: url("../images/mar.jpg");
+    background-size: cover; }
+  #game-on .temporario {
+    position: absolute;
+    bottom: 10;
+    right: 10; }
+
+#home .not-active {
+  display: none; }
+
+#home .active {
+  display: visible; }
+
+#home h2 {
+  font-size: 35px; }
+
+#home .lyt-main.active {
+  filter: brightness(30%); }
+
+#home .lyt-main div {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+#home .lyt-levels {
+  z-index: 2;
+  position: absolute;
+  left: 32%;
+  top: 30%;
+  transition: all 1s ease-in-out; }
+  #home .lyt-levels .btn-close {
+    position: relative;
+    left: 102%;
+    top: 5px; }
+  #home .lyt-levels .sh-text-title {
+    font-size: 25px; }
+  #home .lyt-levels .lyt-level {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    left: 20%; }
+    #home .lyt-levels .lyt-level button {
+      width: 60%; }
+
+#home .lyt-shops {
+  padding: 10px;
+  z-index: 2;
+  position: absolute;
+  left: 20%;
+  top: 25%;
+  transition: all 1s ease-in-out; }
+  #home .lyt-shops .btn-close {
+    position: relative;
+    left: 96%;
+    top: -5px; }
+  #home .lyt-shops img {
+    width: 70px;
+    height: 80px; }
+  #home .lyt-shops .sh-text-title {
+    font-size: 25px; }
+  #home .lyt-shops .item.sell {
+    display: inline-block;
+    background-color: #0040ff; }
+    #home .lyt-shops .item.sell button.sec-sell {
+      width: 60%; }
+  #home .lyt-shops .item {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 15px; }
+  #home .lyt-shops .item.buy {
+    display: inline-block;
+    background-color: #595959; }
+
+#home h2 {
+  margin-top: 5px; }
+
+#home .preview img, #home .preview button {
+  display: block;
+  margin: auto; }
+
+#home .preview, #home .sec-sell, #home .sec-buy {
+  display: inline-block; }
+
+#home .modal-loja {
+  z-index: 3;
+  position: absolute;
+  left: 32%;
+  top: 20%;
+  transition: all 1s ease-in-out; }
+  #home .modal-loja .btn-close {
+    position: relative;
+    left: 104%;
+    top: 5px; }
+  #home .modal-loja .plan {
+    margin-bottom: 10px; }
+    #home .modal-loja .plan img {
+      height: 250px;
+      width: 250px; }
+  #home .modal-loja .ships img {
+    display: block;
+    max-width: 250px;
+    max-height: 200px; }
+
+#login .lyt-img-login, #cadastro .lyt-img-login {
+  z-index: -1;
+  max-width: 400px; }
+
+#login form, #cadastro form {
+  margin-top: -100px; }
+  #login form input, #cadastro form input {
+    display: block;
+    margin-top: 10px;
+    border-radius: 7px; }
+  #login form h1, #cadastro form h1 {
+    display: block;
+    margin: auto; }
+  #login form input.lyt-btn-align, #cadastro form input.lyt-btn-align {
+    display: inline-block; }
+
+@font-face {
+  font-family: 'Black Ops One';
+  src: url("../assets/BlackOpsOne-Regular.ttf"); }
+
+body section {
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 50px; }
+
+.sh-background {
+  background-image: url("../images/fundo.png");
+  background-size: 100% 100%;
+  position: relative;
+  font-family: 'Black Ops One', cursive;
+  color: black;
+  font-size: 20px; }
+
+.sh-text-title {
+  color: white;
+  text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+  font-size: 45px; }
+
+.sh-text-default {
+  color: black;
+  font-size: 20px; }
+
+.sh-div-default {
+  background-color: white;
+  border-color: black;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+  vertical-align: top; }
+
+.cmp-header {
+  padding-top: 15px; }
+  .cmp-header .cmp-simple-logo,
+  .cmp-header .cmp-data-user {
+    display: inline-block; }
+  .cmp-header .cmp-simple-logo {
+    max-width: 300px;
+    margin-right: 50px;
+    margin-top: -50px;
+    z-index: -1; }
