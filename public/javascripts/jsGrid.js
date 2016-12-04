@@ -2,6 +2,7 @@
 var playerFleet, cpuFleet;
 var attemptedHits = [];
 var jsonShips = [];
+var count = 0;
 // Object Constructors
 function Fleet(name) {
 	this.name = name;
@@ -30,20 +31,6 @@ function Fleet(name) {
 		}
 		return true;
 	};
-	this.shipHit = function(ship_name) {
-		$(".text").text(output.hit(this.name));
-		return true;
-	}
-	this.checkIfHit = function(point) {
-		for(var i = 0; i < this.numOfShips; i++) {
-			if (this.ships[i].checkLocation(point)) {
-				this.ships[i].getRidOf(this.ships[i].hitPoints.indexOf(point));
-				if (this.ships[i].hitPoints == 0)return this.removeShip(i);
-				else return this.shipHit(this.ships[i].name);
-			}
-		}
-		return false;
-	};
 }
 
 function Ship(name){
@@ -66,9 +53,6 @@ function Ship(name){
 		}
 		return false;
 	};
-	this.getRidOf = function(pos) {
-		this.hitPoints.splice(pos, 1);
-	}
 }
 
 // Console obj
@@ -84,395 +68,6 @@ var output = {
 	sunk: function(user, type) { return " > " + user + "'s " + type + " foi afundado!" },
 	lost: function(name) { return " > " + name + " Você perdeu todos os seus navios!!  Game Over." },
 };
-
-// Objects for playing the game and bot for playing the computer
-var topBoard = {
-	allHits: [],
-	highlight: function(square) {
-		$(square).addClass("target").off("mouseleave").on("mouseleave", function() {
-			$(this).removeClass("target"); 
-		});
-
-		$(square).off("click").on("click", function() {
-			if(!($(this).hasClass("used"))) {
-				$(this).removeClass("target").addClass("used");
-				var num = parseInt($(this).attr("class").slice(15));
-				var bool = cpuFleet.checkIfHit(num);
-				if (false == bool) {
-					$(".text").text(output.miss("You"));
-					$(this).children().addClass("miss");
-				} else $(this).children().addClass("hit");
-				$(".top").find(".points").off("mouseenter").off("mouseover").off("mouseleave").off("click");
-				// Check if it's the end of the game
-				if (cpuFleet.ships.length == 0) {
- 					$(".top").find(".points").off("mouseenter").off("mouseover").off("mouseleave").off("click");
-
- 				} else setTimeout(bot.select, 800);
-			} // end of if
-		});
-	},
-}
-
-var bottomBoard = {
-	currentHits: [],
-	checkAttempt: function(hit) {
-		if (playerFleet.checkIfHit(hit)) {
-			// Insert hit into an array for book keeping
-			bottomBoard.currentHits.push(hit);
-      if (this.currentHits.length > 1) bot.prev_hit = true;
-			// display hit on the grid
-			$(".bottom").find("." + hit).children().addClass("hit");
-			if (bottomBoard.hasShipBeenSunk()) {
-				// clear flags
-				bot.hunting = bot.prev_hit = false;
-				if (bot.sizeOfShipSunk == bottomBoard.currentHits.length) {
-					bot.num_misses = bot.back_count = bot.nextMove.length = bottomBoard.currentHits.length = bot.sizeOfShipSunk = bot.currrent = 0;
-				} else {
-					bot.special =  bot.case1 = true;
-				}
-				// check for special cases
-				if (bot.specialHits.length > 0) bot.special = true;
-				// check for end of game.	
-			}
-			return true;
-		} else {
-			$(".bottom").find("." + hit).children().addClass("miss");
-			bot.current = bottomBoard.currentHits[0];
-			bot.prev_hit = false;
-			if (bottomBoard.currentHits.length > 1) {
-				bot.back = true;
-				bot.num_misses++;
-			}
-			if (bot.case2) {
-				bot.special = true;
-				bot.case2 = false;
-			}
-			return false;
-		}
-	},
-
-	hasShipBeenSunk: function() {
-		if (bot.sizeOfShipSunk > 0) return true;
-		else return false;
-	}
-}
-
-
-var bot = {
-	back: false,
-	hunting: false,
-	prev_hit: false,
-	first_hit: false,
-	special: false,
-	case1: false,
-	case2: false,
-	num_misses: 0,
-	back_count: 0,
-	randPool: [],
-	nextMove: [],
-	attempted: [],
-	specialHits: [],
-	direction: "",
-	current: 0,
-	numAttemptsAfterHit: 0,
-	sizeOfShipSunk: 0,
-	randomGen: function(size) {
-		return Math.floor(Math.random() * size);
-	},
-	select: function() {
-		if (bot.hunting) {
-			bot.battleLogic();
-		} else if (bot.special) {
-			bot.specialCase();
-		} else {
-			// grab a random number from the pool and increase attempts
-			bot.current = bot.randPool[bot.randomGen(bot.randPool.length)];
-			bot.attempted.push(bot.current);
-			bot.first_hit = true;
-			// remove current guess from the random pool and check if hit
-			bot.removeGuess(bot.randPool.indexOf(bot.current));
-			bot.hunting = bottomBoard.checkAttempt(bot.current);
-		}
-		setTimeout(highlightBoard(), 50);
-	},
-
-	removeGuess: function(index) {
-		bot.randPool.splice(index, 1);
-	},
-
-	battleLogic: function() {
-		if (bot.first_hit) {
-			bot.createMoves();
-			bot.first_hit = false;
-		}
-
-		if (bot.num_misses > 1) {
-			bot.specialCase();
-		} else if (bot.back) {
-			bot.back = false;
-			bot.backy();
-			bot.deployHit(bot.current);
-		} else if (bot.prev_hit) {
-			bot.continueHits();
-			bot.deployHit(bot.current);
-			console.log(bot.prev_hit);
-		} else {
-			bot.direction = bot.nextMove.pop();
-			console.log(bot.direction + " " + bot.current);
-			bot.getNumericalDirection(bot.direction);
-			bot.prev_hit = bot.deployHit(bot.current);
-			console.log(bot.prev_hit);
-		}
-	},
-
-	deployHit: function(hit) {
-		if (bot.special) {
-			bot.specialCase();
-		} else {
-			bot.attempted.push(hit);
-			bot.removeGuess(bot.randPool.indexOf(hit));
-			return bottomBoard.checkAttempt(hit);
-		}
-	},
-
-	createMoves: function() {
-		if(bot.current == 1) {
-			bot.getRandomMoves(["right", "down"]);
-		}
-		else if(bot.current == 10) {
-			bot.getRandomMoves(["left", "down"]);
-		}
-		else if(bot.current == 91) {
-			bot.getRandomMoves(["up", "right"]);
-		} 
-		else if(bot.current == 100) {
-			bot.getRandomMoves(["left", "up"]);
-		}
-		else if(!(bot.current % 10)){
-			bot.getRandomMoves(["up", "down", "left"]);
-		}
-		else if(bot.current < 10) {
-			bot.getRandomMoves(["right", "down", "left"]);
-		}
-		else if(bot.current % 10 == 1) {
-			bot.getRandomMoves(["up", "right", "down"]);
-		}
-		else if(bot.current > 91) {
-			bot.getRandomMoves(["up", "right", "left"]);
-		}
-		else {
-			bot.getRandomMoves(["up", "right", "down", "left"]);
-		}
-	},
-
-	getRandomMoves: function(possibleMoves) {
-		while (possibleMoves.length != 0) {
-			// pick a random direction
-			var dir = bot.randomGen(possibleMoves.length);
-			// Go Up
-			if (possibleMoves[dir] == "up") {
-				if (bot.randPool.some(function(x) { return x == bot.current - 10; })) {
-					bot.nextMove.push("up");
-				}
-			}
-			// Go right
-			if (possibleMoves[dir] == "right") {
-				if (bot.randPool.some(function(x) { return x == bot.current + 1; })) {
-					bot.nextMove.push("right");
-				}
-			}
-			// Go down
-			if (possibleMoves[dir] == "down") {
-				if (bot.randPool.some(function(x) { return x == bot.current + 10; })) {
-					bot.nextMove.push("down");
-				}
-			}
-			// Go left
-			if (possibleMoves[dir] == "left") {
-				if (bot.randPool.some(function(x) { return x == bot.current - 1; })) {
-					bot.nextMove.push("left");
-				}
-			}
-			possibleMoves.splice(dir, 1);
-		}
-	},
-
-	getNumericalDirection: function(dir) {
-		if (dir == "up") bot.current -= 10;
-		if (dir == "right") bot.current += 1;
-		if (dir == "down") bot.current += 10;
-		if (dir == "left") bot.current -= 1;
-		console.log(bot.current + " attempted " + bot.attempted);
-		// check if already used
-		if (bot.attempted.some(function(x) { return x == bot.current; }) && bot.specialHits.length == 0) {
-			bot.current = bottomBoard.currentHits[0];
-			if (bot.back_count > 1) bot.special = true;
-			else bot.backy();
-		}
-		return false;
-	},
-
-	continueHits: function() {
-		console.log("cont " + bot.direction);
-		if (bot.direction == "up") {
-			if (bot.checkLocation("up")) {
-				bot.direction = "down";
-				return bot.getNumericalDirection(bot.direction);
-			} else return bot.getNumericalDirection(bot.direction);
-		}
-		if (bot.direction == "right") {
-			if (bot.checkLocation("right")) {
-				bot.direction = "left";
-				return bot.getNumericalDirection(bot.direction);
-			} else return bot.getNumericalDirection(bot.direction);
-		}
-		if (bot.direction == "down") {
-			if (bot.checkLocation("down")) {
-				bot.direction = "up";
-				return bot.getNumericalDirection(bot.direction);
-			} else return bot.getNumericalDirection(bot.direction);
-		}
-		if (bot.direction == "left") {
-			if (bot.checkLocation("left")) {
-				bot.direction = "right";
-				return bot.getNumericalDirection(bot.direction);
-			} else return bot.getNumericalDirection(bot.direction);
-		}
-	},
-
-	backy: function() {
-		bot.back_count++;
-		if (bot.direction == "up") {
-			bot.direction = "down";
-			return bot.continueHits();
-		}
-		if (bot.direction == "right") {
-			bot.direction = "left";
-			return bot.continueHits();
-		}
-		if (bot.direction == "down") {
-			bot.direction = "up";
-			return bot.continueHits();
-		}
-		if (bot.direction == "left") {
-			bot.direction = "right";
-			return bot.continueHits();
-		}
-	},
-
-	checkLocation: function(dir) {
-		if (dir == "up") {
-			if (bot.current < 11) return true
-		}
-		if (dir == "right") {
-			if (bot.current % 10 == 0) return true
-		}
-		if (dir == "down") {
-			if (bot.current > 90) return true
-		}
-		if (dir == "left") {
-			if (bot.current % 10 == 1) return true
-		}
-		return false;
-	},
-
-	specialCase: function() {
-		bot.num_misses = bot.back_count = bot.nextMove.length = 0;
-		if (bot.case1) {
-			bot.prev_hit = true;
-			if (bot.getNewCurrent(bot.direction)) {
-				bottomBoard.currentHits.length = 0;
-				bottomBoard.currentHits.push(bot.current);
-				bot.first_hit = true;
-				bot.prev_hit = false;
-			}
-			bot.special = bot.case1 = bot.back = false;
-			bot.hunting = true;
-			bot.sizeOfShipSunk = 0;
-			bot.battleLogic();
-		} else {
-			if (bot.specialHits.length == 0) {
-				for(var i = 0; i < bottomBoard.currentHits.length; i++) {
-					bot.specialHits.push(bottomBoard.currentHits[i]);
-				}
-				bottomBoard.currentHits.length = 0;
-			}
-			bot.current = bot.specialHits.pop();
-			bottomBoard.currentHits.push(bot.current);
-			bot.special = bot.back = bot.prev_hit = false;
-			bot.first_hit = bot.hunting = true;
-			bot.battleLogic();
-		}
-	},
-
-	getNewCurrent: function(direction) {
-		var difference = bottomBoard.currentHits.length - bot.sizeOfShipSunk;
-		if (bot.direction == "up") {
-			bot.direction = "down";
-			if (difference > 1) {
-				bot.current += 10 * (bottomBoard.currentHits.length - 1);
-				var temp = bot.current + (10 * (difference - 1));
-				bottomBoard.currentHits.length = 0;
-				for (var i = 0; i < difference; i++) {
-					bottomBoard.currentHits.push(temp);
-					temp += 10;
-				}
-				bot.case2 = true;
-				return false;
-			}
-			bot.current += 10 * bot.sizeOfShipSunk;
-			return true;
-		}
-		if (bot.direction == "right") {
-			bot.direction = "left";
-			if (difference > 1) {
-				bot.current -= bottomBoard.currentHits.length - 1;
-				var temp = bot.current + (difference - 1);
-				bottomBoard.currentHits.length = 0;
-				for (var i = 0; i < difference; i++) {
-					bottomBoard.currentHits.push(temp);
-					temp -= 1;
-				}
-				bot.case2 = true;
-				return false;
-			}
-			bot.current -= bot.sizeOfShipSunk;
-			return true;
-		}
-		if (bot.direction == "down") {
-			bot.direction = "up";
-			if (difference > 1) {
-				bot.current -= 10 * (bottomBoard.currentHits.length - 1);
-				var temp = bot.current - (10 * (difference - 1));
-				bottomBoard.currentHits.length = 0;
-				for (var i = 0; i < difference; i++) {
-					bottomBoard.currentHits.push(temp);
-					temp -= 10;
-				}
-				bot.case2 = true;
-				return false;
-			}
-			bot.current -= 10 * bot.sizeOfShipSunk;
-			return true;
-		}
-		if (bot.direction == "left") {
-			bot.direction = "right";
-			if (difference > 1) {
-				bot.current += bottomBoard.currentHits.length - 1;
-				var temp = bot.current - (difference - 1);
-				bottomBoard.currentHits.length = 0;
-				for (var i = 0; i < difference; i++) {
-					bottomBoard.currentHits.push(temp);
-					temp += 1;
-				}
-				bot.case2 = true;
-				return false;
-			}
-			bot.current += bot.sizeOfShipSunk;
-			return true;
-		}
-	}
-}
 
 //  Create the games grids and layout
 $(document).ready(function() {
@@ -670,10 +265,10 @@ function setShip(location, ship, orientation, genericFleet, type) {
 			genericFleet.ships[genericFleet.currentShip].populateHorzHits(location);
 			$(".text").text(output.placed(genericFleet.ships[genericFleet.currentShip].name + " foi"));
 			var j = 1;
-			var fleet = {type:"", positions:[], horizontal:true};
+			var fleet = {TipoBarco:"", Coordenadas:[], IdBarco:count};
 			for (var i = location; i < (location + ship.length); i++) {
-				fleet.type = genericFleet.ships[genericFleet.currentShip].name;
-				fleet.positions.push($(".bottom ." + i)[0].id);
+				fleet.TipoBarco = genericFleet.ships[genericFleet.currentShip].name;
+				fleet.Coordenadas.push({Valor:$(".bottom ." + i)[0].id});
 				$(".bottom ." + i).addClass(genericFleet.ships[genericFleet.currentShip].name);
 				$(".bottom ." + i).addClass(genericFleet.ships[genericFleet.currentShip].name+j);
 				$(".bottom ." + i).addClass("horz-ship");
@@ -695,10 +290,10 @@ function setShip(location, ship, orientation, genericFleet, type) {
 			genericFleet.ships[genericFleet.currentShip].populateVertHits(location);
 			$(".text").text(output.placed(genericFleet.ships[genericFleet.currentShip].name + " foi"));
 			var j = 1;
-			var fleet = {type:"", positions:[], horizontal:false};
+			var fleet = {TipoBarco:"", Coordenadas:[], IdBarco:count};
 			for (var i = location; i < (location + ship.length); i++) {
-				fleet.type = genericFleet.ships[genericFleet.currentShip].name;
-				fleet.positions.push($(".bottom ." + (location + inc))[0].id);
+				fleet.TipoBarco = genericFleet.ships[genericFleet.currentShip].name;
+				fleet.Coordenadas.push({Valor:$(".bottom ." + (location + inc))[0].id});
 				$(".bottom ." + (location + inc)).addClass(genericFleet.ships[genericFleet.currentShip].name);
 				$(".bottom ." + (location + inc)).addClass(genericFleet.ships[genericFleet.currentShip].name+j);
 				$(".bottom ." + (location + inc)).addClass("vert-ship");
@@ -760,26 +355,9 @@ function setShip(location, ship, orientation, genericFleet, type) {
 
 
 function startGame() {	
- 	/*$(".layout").fadeOut("fast", function() {
- 		$(".console").css( { "margin-top" : "31px" } );
- 	});*/
 	
 	$(".topPanel").css( { "display" : "block" } );
 		document.getElementsByClassName('layout')[0].innerHTML = " <div class='buttons wartime' style='width:240px;'>Pronto pra guerra!</div>";
 	
  	$(".text").text(output.start);
- 	// Generate all possible hits for Player 1
- 	//for (var i = 0; i < 100; i++) bot.randPool[i] = i + 1;
- 	//highlightBoard();*/
  }
-
- function highlightBoard() {
- 	if (playerFleet.ships.length == 0) {
- 		$(".top").find(".points").off("mouseenter").off("mouseleave").off("click");
- 	} else {
-	 	$(".top").find(".points").off("mouseenter mouseover").on("mouseenter mouseover", function() {
-			// only allow target highlight on none attempts
-			if(!($(this).hasClass("used"))) topBoard.highlight(this);
-		});
-	 }
-}
