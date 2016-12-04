@@ -43,7 +43,7 @@ namespace UsingWebSockets
 
             if (!string.IsNullOrEmpty(id))
             {
-               Id = int.Parse(id);
+                Id = int.Parse(id);
             }
 
             if (clients.Count >= 2)
@@ -52,11 +52,19 @@ namespace UsingWebSockets
             }
             else if (clients.Count == 1)
             {
-                clients.FirstOrDefault().Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Mensagem, string.Format("{0} entrou no Jogo", name))));
+                if (ObterOponente().NivelId == this.NivelId)
+                {
+                    clients.Broadcast(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Mensagem, string.Format("{0} entrou no Jogo", name))));
 
-                clients.Add(this);
+                    clients.Add(this);
 
-                this.Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Montar, "Monte seu Tabuleiro")));
+                    clients.Broadcast(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Montar, "Monte seu Tabuleiro")));
+                }
+                else
+                {
+                    this.Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.NivelDiferente, string.Format("Não existe usuário com mesmo nível"))));
+                }
+
             }
             else
             {
@@ -64,7 +72,6 @@ namespace UsingWebSockets
 
                 clients.Broadcast(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Mensagem, string.Format("{0} entrou no Jogo", name))));
 
-                this.Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Montar, "Monte seu Tabuleiro")));
             }
 
         }
@@ -109,16 +116,19 @@ namespace UsingWebSockets
 
                         }
                         break;
-              
-                        case (int)TipoMensagem.Jogada:
+
+
+                    case (int)TipoMensagem.Jogada:
                         {
                             var jogada = envio.Objeto.FirstOrDefault();
 
                             if (jogada != null)
                             {
                                 var opoente = ObterOponente();
-                                    
-                                if(opoente != null)
+
+
+
+                                if (opoente != null)
                                 {
                                     var barco = opoente.Barcos.FirstOrDefault(x => x.Coordenadas.Any(y => y.Valor == jogada.ToString() && !y.Destruido));
 
@@ -154,10 +164,15 @@ namespace UsingWebSockets
 
                         ObterOponente().Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.MandoDeJogo, "Sua Vez !!!!")));
                         break;
+
+                    case (int)TipoMensagem.TempoEsgotado:
+                        ObterOponente().Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.MandoDeJogo, "Sua Vez !!!!")));
+                        break;
                 }
 
                 var webSocketHandler = clients.SingleOrDefault(r => ((MicrosoftWebSockets)r).name == "Julio");
-                
+
+
                 if (webSocketHandler != null)
                     webSocketHandler.Send("Rola");
 
@@ -176,17 +191,18 @@ namespace UsingWebSockets
 
         private void AtualizarBarcos(MicrosoftWebSockets client)
         {
-            ((MicrosoftWebSockets) clients.FirstOrDefault(x => ((MicrosoftWebSockets) x).Id == client.Id)).Barcos = client.Barcos;
+            ((MicrosoftWebSockets)clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id == client.Id)).Barcos = client.Barcos;
 
-            clients.FirstOrDefault(x => ((MicrosoftWebSockets) x).Id == client.Id).Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Atingido, "Você foi atingindo !!!")));
-           
+            clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id == client.Id).Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Atingido, "Você foi atingindo !!!")));
+
+
         }
 
         private void VerificarFinalJogo()
         {
             foreach (var client in clients)
             {
-                var item = (MicrosoftWebSockets) client;
+                var item = (MicrosoftWebSockets)client;
 
                 if (item.Barcos.All(x => x.Destruido()))
                 {
@@ -217,13 +233,13 @@ namespace UsingWebSockets
 
                 var numero = Barcos.Select(x => x.Coordenadas.Count(y => !y.Destruido)).Sum(x => x);
 
-                if (user != null) user.Pontos += numero * 10;
+                if (user != null) user.Pontos += (numero * 10);
 
                 db.SaveChanges();
             }
         }
 
-        public MicrosoftWebSockets ObterOponente()
+        private MicrosoftWebSockets ObterOponente()
         {
             return ((MicrosoftWebSockets)clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id != Id));
         }

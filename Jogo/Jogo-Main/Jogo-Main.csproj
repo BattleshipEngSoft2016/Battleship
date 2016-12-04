@@ -199,6 +199,8 @@
     <Compile Include="Models\NivelModels.cs" />
     <Compile Include="Models\Posicao.cs" />
     <Compile Include="Models\Retorno\Retorno.cs" />
+    <Compile Include="Models\SkinModels.cs" />
+    <Compile Include="Models\TabuleiroModels.cs" />
     <Compile Include="Models\TipoMensagem.cs" />
     <Compile Include="Models\TipoMensagemRetorno.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
