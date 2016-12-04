@@ -20,5 +20,6 @@ namespace Jogo_Main.Models
         Perdeu = 12,
         Finalizado = 13,
         MandoDeJogo = 14,
+        NivelDiferente = 15
     }
 }
