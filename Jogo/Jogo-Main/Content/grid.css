@@ -1,0 +1,449 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+#main {
+	width: 700px;
+	height: 800px;
+	margin: auto;
+
+}
+
+.board {
+	/*position: absolute;*/
+	width: auto; 
+	height: auto;
+	/*margin: 25px auto;
+	border: 2px solid #73B1B7;
+	border-radius: 10px;*/
+}
+
+.board-game {
+	display: table;
+    margin: 0 auto;
+	width: auto; 
+	height: auto;
+}
+
+.displays {
+	position: relative;
+	margin: 25px;
+}
+
+.top {
+	/*width: 320px;
+	height: 320px;*/
+	/*background: #008B8B;*/
+	background-image: url('../images/mar.jpg');
+	background-size: cover;
+	border-left: 2px solid #f00/*#8DEEEE*/;
+	border-bottom: 2px solid #f00/*#8DEEEE*/;
+	float: right;
+	margin: 0px 30px 0px 0px;
+
+}
+
+.bottom {
+	/*width: 320px;
+	height: 320px;*/
+	/*background: #008B8B;*/
+	background-image: url('../images/mar.jpg');
+	background-size: cover;
+	/*border-left: 1px solid #8DEEEE;
+	border-bottom: 1px solid #8DEEEE;*/
+	border-left: 2px solid;
+	border-bottom: 2px solid;
+	float:left;
+	margin: 0px 30px 0px 0px;
+}
+
+.grid {
+	position: absolute;
+	width: 446px;
+	height: 446px;
+	background: rgba(0,0,0,0);
+	margin-left: 28px;
+	font-size: 0;
+}
+
+.grid-position {
+	margin-left: 23px;
+}
+
+.aTops {
+	width: 29px;
+	height: 29px;
+	border-top: 2px solid /*#8DEEEE*/;
+	border-right: 2px solid /*#8DEEEE*/;
+	display: table-cell;
+	vertical-align: middle;
+
+	font-weight: bold;
+	color: black;
+	text-align: center;
+}
+
+.top > .aTops{
+	border-top: 2px solid #f00;
+	border-right: 2px solid #f00;
+}
+
+.aLeft {
+	position: relative;
+	width: 29px;
+	height: 29px;
+	border-top: 2px solid /*#8DEEEE*/;
+	border-right: 2px solid /*#8DEEEE*/;
+	display: table;
+	line-height: 28px;
+
+	font-weight: bold;
+	color: black;
+	text-align: center;
+}
+
+.top > .aLeft{
+	border-top: 2px solid #f00;
+	border-right: 2px solid #f00;
+}
+
+.points {
+	position: relative;
+	width: 29px;
+	height: 29px;
+	border-top: 2px solid /*#8DEEEE*/;
+	border-right: 2px solid /*#8DEEEE*/;
+	display: inline-block;
+}
+
+.top > .grid > .points{
+	border-top: 2px solid #f00;
+	border-right: 2px solid #f00;
+}
+
+.highlight {
+	background: rgba(144,144,144,0.9);
+}
+
+.hidezero {
+	color: /*#008B8B*/;
+	color: black;
+}
+
+.hole {
+	position: relative;
+	width: 10px;
+	height: 10px;
+	margin: 9px;
+	border: 1px solid #8DEEEE;
+	border-radius: 50%;
+	display: block;
+}
+
+
+.panel {
+	float: right;
+	width: 275px;
+	height: auto;
+	/*margin-top: 25px;*/
+}
+
+.topPanel {
+	width: 275px;
+	height: auto;
+	border: 2px solid #73B1B7;
+	border-radius: 10px;
+	display: inline-block;
+}
+
+.bottomPanel {
+	
+}
+
+.console {
+	position: relative;
+	width: 275px;
+	height: auto;
+	margin-top: 36px;
+	display: block;
+
+	background: rgba(144,144,144,0.6);
+	border: 2px solid #73B1B7;
+	border-radius: 10px;
+
+	color: green;
+}
+
+.text {
+	position: relative;
+	width: 250px;
+	height: auto;
+	margin: 12px;
+	display: inline-block;
+}
+
+.buttons {
+	position: relative;
+	display: block;
+	width: 150px;
+	height: 40px;
+
+	margin: 50px auto;
+	border: 2px solid #cccccc;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+
+	text-align: center;
+	line-height: 40px;
+
+	cursor: pointer;
+}
+
+.buttons:hover {
+	background: rgba(169,169,169,0.3);
+}
+
+.target {
+	background: rgba(250, 10, 10, 0.7);
+}
+
+.border-nav{
+	border-left: 1px solid /*#8DEEEE*/;
+}
+
+.porta_avioes {
+	/*background: rgba(36,36,36,1);*/
+}
+
+.porta_avioes1 {
+    background-image: url(../images/porta_avioes.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 0%;
+    background-position-y: 0px;
+	border-right:none;
+}
+
+.porta_avioes2 {
+    background-image: url(../images/porta_avioes.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 25%;
+    background-position-y: 0px;
+	border-right:none;
+}
+
+.porta_avioes3 {
+    background-image: url(../images/porta_avioes.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 50%;
+    background-position-y: 0px;
+	border-right:none;
+}
+
+.porta_avioes4 {
+    background-image: url(../images/porta_avioes.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 75%;
+    background-position-y: 0px;
+	border-right:none;
+}
+
+.porta_avioes5 {
+    background-image: url(../images/porta_avioes.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 100%;
+    background-position-y: 0px;
+}
+
+.vert-ship{
+	-ms-transform: rotate(91deg); /* IE 9 */
+    -webkit-transform: rotate(91deg); /* Chrome, Safari, Opera */
+    transform: rotate(91deg);
+}
+
+.destroier {
+	background: rgba(49,49,49,0.9);
+}
+
+.encouraçado {
+	background: rgba(64,64,64,0.9);
+}
+
+.cruzador {
+	background: rgba(81,81,81,0.7);
+}
+
+.submarino {
+	background: rgba(100,100,100,0.7);
+}
+
+.one {
+
+}
+
+.self {
+}
+
+.random {
+
+}
+
+.error {
+	
+}
+
+.turn {
+
+}
+
+.hit {
+	position: relative;
+	margin: 1.5px;
+	width: 15px;
+	height: 15px;
+	top: 4px;
+	left: 4px;
+
+	
+	background: rgb(220,10,10);
+	border: 1px solid red;
+	border-radius: 100%;
+
+	display: block;
+
+	animation-name: expand;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+ 	animation-timing-function: linear;
+ 	animation-fill-mode: none;
+
+	-webkit-animation-name: expand;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+ 	-webkit-animation-timing-function: linear;
+ 	-webkit-animation-fill-mode: none;
+
+ 	-moz-animation-name: expand;
+	-moz-animation-duration: 0.5s;
+	-moz-animation-iteration-count: 1;
+ 	-moz-animation-timing-function: linear;
+ 	-moz-animation-fill-mode: none;
+}
+
+.miss {
+	position: relative;
+	margin: 1.5px;
+	width: 15px;
+	height: 15px;
+	top: 4px;
+	left: 4px;
+	background: rgb(250,250,250);
+	border: 1px solid white;
+	border-radius: 100%;
+	display: block;
+
+	animation: expand;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+ 	animation-timing-function: linear;
+ 	animation-fill-mode: none;
+
+	-webkit-animation: expand;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 1;
+ 	-webkit-animation-timing-function: linear;
+ 	-webkit-animation-fill-mode: none;
+
+ 	-moz-animation: expand;
+	-moz-animation-duration: 0.5s;
+	-moz-animation-iteration-count: 1;
+ 	-moz-animation-timing-function: linear;
+ 	-moz-animation-fill-mode: none;
+
+}
+
+.hitLi{
+	background-color:red;
+	cursor:not-allowed;
+}
+
+.missLi{
+	background-color:blue;
+	cursor:not-allowed;
+}
+
+@keyframes expand {
+	0% {
+		width: 0px;
+		height: 0px;
+		top: 12.5px;
+		left: 12.5px;
+	}
+	50% {
+		width: 25px;
+		height: 25px;
+		top: 0px;
+		left: 0px;
+	}
+	100% {
+		width: 15px;
+		height: 15px;
+		top: 5px;
+		left: 5px;
+	}
+}
+
+@-webkit-keyframes expand {
+	0% {
+		width: 0px;
+		height: 0px;
+		top: 12.5px;
+		left: 12.5px;
+	}
+	50% {
+		width: 25px;
+		height: 25px;
+		top: 0px;
+		left: 0px;
+	}
+	100% {
+		width: 15px;
+		height: 15px;
+		top: 5px;
+		left: 5px;
+	}
+}
+
+@-moz-keyframes expand {
+	0% {
+		width: 0px;
+		height: 0px;
+		top: 12.5px;
+		left: 12.5px;
+	}
+	50% {
+		width: 25px;
+		height: 25px;
+		top: 0px;
+		left: 0px;
+	}
+	100% {
+		width: 15px;
+		height: 15px;
+		top: 5px;
+		left: 5px;
+	}
+}
