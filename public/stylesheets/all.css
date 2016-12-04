@@ -49,6 +49,12 @@
     bottom: 10;
     right: 10; }
 
+#home .not-active {
+  display: none; }
+
+#home .active {
+  display: visible; }
+
 #home h2 {
   font-size: 35px; }
 
@@ -66,10 +72,10 @@
   left: 32%;
   top: 30%;
   transition: all 1s ease-in-out; }
-  #home .lyt-levels.not-active {
-    display: none; }
-  #home .lyt-levels.active {
-    display: visible; }
+  #home .lyt-levels .btn-close {
+    position: relative;
+    left: 102%;
+    top: 5px; }
   #home .lyt-levels .sh-text-title {
     font-size: 25px; }
   #home .lyt-levels .lyt-level {
@@ -86,15 +92,15 @@
   z-index: 2;
   position: absolute;
   left: 20%;
-  top: 30%;
+  top: 25%;
   transition: all 1s ease-in-out; }
+  #home .lyt-shops .btn-close {
+    position: relative;
+    left: 96%;
+    top: -5px; }
   #home .lyt-shops img {
     width: 70px;
     height: 80px; }
-  #home .lyt-shops.not-active {
-    display: none; }
-  #home .lyt-shops.active {
-    display: visible; }
   #home .lyt-shops .sh-text-title {
     font-size: 25px; }
   #home .lyt-shops .item.sell {
@@ -120,6 +126,26 @@
 #home .preview, #home .sec-sell, #home .sec-buy {
   display: inline-block; }
 
+#home .modal-loja {
+  z-index: 3;
+  position: absolute;
+  left: 32%;
+  top: 20%;
+  transition: all 1s ease-in-out; }
+  #home .modal-loja .btn-close {
+    position: relative;
+    left: 104%;
+    top: 5px; }
+  #home .modal-loja .plan {
+    margin-bottom: 10px; }
+    #home .modal-loja .plan img {
+      height: 250px;
+      width: 250px; }
+  #home .modal-loja .ships img {
+    display: block;
+    max-width: 250px;
+    max-height: 200px; }
+
 #login .lyt-img-login, #cadastro .lyt-img-login {
   z-index: -1;
   max-width: 400px; }
@@ -143,7 +169,7 @@
 body section {
   width: 100%;
   min-height: 100%;
-  padding-bottom: 20px; }
+  padding-bottom: 50px; }
 
 .sh-background {
   background-image: url("../images/fundo.png");

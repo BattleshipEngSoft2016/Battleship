@@ -18,6 +18,7 @@ html
             li FULANO (1500)
             li SNIPER (1200)
       .lyt-levels.sh-div-default.not-active
+        button.btn.btn-danger.btn-close X
         h2 ESCOLHA A DIFICULDADE
         .js-appended-levels
           a.lyt-level.center-block(href='game_on.html?level=1')
@@ -27,11 +28,12 @@ html
           a.lyt-level.center-block(href='game_on.html?level=3')
             button.btn.btn-primary.sh-text-title DIFÍCIL
       .lyt-shops.sh-div-default.not-active
+        button.btn.btn-danger.btn-close X
         h2.text-center LOJA SKINS
         .item.sell
           .preview
             img(src="../images/piratas_loja.jpg")
-            button.btn.btn-success VER
+            button.pirata.btn.btn-success.btn-preview VER
           .sec-sell
             h2 SKIN PIRATA
             p PREÇO: 100 MOEDAS
@@ -39,7 +41,7 @@ html
         .item.sell
           .preview
             img(src="../images/espacial_loja.jpg")
-            button.btn.btn-success VER
+            button.espacial.btn.btn-success.btn-preview VER
           .sec-sell
             h2 SKIN FUTURO
             p PREÇO: 100 MOEDAS
@@ -48,7 +50,7 @@ html
         .item.buy
           .preview
             img(src="../images/cocacola_loja.jpg")
-            button.btn.btn-success VER
+            button.coca.btn.btn-success.btn-preview VER
           .sec-buy
             h2 SKIN COCA
             p PREÇO: GRÁTIS
@@ -56,35 +58,51 @@ html
         .item.sell
           .preview
             img(src="../images/sushi_loja.jpg")
-            button.btn.btn-success VER
+            button.sushi.btn.btn-success.btn-preview VER
           .sec-sell
             h2 SKIN SUSHI
             p PREÇO: 100 MOEDAS
             button.btn.btn-danger COMPRAR
 
       //- modais
-      .modal-pirates
+      .modal-pirates.modal-loja.sh-div-default.not-active
+        button.btn.btn-danger.btn-close X
         .plan
-          img(src="../images/pirata")
+          img(src="../images/mar.jpg")
         .ships
-          img(src="../images/pirata")
-      .modal-space
+          img.center-block(src="../images/pirata/5.png")
+          img.center-block(src="../images/pirata/4.png")
+          img.center-block(src="../images/pirata/3.png")
+          img.center-block(src="../images/pirata/2.png")
+          img.center-block(src="../images/pirata/1.png")
+      .modal-space.modal-loja.sh-div-default.not-active
+        button.btn.btn-danger.btn-close X
         .plan
-          img(src="../images/aeronave")
+          img(src="../images/galaxia.jpg")
         .ships
-          img(src="../images/aeronave")
-      .modal-coca
+          img.center-block(src="../images/aeronave/5.png")
+          img.center-block(src="../images/aeronave/4.png")
+          img.center-block(src="../images/aeronave/3.png")
+          img.center-block(src="../images/aeronave/2.png")
+          img.center-block(src="../images/aeronave/1.png")
+      .modal-coca.modal-loja.sh-div-default.not-active
+        button.btn.btn-danger.btn-close X
         .plan
           img(src="../images/coca-mar.jpg")
         .ships
-          img(src="../images/coca/Coca129.png")
-          img(src="../images/coca/Coca229.png")
-          img(src="../images/coca/Coca329.png")
-          img(src="../images/coca/Coca429.png")
-          img(src="../images/coca/Coca529.png")
-      .modal-sushi
+          img.center-block(src="../images/coca/Coca529.png")
+          img.center-block(src="../images/coca/Coca429.png")
+          img.center-block(src="../images/coca/Coca329.png")
+          img.center-block(src="../images/coca/Coca229.png")
+          img.center-block(src="../images/coca/Coca129.png")
+      .modal-sushi.modal-loja.sh-div-default.not-active
+        button.btn.btn-danger.btn-close X
         .plan
-          img(src="../images")
+          img(src="../images/sushi-mar.jpg")
         .ships
-          img(src="../images")
+          img.center-block(src="../images/sushi/5.png")
+          img.center-block(src="../images/sushi/4.png")
+          img.center-block(src="../images/sushi/3.png")
+          img.center-block(src="../images/sushi/2.png")
+          img.center-block(src="../images/sushi/1.png")
     script(src='../javascripts/all.js')
