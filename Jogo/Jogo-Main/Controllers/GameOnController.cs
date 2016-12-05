@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Jogo_Main.Models;
 using Microsoft.Web.WebPages.OAuth;
 using Newtonsoft.Json;
+using WebMatrix.WebData;
 
 namespace Jogo_Main.Controllers
 {
@@ -22,6 +23,20 @@ namespace Jogo_Main.Controllers
             using (var db = new NiveisContext())
             {
                 ViewBag.Nivel = JsonConvert.SerializeObject(db.Niveis.FirstOrDefault(x => x.Id  == nivelId));
+            }
+            
+            using (var db = new UsersContext())
+            {
+                var id = WebSecurity.GetUserId(User.Identity.Name);
+
+                var user = db.UserProfiles.FirstOrDefault(x => x.UserId == id);
+
+                if (user != null)
+                {
+                    ViewBag.Pontos = user.Pontos;
+
+                    ViewBag.Saldo = user.Saldo;
+                }
             }
 
             return View();
