@@ -70,7 +70,8 @@ function iniciaSocket(cNome, idNivel, idUser, tabuleiro) {
             $('#game-on').find('.lyt-position-boats').addClass('active');
 
             //var m = '{"TipoMensagem":1,"Objeto":[{"TipoBarco":"submarino","Coordenadas":["c10"],"IdBarco":5}]}';
-            ws.send(tab);
+            var m = '{"TipoMensagem":1,"Objeto":' + tab + '}';
+            ws.send(m);
         } else if (tipo == 14) {
             lVez = true;
             alert('É a sua vez, você tem 15 segundos');
@@ -182,6 +183,10 @@ $(document).ready(function () {
     ul.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
     ul.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
     $('.grid').css('cssText', 'background-image: url(' + skins.ImagemCoordenada + ');  !important;');
+    var x;
+    if (typeof tab != "undefined") {
+        x = JSON.parse(tab);
+    }
 
 
     var lis = $(".bottom > .grid > li");
