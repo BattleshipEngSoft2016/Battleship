@@ -183,7 +183,7 @@ $(document).ready(function () {
     ul.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
     ul.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
 	if(typeof skins.ImagemCoordenada != "undefined"){
-		$('.grid').css('cssText', 'background-image: url(' + skins.ImagemCoordenada + ');  !important;');
+		$('.bottom').css('cssText', 'background-image: url(' + skins.ImagemCoordenada + ');  !important;');
 	}
     var x;
     if (typeof tab != "undefined") {
@@ -205,31 +205,14 @@ $(document).ready(function () {
             lis[i].id = String.fromCharCode(97 + aux) + (j + 1);
             j++;
         }
-    }
-
-    var lis = $(".top > .grid > li");
-    var j = 0;
-    var aux = 0;
-    var hasId = false;
-    var tipoBarco;
-    for (i = 0; i < lis.length; i++) {
-        if (j < tamGrid) {
-            lis[i].id = String.fromCharCode(97 + aux) + (j + 1);
-            lis[i].addEventListener("click", hit, false);
-            j++
-        }
-        else {
-            j = 0;
-            aux++;
-            lis[i].id = String.fromCharCode(97 + aux) + (j + 1);
-            lis[i].addEventListener("click", hit, false);
-            j++;
-        }
-
-        if (typeof x != "undefined") {
-            for (var j = 0; j < x.length; j++) {
-                hasId = jQuery.grep(x[j].Coordenadas, function (n, i) {
-                    tipoBarco = x[j].TipoBarco;
+		
+		 if (typeof x != "undefined") {
+            for (var k = 0; k < x.length; k++) {
+                hasId = jQuery.grep(x[k].Coordenadas, function (n, w) {
+                    tipoBarco = x[k].TipoBarco;
+					if(n == lis[i].id){
+						$('#'+lis[i].id).addClass(tipoBarco+(w+1));
+					}
                     return (n == lis[i].id);
                 }).length > 0;
             }
@@ -253,6 +236,26 @@ $(document).ready(function () {
                 }
                 $("#"+lis[i].id).css('cssText', 'background-image: url(' + urlNav + ');  !important;');
             }
+        }
+    }
+
+    var lis = $(".top > .grid > li");
+    var j = 0;
+    var aux = 0;
+    var hasId = false;
+    var tipoBarco;
+    for (i = 0; i < lis.length; i++) {
+        if (j < tamGrid) {
+            lis[i].id = String.fromCharCode(97 + aux) + (j + 1);
+            lis[i].addEventListener("click", hit, false);
+            j++
+        }
+        else {
+            j = 0;
+            aux++;
+            lis[i].id = String.fromCharCode(97 + aux) + (j + 1);
+            lis[i].addEventListener("click", hit, false);
+            j++;
         }
     }
 
