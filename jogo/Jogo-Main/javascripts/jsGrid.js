@@ -13,6 +13,7 @@ var nivelId = 0;
 var ships = [];
 var skins = {};
 var tempo;
+var tab;
 function nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos) {
     nivelId = nivelId;
     tamGrid = tamGrid;
@@ -43,8 +44,9 @@ function atualizaSkin(skins) {
     skins = skins;
 }
 
-function iniciaSocket(cNome, idNivel, idUser) {
+function iniciaSocket(cNome, idNivel, idUser, tabuleiro) {
 
+    tab = tabuleiro;
     url = 'ws://localhost:26532/WebSocketsServer2.ashx?chatName=' + cNome + '&NivelId=' + idNivel + '&Id=' + idUser;
     ws = new WebSocket(url);
 
@@ -67,8 +69,8 @@ function iniciaSocket(cNome, idNivel, idUser) {
             $('#game-on').find('.lyt-position-boats').removeClass('not-active');
             $('#game-on').find('.lyt-position-boats').addClass('active');
 
-            var m = '{"TipoMensagem":1,"Objeto":[{"TipoBarco":"submarino","Coordenadas":["c10"],"IdBarco":5}]}';
-            ws.send(m);
+            //var m = '{"TipoMensagem":1,"Objeto":[{"TipoBarco":"submarino","Coordenadas":["c10"],"IdBarco":5}]}';
+            ws.send(tab);
         } else if (tipo == 14) {
             lVez = true;
             alert('É a sua vez, você tem 15 segundos');
