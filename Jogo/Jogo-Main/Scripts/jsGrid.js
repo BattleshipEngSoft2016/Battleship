@@ -11,7 +11,7 @@ var lVez = false;
 var lastShoot;
 var nivelId = 0;
 var ships = [];
-
+var skins = {};
 function nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos){
 	nivelId = nivelId;
 	tamGrid = tamGrid;
@@ -27,6 +27,7 @@ function nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouraca
 	for(var i = 0; i<qtdEncouracados; i++){
 		ships.push({ "name": "encouraçado", "length": 3 });
 	}
+	
 	for(var i = 0; i<qtdCruzadores; i++){
 		ships.push({ "name": "cruzador", "length": 2 });
 	}
@@ -35,6 +36,10 @@ function nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouraca
 		ships.push({ "name": "submarino", "length": 1 });
 	}
 						
+}
+
+function atualizaSkin(skins){
+	skins = skins;	
 }
 
 function iniciaSocket(cNome, idNivel, idUser){
@@ -171,6 +176,8 @@ $(document).ready(function() {
 	var ul = $('.grid')[0];
 	ul.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
 	ul.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
+	$('.grid').css('cssText', 'background-image: url(' + skins.ImagemCoordenada + ');  !important;');
+	
 	
 	var lis = $(".bottom > .grid > li");
 	var j = 0;
@@ -363,10 +370,31 @@ function setShip(location, ship, orientation, genericFleet, type) {
 			for (var i = location; i < (location + ship.length); i++) {
 				fleet.TipoBarco = genericFleet.ships[genericFleet.currentShip].name;
 				fleet.Coordenadas.push($(".bottom ." + i)[0].id);
+				var urlNav = "";
+				var barco = genericFleet.ships[genericFleet.currentShip].name;
+				switch (barco) {
+					case "porta_avioes":
+						urlNav = skins.ImagemNav01;
+						break;
+					case "destroier":
+						urlNav = skins.ImagemNav02;
+						break;
+					case "encouraçado":
+						urlNav = skins.ImagemNav03;
+						break;
+					case "cruzador":
+						urlNav = skins.ImagemNav04;
+						break;
+					case "submarino":
+						urlNav = skins.ImagemNav05;
+						break;
+				}
+				
 				$(".bottom ." + i).addClass(genericFleet.ships[genericFleet.currentShip].name);
 				$(".bottom ." + i).addClass(genericFleet.ships[genericFleet.currentShip].name+j);
 				$(".bottom ." + i).addClass("horz-ship");
 				$(".bottom ." + i).children().removeClass("hole");
+				$('.'+ genericFleet.ships[genericFleet.currentShip].name+j).css('cssText', 'background-image: url(' + urlNav + ');  !important;');
 				j++;
 			}
 			if (++genericFleet.currentShip == genericFleet.numOfShips) {
