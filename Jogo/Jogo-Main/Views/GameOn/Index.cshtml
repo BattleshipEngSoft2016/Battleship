@@ -29,7 +29,7 @@
    
     <div class="lyt-div-default text-center lyt-chose-skin sh-div-default active modal">
       <h2>ESCOLHA SUA SKIN</h2> 
-      <select class="selectpicker center-block">
+      <select class="selectpicker center-block" id="selectskin">
        <!-- <option value="padrao">padrao</option>
         <option value="galaxia">galaxia</option>
         <option value="pirata">pirata</option>-->
@@ -68,7 +68,7 @@
 	window.onload = function() {
 		nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos);
 		$.each(skins, function (i, item) {
-			$('.selectpicker')[0].append($('<option>', {
+		    $('#selectskin').append($('<option>', {
 				value: item.Id,
 				text : item.Nome
 			}));
