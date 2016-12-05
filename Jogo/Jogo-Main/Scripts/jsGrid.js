@@ -10,9 +10,31 @@ var lDoisJogadores = "false";
 var lVez = false;
 var lastShoot;
 var nivelId = 0;
+var ships = [];
 
-function globalId(nivelId){
+function nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos){
 	nivelId = nivelId;
+	tamGrid = tamGrid;
+	
+	for(var i = 0; i<qtdPortaAvioes; i++){
+		ships.push({ "name": "porta_avioes", "length": 5 });
+	}
+	
+	for(var i = 0; i<qtdDestroiers; i++){
+		ships.push({ "name": "destroier", "length": 4 });
+	}
+	
+	for(var i = 0; i<qtdEncouracados; i++){
+		ships.push({ "name": "encouraçado", "length": 3 });
+	}
+	for(var i = 0; i<qtdCruzadores; i++){
+		ships.push({ "name": "cruzador", "length": 2 });
+	}
+	
+	for(var i = 0; i<qtdSubmarinos; i++){
+		ships.push({ "name": "submarino", "length": 1 });
+	}
+						
 }
 
 function iniciaSocket(cNome, idNivel, idUser){
@@ -50,11 +72,6 @@ function iniciaSocket(cNome, idNivel, idUser){
 		}else if(tipo == 2){
 			alert(oMessage.Mensagem);
 			$('#game-on').find('#'+lastShoot).addClass('missLi');
-		}else if(tipo == 9){
-			alert('Você perdeu seu nomenavio');
-		}else if(tipo == 15){
-			alert('Não há jogadores com o nível selecionado');
-			window.location = "../Home/Index";
 		}else{
 			alert(oMessage.Mensagem);
 		}
@@ -63,17 +80,12 @@ function iniciaSocket(cNome, idNivel, idUser){
 
 	ws.onclose = function () {
 		alert('Jogo finalizado!');
-		window.location = "../Home/Index";
 	};
 }
 // Object Constructors
 function Fleet(name) {
 	this.name = name;
-	this.shipDetails = [{ "name": "porta_avioes", "length": 5 },
-						{ "name": "destroier", "length": 4 },
-						{ "name": "encouraçado", "length": 3 },
-						{ "name": "cruzador", "length": 3 },
-						{ "name": "submarino", "length": 2 }];
+	this.shipDetails = ships;
 	this.numOfShips = this.shipDetails.length;
 	this.ships = [];
 	this.currentShipSize = 0;
@@ -443,7 +455,7 @@ function startGame() {
 		
 	$(".wartime").off("click").on("click", function() {
 		var skinId = $('.selectpicker').val();
-		var nivelId = nivelId;
+		var nivelId = 1;
 		var dados = JSON.stringify(jsonShips);
 		
 		var data = "{";
