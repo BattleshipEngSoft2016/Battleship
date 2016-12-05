@@ -10,9 +10,12 @@
     <header class="cmp-header text-center">
       <img class="cmp-simple-logo" src="../Images/logo-sem-vermelho.png" />
       <div class="cmp-data-user sh-div-default js-data-user">
-        <h2>JOGADOR 123</h2>
-        <p>MOEDAS: 1000</p>
-        <p>PONTOS: 2000</p>
+        @if (Request.IsAuthenticated)
+        {
+            <text><h2>JOGADOR @User.Identity.Name.ToUpper()</h2></text>
+        }
+        <p>MOEDAS: @ViewBag.Saldo </p>
+        <p>PONTOS: @ViewBag.Pontos</p>
           <button class="btn btn-primary">
               @if (Request.IsAuthenticated) {
               <text>

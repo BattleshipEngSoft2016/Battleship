@@ -22,7 +22,7 @@ namespace Jogo_Main.Controllers
 
             using (var db = new NiveisContext())
             {
-                ViewBag.Nivel = JsonConvert.SerializeObject(db.Niveis.FirstOrDefault(x => x.Id  == nivelId));
+                ViewBag.Nivel = db.Niveis.FirstOrDefault(x => x.Id == nivelId);
             }
             
             using (var db = new UsersContext())
@@ -57,7 +57,22 @@ namespace Jogo_Main.Controllers
 
                 using (var db = new TabuleirosContext())
                 {
-                    db.Tabuleiros.Add(new Tabuleiro(user.UserId, nivelId, skinId, dados));
+
+                    if (db.Tabuleiros.Any())
+                    {
+                        var id = db.Tabuleiros.OrderByDescending(x => x.Id).First().Id;
+
+                        var item = new Tabuleiro(user.UserId, nivelId, skinId, dados) {Id = id + 1};
+
+                        db.Tabuleiros.Add(item);
+
+                    }
+                    else
+                    {
+                        var item = new Tabuleiro(user.UserId, nivelId, skinId, dados) { Id = 1 };
+
+                        db.Tabuleiros.Add(item);
+                    }
 
                     db.SaveChanges();
 

@@ -537,7 +537,7 @@ function startGame() {
         $.ajax({
             type: "POST",
             data: data,
-            url: "http://localhost:26352/GameOn/Cadastrar",
+            url: "http://localhost:26532/GameOn/Cadastrar",
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 

@@ -41,6 +41,11 @@ namespace Jogo_Main.Models
         [Column("Dados")]
         public string Dados { get; set; }
 
+        public Tabuleiro()
+        {
+            
+        }
+
         public Tabuleiro(int u, int n, int s, string dados)
         {
             UserId = u;

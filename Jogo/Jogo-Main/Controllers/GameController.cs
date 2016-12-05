@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Jogo_Main.Models;
 using Newtonsoft.Json;
+using WebMatrix.WebData;
 
 namespace Jogo_Main.Controllers
 {
@@ -25,7 +26,9 @@ namespace Jogo_Main.Controllers
 
             using (var db = new UsersContext())
             {
-                user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == User.Identity.Name.ToLower());
+                var id = WebSecurity.GetUserId(User.Identity.Name);
+
+                user = db.UserProfiles.FirstOrDefault(x => x.UserId == id);
             }
 
             using (var db = new TabuleirosContext())
@@ -46,12 +49,15 @@ namespace Jogo_Main.Controllers
 
             ViewBag.Skin = JsonConvert.SerializeObject(skin);
 
-            ViewBag.Nivel = JsonConvert.SerializeObject(nivel);
+            ViewBag.Nivel = nivel;
 
             ViewBag.Tabuleiro = tabuleiro.Dados;
 
             ViewBag.UserId = user.UserId;
 
+            ViewBag.Pontos = user.Pontos;
+
+            ViewBag.Saldo = user.Saldo;
 
             return View();
         }

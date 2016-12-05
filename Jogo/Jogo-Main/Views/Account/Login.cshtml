@@ -25,9 +25,11 @@
 							
     
 	//@Html.ActionLink("CADASTRAR", "Register", null, new{ @class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" })
-						
-      <input class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" type="button" value="CADASTRAR" />
+    <a href="@Url.Action("Register")">
+        <input class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" type="button" value="CADASTRAR" />
      
+    </a>
+      
 //    <input class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar" type="button" value="CADASTRAR" />
     <input class="btn btn-success lyt-btn-align sh-text-default btn-logar" type="submit" value="LOGAR" />
 }
