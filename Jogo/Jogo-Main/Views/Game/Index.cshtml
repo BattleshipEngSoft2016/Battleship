@@ -55,14 +55,16 @@
     </div>
 
     <script>
-	var cNome = @User.Identity.Name.ToUpper();
-	var idUser = @Html.Raw(ViewBag.UserId);
-	var idNivel = @Html.Raw(ViewBag.Nivel.Id);
-    var skins = @Html.Raw(ViewBag.Skin);
-    var tabuleiro =@Html.Raw(ViewBag.Tabuleiro);
-	atualizaSkin();
-	window.onload = function() {
-	    iniciaSocket(cNome, idNivel, idUser, tabuleiro);
-	};
+
+        var cNome = '@User.Identity.Name';
+      
+        var idUser = @Html.Raw(ViewBag.UserId);
+        var idNivel = @Html.Raw(ViewBag.Nivel.Id);
+        var skins = @Html.Raw(ViewBag.Skin);
+        var tabuleiro =@Html.Raw(ViewBag.Tabuleiro);
+        atualizaSkin();
+        window.onload = function() {
+            iniciaSocket(cNome, idNivel, idUser, tabuleiro);
+        };
     </script>
   </section>
