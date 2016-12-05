@@ -208,6 +208,8 @@ $(document).ready(function () {
     var lis = $(".top > .grid > li");
     var j = 0;
     var aux = 0;
+    var hasId = false;
+    var tipoBarco;
     for (i = 0; i < lis.length; i++) {
         if (j < tamGrid) {
             lis[i].id = String.fromCharCode(97 + aux) + (j + 1);
@@ -220,6 +222,35 @@ $(document).ready(function () {
             lis[i].id = String.fromCharCode(97 + aux) + (j + 1);
             lis[i].addEventListener("click", hit, false);
             j++;
+        }
+
+        if (typeof x != "undefined") {
+            for (var j = 0; j < x.length; j++) {
+                hasId = jQuery.grep(x[j].Coordenadas, function (n, i) {
+                    tipoBarco = x[j].TipoBarco;
+                    return (n == lis[i].id);
+                }).length > 0;
+            }
+            if (hasId) {
+                switch (tipoBarco) {
+                    case "porta_avioes":
+                        urlNav = skins.ImagemNav01;
+                        break;
+                    case "destroier":
+                        urlNav = skins.ImagemNav02;
+                        break;
+                    case "encouraçado":
+                        urlNav = skins.ImagemNav03;
+                        break;
+                    case "cruzador":
+                        urlNav = skins.ImagemNav04;
+                        break;
+                    case "submarino":
+                        urlNav = skins.ImagemNav05;
+                        break;
+                }
+                $("#"+lis[i].id).css('cssText', 'background-image: url(' + urlNav + ');  !important;');
+            }
         }
     }
 
