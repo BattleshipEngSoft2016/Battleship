@@ -1,36 +1,41 @@
 ﻿@model Jogo_Main.Models.RegisterModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
+<section class="sh-background" id="login">
+    <img class="center-block lyt-img-login" src="../images/logo.png" />
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    
 
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
-}
+    @using (Html.BeginForm("Register", "Account", null, FormMethod.Post, new { @class = "text-center login-form" }))
+    {
+    
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+    
+        <h1 class="sh-text-title">ENTRE PARA A GUERRA</h1>
+        
+        @Html.TextBoxFor(m => m.UserName, new { @class = "text-center center-block", @placeholder = "USUARIO" })
+
+        <input class="text-center center-block" type="text" name="email" value="EMAIL" />
+
+         @Html.PasswordFor(m => m.Password, new { @class = "text-center center-block", @placeholder = "SENHA" })
+
+         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "text-center center-block", @placeholder = "SENHA" })
+
+        <button class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar">
+            @Html.ActionLink("FUGIR", "Login")
+        </button>
+
+        <button class="btn btn-success lyt-btn-align sh-text-default btn-logar" type="submit" value="ALISTAR-SE">
+        ALISTAR-SE
+        </button>
+       
+    }
+
+</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
