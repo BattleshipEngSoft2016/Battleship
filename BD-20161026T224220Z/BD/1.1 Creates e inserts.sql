@@ -8,11 +8,42 @@ GO
 
 -- INICIO LOGIN ADM
 
+CREATE TABLE [dbo].[Tabuleiros] (
+    [Id]      INT            NOT NULL,
+    [UserId]  INT            NULL,
+    [NivelId] INT            NULL,
+    [SkinId]  INT            NULL,
+    [Dados]   NVARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[Niveis] (
+    [ID_CONFIGURACAO]         INT          NOT NULL,
+    [DS_NOME_CONFIGURACAO]    VARCHAR (20) NOT NULL,
+    [QT_COLUNAS]              TINYINT      NULL,
+    [QT_LINHAS]               TINYINT      NULL,
+    [QT_NAVIO1]               TINYINT      NULL,
+    [QT_NAVIO2]               TINYINT      NULL,
+    [QT_NAVIO3]               TINYINT      NULL,
+    [QT_NAVIO4]               TINYINT      NULL,
+    [QT_NAVIO5]               TINYINT      NULL,
+    [NR_TEMPO_POSICIONAMENTO] SMALLINT     NULL,
+    [NR_TEMPO_JOGADA]         TINYINT      NULL,
+    CONSTRAINT [TB_GAME_SETTINGS_PK] PRIMARY KEY CLUSTERED ([ID_CONFIGURACAO] ASC)
+);
+
+
 CREATE TABLE [dbo].[UserProfile] (
-    [UserId]   INT            IDENTITY (1, 1) NOT NULL,
-    [UserName] NVARCHAR (MAX) NULL,
+    [UserId]         INT            IDENTITY (1, 1) NOT NULL,
+    [UserName]       NVARCHAR (MAX) NULL,
+    [Administrativo] BIT            DEFAULT ((0)) NOT NULL,
+    [Pontos]         INT            DEFAULT ((0)) NOT NULL,
+    [Saldo]          DECIMAL (18)   DEFAULT ((0)) NOT NULL,
     PRIMARY KEY CLUSTERED ([UserId] ASC)
 );
+
+
+
 
 CREATE TABLE [dbo].[webpages_Membership] (
     [UserId]                                  INT            NOT NULL,
@@ -54,20 +85,6 @@ CREATE TABLE [dbo].[webpages_UsersInRoles] (
 
 -- FIM LOGIN AMD
 
-CREATE TABLE TB_GAME_SETTINGS (
-	 ID_CONFIGURACAO			INT NOT NULL
-	,DS_NOME_CONFIGURACAO		VARCHAR(20) NOT NULL	-- Nome que irá aparecer na hora de selecionar o tipo de jogo
-	,QT_COLUNAS					TINYINT					-- Quantidade de colunas
-	,QT_LINHAS					TINYINT					-- Quantidade de linhas
-	,QT_NAVIO1					TINYINT					-- Quantidade de navios 1x1
-	,QT_NAVIO2					TINYINT					-- Quantidade de navios 1x2
-	,QT_NAVIO3					TINYINT					-- Quantidade de navios 1x3
-	,QT_NAVIO4					TINYINT					-- Quantidade de navios 1x4
-	,QT_NAVIO5					TINYINT					-- Quantidade de navios 1x5
-	,NR_TEMPO_POSICIONAMENTO	SMALLINT				-- Tempo em segundos para o jogador posicionar os navios antes do início do jogo
-	,NR_TEMPO_JOGADA			TINYINT					-- Tempo em segundos para o jogador realizar um ataque ao adversário
-	,CONSTRAINT TB_GAME_SETTINGS_PK PRIMARY KEY (ID_CONFIGURACAO)
-)
 --
 INSERT INTO TB_GAME_SETTINGS VALUES
  (1, 'Fácil', 10, 10, 0, 1, 2, 1, 1, 10, 120)
