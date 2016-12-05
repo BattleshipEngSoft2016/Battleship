@@ -40,8 +40,9 @@ function nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouraca
 
 }
 
-function atualizaSkin(skins) {
+function atualizaSkin(skins,tabuleiro) {
     skins = skins;
+	tab = tabuleiro;
 }
 
 function iniciaSocket(cNome, idNivel, idUser, tabuleiro) {
@@ -211,30 +212,46 @@ $(document).ready(function () {
                 hasId = jQuery.grep(x[k].Coordenadas, function (n, w) {
                     tipoBarco = x[k].TipoBarco;
 					if(n == lis[i].id){
+											
+						if(x[k].Coordenadas.length > 1){
+							
+							if(w < (x[k].Coordenadas.length-1)){
+								if(x[k].Coordenadas[w+1] != n.substring(0,1)+(parseInt(n.substring(1))+1)){
+									$('#'+lis[i].id).addClass('vert-ship');
+								}
+							}else if(w == (x[k].Coordenadas.length-1)){
+								if(x[k].Coordenadas[w-1] != n.substring(0,1)+(parseInt(n.substring(1))-1)){
+									$('#'+lis[i].id).addClass('vert-ship');
+								}
+							}
+
+							
+						}
+						
+						switch (tipoBarco) {
+							case "porta_avioes":
+								urlNav = skins.ImagemNav01;
+								break;
+							case "destroier":
+								urlNav = skins.ImagemNav02;
+								break;
+							case "encouraçado":
+								urlNav = skins.ImagemNav03;
+								break;
+							case "cruzador":
+								urlNav = skins.ImagemNav04;
+								break;
+							case "submarino":
+								urlNav = skins.ImagemNav05;
+								break;
+						}
+						
+						$("#"+lis[i].id).css('cssText', 'background-image: url(' + urlNav + ');  !important;');					
 						$('#'+lis[i].id).addClass(tipoBarco+(w+1));
+						
 					}
                     return (n == lis[i].id);
                 }).length > 0;
-            }
-            if (hasId) {
-                switch (tipoBarco) {
-                    case "porta_avioes":
-                        urlNav = skins.ImagemNav01;
-                        break;
-                    case "destroier":
-                        urlNav = skins.ImagemNav02;
-                        break;
-                    case "encouraçado":
-                        urlNav = skins.ImagemNav03;
-                        break;
-                    case "cruzador":
-                        urlNav = skins.ImagemNav04;
-                        break;
-                    case "submarino":
-                        urlNav = skins.ImagemNav05;
-                        break;
-                }
-                $("#"+lis[i].id).css('cssText', 'background-image: url(' + urlNav + ');  !important;');
             }
         }
     }
