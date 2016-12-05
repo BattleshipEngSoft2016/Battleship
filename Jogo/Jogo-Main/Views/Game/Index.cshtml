@@ -60,11 +60,16 @@
       
         var idUser = @Html.Raw(ViewBag.UserId);
         var idNivel = @Html.Raw(ViewBag.Nivel.Id);
+		var tamGrid = @Html.Raw(ViewBag.Nivel.QtdColunas);
+		var qtdPortaAvioes = @Html.Raw(ViewBag.Nivel.QtdNav01);
+		var qtdDestroiers = @Html.Raw(ViewBag.Nivel.QtdNav02);
+		var qtdEncouracados = @Html.Raw(ViewBag.Nivel.QtdNav03);
+		var qtdCruzadores = @Html.Raw(ViewBag.Nivel.QtdNav04);
+		var qtdSubmarinos = @Html.Raw(ViewBag.Nivel.QtdNav05);
+		nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos);
         var skins = @Html.Raw(ViewBag.Skin);
         var tabuleiro =@Html.Raw(ViewBag.Tabuleiro);
         atualizaSkin();
-        window.onload = function() {
-            iniciaSocket(cNome, idNivel, idUser, tabuleiro);
-        };
+         iniciaSocket(cNome, idNivel, idUser, tabuleiro);
     </script>
   </section>

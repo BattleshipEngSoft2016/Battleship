@@ -65,15 +65,14 @@
 	var qtdEncouracados = @Html.Raw(ViewBag.Nivel.QtdNav03);
 	var qtdCruzadores = @Html.Raw(ViewBag.Nivel.QtdNav04);
 	var qtdSubmarinos = @Html.Raw(ViewBag.Nivel.QtdNav05);
-	window.onload = function() {
-		nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos);
+	nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos);
 		$.each(skins, function (i, item) {
 		    $('#selectskin').append($('<option>', {
 				value: item.Id,
 				text : item.Nome
 			}));
 		});
-	};
+
     </script>
   </section>
 

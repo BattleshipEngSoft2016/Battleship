@@ -182,7 +182,9 @@ $(document).ready(function () {
     var ul = $('.grid')[0];
     ul.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
     ul.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
-    $('.grid').css('cssText', 'background-image: url(' + skins.ImagemCoordenada + ');  !important;');
+	if(typeof skins.ImagemCoordenada != "undefined"){
+		$('.grid').css('cssText', 'background-image: url(' + skins.ImagemCoordenada + ');  !important;');
+	}
     var x;
     if (typeof tab != "undefined") {
         x = JSON.parse(tab);
@@ -414,29 +416,33 @@ function setShip(location, ship, orientation, genericFleet, type) {
                 fleet.Coordenadas.push($(".bottom ." + i)[0].id);
                 var urlNav = "";
                 var barco = genericFleet.ships[genericFleet.currentShip].name;
-                switch (barco) {
-                    case "porta_avioes":
-                        urlNav = skins.ImagemNav01;
-                        break;
-                    case "destroier":
-                        urlNav = skins.ImagemNav02;
-                        break;
-                    case "encouraçado":
-                        urlNav = skins.ImagemNav03;
-                        break;
-                    case "cruzador":
-                        urlNav = skins.ImagemNav04;
-                        break;
-                    case "submarino":
-                        urlNav = skins.ImagemNav05;
-                        break;
-                }
+                if(typeof skins.ImagemCoordenada != "undefined"){
+					switch (barco) {
+						case "porta_avioes":
+							urlNav = skins.ImagemNav01;
+							break;
+						case "destroier":
+							urlNav = skins.ImagemNav02;
+							break;
+						case "encouraçado":
+							urlNav = skins.ImagemNav03;
+							break;
+						case "cruzador":
+							urlNav = skins.ImagemNav04;
+							break;
+						case "submarino":
+							urlNav = skins.ImagemNav05;
+							break;
+					}
+				}
 
                 $(".bottom ." + i).addClass(genericFleet.ships[genericFleet.currentShip].name);
                 $(".bottom ." + i).addClass(genericFleet.ships[genericFleet.currentShip].name + j);
                 $(".bottom ." + i).addClass("horz-ship");
                 $(".bottom ." + i).children().removeClass("hole");
-                $('.' + genericFleet.ships[genericFleet.currentShip].name + j).css('cssText', 'background-image: url(' + urlNav + ');  !important;');
+				 if(typeof skins.ImagemCoordenada != "undefined"){
+					$('.' + genericFleet.ships[genericFleet.currentShip].name + j).css('cssText', 'background-image: url(' + urlNav + ');  !important;');
+				}
                 j++;
             }
             if (++genericFleet.currentShip == genericFleet.numOfShips) {

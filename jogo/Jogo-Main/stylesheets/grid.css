@@ -39,8 +39,6 @@ html {
 }
 
 .top {
-	width: 320px;
-	height: 320px;
 	/*background: #008B8B;*/
 	background-image: url('../images/mar.jpg');
 	background-size: cover;
@@ -52,8 +50,6 @@ html {
 }
 
 .bottom {
-	width: 320px;
-	height: 320px;
 	/*background: #008B8B;*/
 	background-image: url('../images/mar.jpg');
 	background-size: cover;
