@@ -225,7 +225,7 @@ html {
 }
 
 .porta_avioes1 {
-    background-image: url(../images/porta_avioes.png);
+    background-image: url(../images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 0%;
@@ -234,7 +234,7 @@ html {
 }
 
 .porta_avioes2 {
-    background-image: url(../images/porta_avioes.png);
+    background-image: url(../images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 25%;
@@ -243,7 +243,7 @@ html {
 }
 
 .porta_avioes3 {
-    background-image: url(../images/porta_avioes.png);
+    background-image: url(../images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 50%;
@@ -252,7 +252,7 @@ html {
 }
 
 .porta_avioes4 {
-    background-image: url(../images/porta_avioes.png);
+    background-image: url(../images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 75%;
@@ -261,7 +261,7 @@ html {
 }
 
 .porta_avioes5 {
-    background-image: url(../images/porta_avioes.png);
+    background-image: url(../images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 100%;
@@ -274,21 +274,90 @@ html {
     transform: rotate(91deg);
 }
 
-.destroier {
-	background: rgba(49,49,49,0.9);
+.destroier1{
+	background-image: url(../images/normal/4.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 0%;
+    background-position-y: 0px;
+	border-right:none;
+}
+.destroier2{
+	background-image: url(../images/normal/4.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 25%;
+    background-position-y: 0px;
+	border-right:none;
+}
+.destroier3{
+	background-image: url(../images/normal/4.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 50%;
+    background-position-y: 0px;
+	border-right:none;
+}
+.destroier4{
+	background-image: url(../images/normal/4.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 100%;
+    background-position-y: 0px;
+	border-right:none;
 }
 
-.encouraçado {
-	background: rgba(64,64,64,0.9);
+.encouraçado1{
+	background-image: url(../images/normal/3.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 0%;
+    background-position-y: 0px;
+	border-right:none;
+}
+.encouraçado2{
+	background-image: url(../images/normal/3.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 33.3%;
+    background-position-y: 0px;
+	border-right:none;
+}
+.encouraçado3{
+	background-image: url(../images/normal/3.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 66.6%;
+    background-position-y: 0px;
+	border-right:none;
 }
 
-.cruzador {
-	background: rgba(81,81,81,0.7);
+.cruzador1{
+	background-image: url(../images/normal/2.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 0%;
+    background-position-y: 0px;
+	border-right:none;
+}
+.cruzador2{
+	background-image: url(../images/normal/2.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 50%;
+    background-position-y: 0px;
+	border-right:none;
 }
 
-.submarino {
-	background: rgba(100,100,100,0.7);
+.submarino1{
+	background-image: url(../images/normal/1.png);
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position-x: 0%;
+    background-position-y: 0px;
+	border-right:none;
 }
+
 
 .one {
 

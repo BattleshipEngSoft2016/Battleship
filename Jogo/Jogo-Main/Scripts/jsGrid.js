@@ -28,11 +28,11 @@ function nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouraca
 		ships.push({ "name": "encouraçado", "length": 3 });
 	}
 	for(var i = 0; i<qtdCruzadores; i++){
-		ships.push({ "name": "cruzador", "length": 3 });
+		ships.push({ "name": "cruzador", "length": 2 });
 	}
 	
 	for(var i = 0; i<qtdSubmarinos; i++){
-		ships.push({ "name": "submarino", "length": 2 });
+		ships.push({ "name": "submarino", "length": 1 });
 	}
 						
 }
