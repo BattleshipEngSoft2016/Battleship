@@ -27,9 +27,9 @@
     <div class="lyt-div-default text-center lyt-chose-skin sh-div-default active modal">
       <h2>ESCOLHA SUA SKIN</h2> 
       <select class="selectpicker center-block">
-        <option value="padrao">padrao</option>
+       <!-- <option value="padrao">padrao</option>
         <option value="galaxia">galaxia</option>
-        <option value="pirata">pirata</option>
+        <option value="pirata">pirata</option>-->
       </select>
       <button class="center-block btn btn-success sh-text-default js-confirm-skin">CONFIRMAR</button>
     </div>
@@ -53,6 +53,24 @@
         </div>
       </div>
     </div>
-    
+    <script>
+	var skins = @Html.Raw(ViewBag.Skins);
+	var nivelId = @Html.Raw(ViewBag.Nivel.Id);
+	var tamGrid = @Html.Raw(ViewBag.Nivel.QtdColunas);
+	var qtdPortaAvioes = @Html.Raw(ViewBag.Nivel.QtdNav01);
+	var qtdDestroiers = @Html.Raw(ViewBag.Nivel.QtdNav02);
+	var qtdEncouracados = @Html.Raw(ViewBag.Nivel.QtdNav03);
+	var qtdCruzadores = @Html.Raw(ViewBag.Nivel.QtdNav04);
+	var qtdSubmarinos = @Html.Raw(ViewBag.Nivel.QtdNav05);
+	window.onload = function() {
+		nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos);
+		$.each(skins, function (i, item) {
+			$('.selectpicker')[0].append($('<option>', {
+				value: item.Id,
+				text : item.Nome
+			}));
+		});
+	};
+    </script>
   </section>
 

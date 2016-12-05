@@ -25,15 +25,40 @@
           </button>
       </div>
     </header>
-    <h2 class="sh-text-title text-center">JOGANDO CONTRA LAZY</h2>
-    <div class="board-game">
-      <div class="displays">
-        <div class="top">
-          <ul class="grid"></ul>
+    <div class="lyt-div-default text-center lyt-position-boats not-active">
+        <h2 class="sh-text-title text-center" id="nomeAdversario">JOGANDO CONTRA LAZY</h2>
+
+        <div class="board-game">
+            <div class="displays">
+                <div class="top">
+                    <ul class="grid"></ul>
+                </div>
+                <div class="bottom">
+                    <ul class="grid"></ul>
+                </div>
+            </div>
         </div>
-        <div class="bottom">
-          <ul class="grid"></ul>
-        </div>
-      </div>
+
     </div>
+
+    <div class="lyt-div-default text-center lyt-search-player sh-div-default active modal">
+        <h2>PROCURANDO JOGADOR</h2>
+        <img src="../images/spin.svg" />
+    </div>
+
+    <div class="lyt-div-default text-center lyt-found-player sh-div-default not-active modal">
+        <h2>JOGADOR ENCONTRADO</h2>
+        <img src="../images/checked.png" />
+    </div>
+
+    <script>
+	var cNome = @User.Identity.Name.ToUpper();
+	var idUser = @Html.Raw(ViewBag.UserId);
+	var idNivel = @Html.Raw(ViewBag.Nivel.Id);
+	var skins = @Html.Raw(ViewBag.Skin);
+	atualizaSkin();
+	window.onload = function() {
+		iniciaSocket(cNome, idNivel, idUser);
+	};
+    </script>
   </section>
