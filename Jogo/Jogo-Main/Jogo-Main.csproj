@@ -203,6 +203,7 @@
     <Compile Include="Models\TabuleiroModels.cs" />
     <Compile Include="Models\TipoMensagem.cs" />
     <Compile Include="Models\TipoMensagemRetorno.cs" />
+    <Compile Include="Models\UserSkinModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebSocketsServer2.ashx.cs">
       <DependentUpon>WebSocketsServer2.ashx</DependentUpon>

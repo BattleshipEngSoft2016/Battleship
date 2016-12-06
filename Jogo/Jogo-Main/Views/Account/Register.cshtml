@@ -19,11 +19,11 @@
         
         @Html.TextBoxFor(m => m.UserName, new { @class = "text-center center-block", @placeholder = "USUARIO" })
 
-        <input class="text-center center-block" type="text" name="email" value="EMAIL" />
+      //  <input class="text-center center-block" type="text" name="email" value="EMAIL" />
 
          @Html.PasswordFor(m => m.Password, new { @class = "text-center center-block", @placeholder = "SENHA" })
 
-         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "text-center center-block", @placeholder = "SENHA" })
+         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "text-center center-block", @placeholder = "CONFIRMAR SENHA" })
 
         <button class="btn btn-danger lyt-btn-align sh-text-default btn-cadastrar">
             @Html.ActionLink("FUGIR", "Login")

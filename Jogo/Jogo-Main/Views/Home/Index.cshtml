@@ -5,11 +5,15 @@
 
 <script>
 
-    function comprarSkin() {
+    function comprarSkin(id) {
+        
+        var data = "{";
+        data += "'Id':" + id ;
+        data += "}";
         
         $.ajax({
-            type: "POST",
-            url: "http://192.168.0.12/Jogo-Main/Store/Comprar",
+            type: "GET",
+            url: "http://192.168.0.12/Jogo-Main/Store/Comprar" + "?" + "Id=" + id,
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 
@@ -92,7 +96,7 @@
         <div class="sec-sell">
           <h2>SKIN PIRATA</h2>
           <p>PREÇO: 100 MOEDAS</p>
-          <button class="btn btn-danger" onclick="comprarSkin()">COMPRAR</button>
+          <button class="btn btn-danger" onclick="comprarSkin(4)">COMPRAR</button>
         </div>
       </div>
       <div class="item sell">
@@ -103,7 +107,7 @@
         <div class="sec-sell">
           <h2>SKIN FUTURO</h2>
           <p>PREÇO: 100 MOEDAS</p>
-          <button class="btn btn-danger" onclick="comprarSkin()">COMPRAR</button>
+          <button class="btn btn-danger" onclick="comprarSkin(5)">COMPRAR</button>
         </div>
       </div>
       <div class="row"></div>
@@ -115,7 +119,7 @@
         <div class="sec-sell">
           <h2>SKIN COCA</h2>
           <p>PREÇO: 100 MOEDAS</p>
-          <button class="btn btn-danger" onclick="comprarSkin()" >COMPRAR</button>
+          <button class="btn btn-danger" onclick="comprarSkin(6)" >COMPRAR</button>
         </div>
       </div>
       <div class="item sell">
@@ -126,7 +130,7 @@
         <div class="sec-sell">
           <h2>SKIN SUSHI</h2>
           <p>PREÇO: 100 MOEDAS</p>
-          <button class="btn btn-danger" onclick="comprarSkin()">COMPRAR</button>
+          <button class="btn btn-danger" onclick="comprarSkin(7)">COMPRAR</button>
         </div>
       </div>
     </div>

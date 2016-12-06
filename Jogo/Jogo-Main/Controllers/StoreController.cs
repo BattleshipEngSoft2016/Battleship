@@ -18,15 +18,19 @@ namespace Jogo_Main.Controllers
             return View();
         }
 
-        [HttpPost]
-        public JsonResult Comprar()
+        [HttpGet]
+        public JsonResult Comprar(int Id)
         {
+
+            UserProfile user = null;
+
+            bool retorno = true;
 
             using (var db = new UsersContext())
             {
                 var id = WebSecurity.GetUserId(User.Identity.Name);
 
-                var user = db.UserProfiles.FirstOrDefault(x => x.UserId == id);
+                user = db.UserProfiles.FirstOrDefault(x => x.UserId == id);
 
                 if (user != null && user.Saldo > 100)
                 {
@@ -34,13 +38,24 @@ namespace Jogo_Main.Controllers
                 }
                 else
                 {
-                     return Json(new {Sucesso = false});
-             }
+                    retorno = false;
+                }
 
                 db.SaveChanges();
             }
 
-            return Json(new { Sucesso = true });
+            if(retorno)
+            using (var db = new UserSkisContext())
+            {
+                var itemId = db.UserSkins.Any() ? db.UserSkins.OrderByDescending(x => x.Id).FirstOrDefault().Id + 1 : 1;
+
+                db.UserSkins.Add(new UserSkin(user.UserId, Id) {Id = itemId});
+
+                db.SaveChanges();
+            }
+
+
+            return Json(new { Sucesso = retorno }, JsonRequestBehavior.AllowGet);
         }
 
     }
