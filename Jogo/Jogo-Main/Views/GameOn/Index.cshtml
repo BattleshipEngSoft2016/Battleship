@@ -27,7 +27,7 @@
       </div>
     </header>
    
-    <div class="lyt-div-default text-center lyt-chose-skin sh-div-default active modal">
+    <div class="lyt-div-default text-center lyt-chose-skin sh-div-default active modal skin-dialog">
       <h2>ESCOLHA SUA SKIN</h2> 
       <select class="selectpicker center-block" id="selectskin">
        <!-- <option value="padrao">padrao</option>
@@ -36,7 +36,7 @@
       </select>
       <button class="center-block btn btn-success sh-text-default js-confirm-skin">CONFIRMAR</button>
     </div>
-    <div class="lyt-div-default text-center lyt-position-boats sh-div-default not-active modal">
+    <div class="lyt-div-default text-center lyt-position-boats sh-div-default not-active modal skin-dialog">
       <h2>POSICIONE SEUS NAVIOS</h2>
       <div class="board">
         <div class="displays">
@@ -56,6 +56,15 @@
         </div>
       </div>
     </div>
+    
+    <div class="lyt-div-default text-center lyt-search-player sh-div-default not-active aguarde">
+      <h2>AGUARDE...</h2> 
+      <img src="../Images/spin.svg" />
+    </div>
+    
+    <div class="banner">
+        <img class="center-block" src="../Images/banner2.jpeg"/>
+    </div>
     <script>
 	var skins = @Html.Raw(ViewBag.Skins);
 	var nivelId = @Html.Raw(ViewBag.Nivel.Id);
@@ -66,7 +75,7 @@
 	var qtdCruzadores = @Html.Raw(ViewBag.Nivel.QtdNav04);
 	var qtdSubmarinos = @Html.Raw(ViewBag.Nivel.QtdNav05);
 	nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos);
-		$.each(skins, function (i, item) {
+		$.each(skins, function (i, item) {  
 		    $('#selectskin').append($('<option>', {
 				value: item.Id,
 				text : item.Nome

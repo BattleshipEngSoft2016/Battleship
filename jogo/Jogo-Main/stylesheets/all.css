@@ -1,5 +1,33 @@
 ﻿@charset "UTF-8";
 
+.banner {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+}
+.banner img {
+    height: 150px;
+    width: 800px;
+}
+.skin-dialog {
+    z-index: 0;
+}
+.active {
+    display: block;
+  
+}
+.aguarde {
+     position: absolute;
+    margin: auto;
+    width: 800px;
+    height: 250px;
+    top: 15%;
+    left: 20%;
+    z-index: 10;
+}
+.not-active {
+    display: none;
+}
 button.lyt-btn-align {
     margin-top: 15px;
 }
