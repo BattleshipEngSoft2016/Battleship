@@ -84,12 +84,26 @@ function iniciaSocket(cNome, idNivel, idUser, tabuleiro, idTab) {
                 lVez = false;
                 ws.send(t);
             }, 15000);
+        } else if (tipo == 16) {
+            var mes = oMessage.Mensagem.split("|");
+            $('.bottom > .grid > #' + mes[1]).addClass('missLi');
+        } else if (tipo == 8) {
+            var mes = oMessage.Mensagem.split("|");
+            $('.bottom > .grid > #' + mes[1]).addClass('hitLi');
+            alert('Você foi atingido!');
         } else if (tipo == 1) {
             alert(oMessage.Mensagem);
-            $('#game-on').find('#' + lastShoot).addClass('hitLi');
+            $('.top > .grid > #' + lastShoot).addClass('hitLi');
         } else if (tipo == 2) {
             alert(oMessage.Mensagem);
-            $('#game-on').find('#' + lastShoot).addClass('missLi');
+            $('.top > .grid > #' + lastShoot).addClass('missLi');
+        } else if (tipo == 9) {
+            var mes = oMessage.Mensagem.split("|");
+            var TipoBarco = mes[1];
+            alert('Você perdeu seu ' + TipoBarco);
+        } else if (tipo == 13) {
+            alert(oMessage.Mensagem);
+            window.location.replace("http://localhost:26532/Home/Index");
         } else {
             alert(oMessage.Mensagem);
         }

@@ -162,7 +162,7 @@ namespace UsingWebSockets
                                         if (barco.Coordenadas.All(x => x.Destruido))
                                         {
                                             opoente.Send(
-                                                JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Destruido, string.Format("Ops Você perdeu seu barco !!! |{0}", barco.IdBarco))));
+                                                JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Destruido, string.Format("Ops Você perdeu seu barco !!! |{0}", barco.TipoBarco))));
 
                                         }
 
@@ -209,7 +209,7 @@ namespace UsingWebSockets
         {
             ((MicrosoftWebSockets)clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id == client.Id)).Barcos = client.Barcos;
 
-            clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id == client.Id).Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Atingido, string.Format("Você foi atingindo !!! |{0}", jogada))));
+            client.Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Atingido, string.Format("Você foi atingindo !!! |{0}", jogada))));
 
 
         }
