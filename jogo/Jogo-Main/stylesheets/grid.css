@@ -66,7 +66,7 @@ html {
 	width: 300px;
 	height: 300px;
 	background: rgba(0,0,0,0);
-	margin-left: 28px;
+	margin-left: 24px;
 	font-size: 0;
 }
 
@@ -300,7 +300,6 @@ html {
     background-origin: border-box;
     background-position-x: 100%;
     background-position-y: 0px;
-	border-right:none;
 }
 
 .encouraçado1{
@@ -325,7 +324,6 @@ html {
     background-origin: border-box;
     background-position-x: 66.6%;
     background-position-y: 0px;
-	border-right:none;
 }
 
 .cruzador1{
@@ -342,7 +340,6 @@ html {
     background-origin: border-box;
     background-position-x: 50%;
     background-position-y: 0px;
-	border-right:none;
 }
 
 .submarino1{
@@ -351,7 +348,6 @@ html {
     background-origin: border-box;
     background-position-x: 0%;
     background-position-y: 0px;
-	border-right:none;
 }
 
 
