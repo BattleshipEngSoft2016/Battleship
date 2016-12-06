@@ -3,7 +3,7 @@ var playerFleet, cpuFleet;
 var attemptedHits = [];
 var jsonShips = [];
 var count = 0;
-var tamGrid = 10;
+var tamGrid = 15;
 var url = "";
 var ws = null;
 var lDoisJogadores = "false";
@@ -203,6 +203,9 @@ $(document).ready(function () {
     var ul = $('.grid')[0];
     ul.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
     ul.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
+    var ul2 = $('.grid')[1];
+    ul2.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
+    ul2.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
 	if(typeof skins.ImagemCoordenada != "undefined"){
 		$('.bottom').css('cssText', 'background-image: url(' + skins.ImagemCoordenada + ');  !important;');
 	}
@@ -571,7 +574,7 @@ function startGame() {
 
     $(".wartime").off("click").on("click", function () {
         var skinId = $('.selectpicker').val();
-        var nivelId = 1;
+        //var nivelId = 1;
         var dados = JSON.stringify(jsonShips);
 
         var data = "{";
