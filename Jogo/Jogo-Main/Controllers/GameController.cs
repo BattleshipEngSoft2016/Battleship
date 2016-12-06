@@ -53,6 +53,8 @@ namespace Jogo_Main.Controllers
 
             ViewBag.Tabuleiro = tabuleiro.Dados;
 
+            ViewBag.IdTab = tabuleiro.Id;
+
             ViewBag.UserId = user.UserId;
 
             ViewBag.Pontos = user.Pontos;
