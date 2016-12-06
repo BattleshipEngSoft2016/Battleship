@@ -309,6 +309,7 @@ $(document).ready(function () {
 function selfSetup() {
     $(".self").addClass("horz").removeClass("self").text("Horizontal");
     $(".random").addClass("vert").removeClass("random").text("Vertical");
+    $(".vert").css("display", "block");
 
     // initialize the fleet
     playerFleet = new Fleet("Player 1");
