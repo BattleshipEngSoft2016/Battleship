@@ -40,7 +40,7 @@ html {
 
 .top {
 	/*background: #008B8B;*/
-	background-image: url('../images/mar.jpg');
+	background-image: url('http://192.168.0.12/Jogo-Main/Images/mar.jpg');
 	background-size: cover;
 	border-left: 2px solid #f00/*#8DEEEE*/;
 	border-bottom: 2px solid #f00/*#8DEEEE*/;
@@ -51,7 +51,7 @@ html {
 
 .bottom {
 	/*background: #008B8B;*/
-	background-image: url('../images/mar.jpg');
+	background-image: url('http://192.168.0.12/Jogo-Main/Images/mar.jpg');
 	background-size: cover;
 	/*border-left: 1px solid #8DEEEE;
 	border-bottom: 1px solid #8DEEEE;*/
@@ -221,7 +221,7 @@ html {
 }
 
 .porta_avioes1 {
-    background-image: url(../images/normal/5.png);
+    background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 0%;
@@ -230,7 +230,7 @@ html {
 }
 
 .porta_avioes2 {
-    background-image: url(../images/normal/5.png);
+    background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 25%;
@@ -239,7 +239,7 @@ html {
 }
 
 .porta_avioes3 {
-    background-image: url(../images/normal/5.png);
+    background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 50%;
@@ -248,7 +248,7 @@ html {
 }
 
 .porta_avioes4 {
-    background-image: url(../images/normal/5.png);
+    background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 75%;
@@ -257,7 +257,7 @@ html {
 }
 
 .porta_avioes5 {
-    background-image: url(../images/normal/5.png);
+    background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/5.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 100%;
@@ -271,7 +271,7 @@ html {
 }
 
 .destroier1{
-	background-image: url(../images/normal/4.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/4.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 0%;
@@ -279,7 +279,7 @@ html {
 	border-right:none;
 }
 .destroier2{
-	background-image: url(../images/normal/4.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/4.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 25%;
@@ -287,7 +287,7 @@ html {
 	border-right:none;
 }
 .destroier3{
-	background-image: url(../images/normal/4.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/4.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 50%;
@@ -295,7 +295,7 @@ html {
 	border-right:none;
 }
 .destroier4{
-	background-image: url(../images/normal/4.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/4.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 100%;
@@ -303,7 +303,7 @@ html {
 }
 
 .encouraçado1{
-	background-image: url(../images/normal/3.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/3.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 0%;
@@ -311,7 +311,7 @@ html {
 	border-right:none;
 }
 .encouraçado2{
-	background-image: url(../images/normal/3.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/3.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 33.3%;
@@ -319,7 +319,7 @@ html {
 	border-right:none;
 }
 .encouraçado3{
-	background-image: url(../images/normal/3.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/3.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 66.6%;
@@ -327,7 +327,7 @@ html {
 }
 
 .cruzador1{
-	background-image: url(../images/normal/2.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/2.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 0%;
@@ -335,7 +335,7 @@ html {
 	border-right:none;
 }
 .cruzador2{
-	background-image: url(../images/normal/2.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/2.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 50%;
@@ -343,7 +343,7 @@ html {
 }
 
 .submarino1{
-	background-image: url(../images/normal/1.png);
+	background-image: url(http://192.168.0.12/Jogo-Main/Images/normal/1.png);
     background-repeat: no-repeat;
     background-origin: border-box;
     background-position-x: 0%;

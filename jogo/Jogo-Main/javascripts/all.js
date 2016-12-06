@@ -1,33 +1,5 @@
-$('#game-on').find('#1').on('click', function(){
-  $('#game-on').find('.lyt-div-default').removeClass('active');
-  $('#game-on').find('.lyt-div-default').removeClass('not-active');
-  $('#game-on').find('.lyt-div-default').addClass('not-active');
-  $('#game-on').find('.lyt-search-player').removeClass('not-active');
-  $('#game-on').find('.lyt-search-player').addClass('active');
-});
-
-$('#game-on').find('#2').on('click', function(){
-  $('#game-on').find('.lyt-div-default').removeClass('active');
-  $('#game-on').find('.lyt-div-default').removeClass('not-active');
-  $('#game-on').find('.lyt-div-default').addClass('not-active');
-  $('#game-on').find('.lyt-found-player').removeClass('not-active');
-  $('#game-on').find('.lyt-found-player').addClass('active');
-});
-
-$('#game-on').find('#3').on('click', function(){
-  $('#game-on').find('.lyt-div-default').removeClass('active');
-  $('#game-on').find('.lyt-div-default').removeClass('not-active');
-  $('#game-on').find('.lyt-div-default').addClass('not-active');
-  $('#game-on').find('.lyt-chose-skin').removeClass('not-active');
-  $('#game-on').find('.lyt-chose-skin').addClass('active');
-});
-
-$('#game-on').find('#4').on('click', function(){
-  $('#game-on').find('.lyt-div-default').removeClass('active');
-  $('#game-on').find('.lyt-div-default').removeClass('not-active');
-  $('#game-on').find('.lyt-div-default').addClass('not-active');
-  $('#game-on').find('.lyt-position-boats').removeClass('not-active');
-  $('#game-on').find('.lyt-position-boats').addClass('active');
+$('.js-confirm-skin').on('click', function () {
+    $('.banner').css('display', 'none');
 });
 
 $('#game-on').find('.js-confirm-skin').on('click', function(){

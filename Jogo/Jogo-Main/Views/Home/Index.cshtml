@@ -2,9 +2,44 @@
     ViewBag.Title = "WarShips";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<script>
+
+    function comprarSkin() {
+        
+        $.ajax({
+            type: "POST",
+            url: "http://192.168.0.12/Jogo-Main/Store/Comprar",
+            contentType: "application/json; charset=utf-8",
+            dataType: "JSON",
+
+            success: function (output) {
+                
+                if(output.Sucesso == true) {
+                    
+                    alert("Comprar realizada com Sucesso");
+
+                    document.location.reload();
+                    
+                } else {
+                    
+                    alert("Você não tem Creditos");
+                    
+
+  
+                }
+                
+            }
+        });
+  
+
+
+    }
+
+</script>
 <section class="sh-background" id="home">
     <header class="cmp-header text-center">
-      <img class="cmp-simple-logo" src="../images/logo-sem-vermelho.png" />
+      <img class="cmp-simple-logo" src="http://192.168.0.12/Jogo-Main/Images/logo-sem-vermelho.png" />
       <div class="cmp-data-user sh-div-default js-data-user">
         @if (Request.IsAuthenticated)
         {
@@ -51,110 +86,110 @@
       <h2 class="text-center">LOJA SKINS</h2>
       <div class="item sell">
         <div class="preview">
-          <img src="../Images/piratas_loja.jpg" />
+          <img src="http://192.168.0.12/Jogo-Main/Images/piratas_loja.jpg" />
           <button class="pirata btn btn-success btn-preview">VER</button>
         </div>
         <div class="sec-sell">
           <h2>SKIN PIRATA</h2>
           <p>PREÇO: 100 MOEDAS</p>
-          <button class="btn btn-danger">COMPRAR</button>
+          <button class="btn btn-danger" onclick="comprarSkin()">COMPRAR</button>
         </div>
       </div>
       <div class="item sell">
         <div class="preview">
-          <img src="../Images/espacial_loja.jpg" />
+          <img src="http://192.168.0.12/Jogo-Main/Images/espacial_loja.jpg" />
           <button class="espacial btn btn-success btn-preview">VER</button>
         </div>
         <div class="sec-sell">
           <h2>SKIN FUTURO</h2>
           <p>PREÇO: 100 MOEDAS</p>
-          <button class="btn btn-danger">COMPRAR</button>
+          <button class="btn btn-danger" onclick="comprarSkin()">COMPRAR</button>
         </div>
       </div>
       <div class="row"></div>
-      <div class="item buy">
+      <div class="item sell">
         <div class="preview">
-          <img src="../Images/cocacola_loja.jpg" />
+          <img src="http://192.168.0.12/Jogo-Main/Images/cocacola_loja.jpg" />
           <button class="coca btn btn-success btn-preview">VER</button>
         </div>
-        <div class="sec-buy">
+        <div class="sec-sell">
           <h2>SKIN COCA</h2>
-          <p>PREÇO: GRÁTIS</p>
-          <button class="btn buttons">COMPRADO</button>
+          <p>PREÇO: 100 MOEDAS</p>
+          <button class="btn btn-danger" onclick="comprarSkin()" >COMPRAR</button>
         </div>
       </div>
       <div class="item sell">
         <div class="preview">
-          <img src="../Images/sushi_loja.jpg" />
+          <img src="http://192.168.0.12/Jogo-Main/Images/sushi_loja.jpg" />
           <button class="sushi btn btn-success btn-preview">VER</button>
         </div>
         <div class="sec-sell">
           <h2>SKIN SUSHI</h2>
           <p>PREÇO: 100 MOEDAS</p>
-          <button class="btn btn-danger">COMPRAR</button>
+          <button class="btn btn-danger" onclick="comprarSkin()">COMPRAR</button>
         </div>
       </div>
     </div>
     <div class="modal-pirates modal-loja sh-div-default not-active">
       <button class="btn btn-danger btn-close">X</button>
       <div class="plan">
-        <img src="../Images/mar.jpg" />
+        <img src="http://192.168.0.12/Jogo-Main/Images/mar.jpg" />
       </div>
       <div class="ships">
-        <img class="center-block" src="../Images/pirata/5.png" />
-        <img class="center-block" src="../Images/pirata/4.png" />
-        <img class="center-block" src="../Images/pirata/3.png" />
-        <img class="center-block" src="../Images/pirata/2.png" />
-        <img class="center-block" src="../Images/pirata/1.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/pirata/5.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/pirata/4.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/pirata/3.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/pirata/2.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/pirata/1.png" />
       </div>
     </div>
     <div class="modal-space modal-loja sh-div-default not-active">
       <button class="btn btn-danger btn-close">X</button>
       <div class="plan">
-        <img src="../Images/galaxia.jpg" />
+        <img src="http://192.168.0.12/Jogo-Main/Images/galaxia.jpg" />
       </div>
       <div class="ships">
-        <img class="center-block" src="../Images/aeronave/5.png" />
-        <img class="center-block" src="../Images/aeronave/4.png" />
-        <img class="center-block" src="../Images/aeronave/3.png" />
-        <img class="center-block" src="../Images/aeronave/2.png" />
-        <img class="center-block" src="../Images/aeronave/1.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/aeronave/5.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/aeronave/4.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/aeronave/3.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/aeronave/2.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/aeronave/1.png" />
       </div>
     </div>
     <div class="modal-coca modal-loja sh-div-default not-active">
       <button class="btn btn-danger btn-close">X</button>
       <div class="plan">
-        <img src="../Images/coca-mar.jpg" />
+        <img src="http://192.168.0.12/Jogo-Main/Images/coca-mar.jpg" />
       </div>
       <div class="ships">
-        <img class="center-block" src="../Images/coca/Coca529.png" />
-        <img class="center-block" src="../Images/coca/Coca429.png" />
-        <img class="center-block" src="../Images/coca/Coca329.png" />
-        <img class="center-block" src="../Images/coca/Coca229.png" />
-        <img class="center-block" src="../Images/coca/Coca129.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/coca/Coca529.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/coca/Coca429.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/coca/Coca329.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/coca/Coca229.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/coca/Coca129.png" />
       </div>
     </div>
     <div class="modal-sushi modal-loja sh-div-default not-active">
       <button class="btn btn-danger btn-close">X</button>
       <div class="plan">
-        <img src="../Images/sushi-mar.jpg" />
+        <img src="http://192.168.0.12/Jogo-Main/Images/sushi-mar.jpg" />
       </div>
       <div class="ships">
-        <img class="center-block" src="../Images/sushi/5.png" />
-        <img class="center-block" src="../Images/sushi/4.png" />
-        <img class="center-block" src="../Images/sushi/3.png" />
-        <img class="center-block" src="../Images/sushi/2.png" />
-        <img class="center-block" src="../Images/sushi/1.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/sushi/5.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/sushi/4.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/sushi/3.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/sushi/2.png" />
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/sushi/1.png" />
       </div>
     </div>
     
     <div class="lyt-div-default text-center lyt-search-player sh-div-default not-active aguarde">
       <h2>AGUARDE...</h2> 
-      <img src="../Images/spin.svg" />
+      <img src="http://192.168.0.12/Jogo-Main/Images/spin.svg" />
     </div>
     
     <div class="banner">
-        <img class="center-block" src="../Images/banner1.jpeg"/>
+        <img class="center-block" src="http://192.168.0.12/Jogo-Main/Images/banner1.jpeg"/>
     </div>
 
     <script>

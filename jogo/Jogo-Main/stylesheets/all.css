@@ -1,9 +1,13 @@
 ﻿@charset "UTF-8";
 
+header {
+    margin-bottom: 20px;
+}
 .banner {
     position: absolute;
     bottom: 0;
     left: 20%;
+    z-index: 0;
 }
 .banner img {
     height: 150px;
@@ -48,7 +52,9 @@ body {
   #game-on .modal {
     position: relative;
     margin: auto;
-    width: 800px; }
+    width: 920px;
+      z-index: 1;
+  }
   #game-on .lyt-search-player img,
   #game-on .lyt-found-player img,
   #game-on .lyt-position-boats img {
@@ -71,7 +77,7 @@ body {
     display: inline-block; }
   #game-on .lyt-main-field {
     width: 400px;
-    background-image: url("../images/mar.jpg");
+    background-image: url("http://192.168.0.12/Jogo-Main/Images/mar.jpg");
     background-size: cover; }
   #game-on .temporario {
     position: absolute;
@@ -179,8 +185,7 @@ body {
   z-index: -1;
   max-width: 400px; }
 
-#login form, #cadastro form {
-  margin-top: -100px; }
+
   #login form input, #cadastro form input {
     display: block;
     margin-top: 10px;
@@ -193,7 +198,7 @@ body {
 
 @font-face {
   font-family: 'Black Ops One';
-  src: url("../assets/BlackOpsOne-Regular.ttf"); }
+  src: url("http://192.168.0.12/Jogo-Main/assets/BlackOpsOne-Regular.ttf"); }
 
 body section {
   width: 100%;
@@ -201,7 +206,7 @@ body section {
   padding-bottom: 50px; }
 
 .sh-background {
-  background-image: url("../images/fundo.png");
+  background-image: url("http://192.168.0.12/Jogo-Main/Images/fundo.png");
   background-size: 100% 100%;
   position: relative;
   font-family: 'Black Ops One', cursive;
@@ -236,5 +241,4 @@ body section {
   .cmp-header .cmp-simple-logo {
     max-width: 300px;
     margin-right: 50px;
-    margin-top: -50px;
     z-index: -1; }

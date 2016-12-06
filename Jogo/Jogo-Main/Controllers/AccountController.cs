@@ -83,6 +83,28 @@ namespace Jogo_Main.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
+
+
+
+                    using (var db = new UsersContext())
+                    {
+                        var id = WebSecurity.GetUserId(User.Identity.Name);
+
+                        var user = db.UserProfiles.FirstOrDefault(x => x.UserId == id);
+
+                        if (user != null)
+                        {
+                            user.Administrativo = false;
+
+                            user.Pontos = 0;
+
+                            user.Saldo = 0;
+                        }
+
+                        db.SaveChanges();
+                    }
+
+
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

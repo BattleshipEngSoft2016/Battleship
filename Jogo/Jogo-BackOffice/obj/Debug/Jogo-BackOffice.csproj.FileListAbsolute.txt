@@ -166,8 +166,6 @@ C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\DotNetOpenAuth.OAuth.Consumer.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\DotNetOpenAuth.OAuth.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\DotNetOpenAuth.OpenId.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\EntityFramework.dll
-C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\EntityFramework.SqlServer.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\Microsoft.Data.Edm.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\Microsoft.Data.OData.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\Microsoft.Web.Infrastructure.dll
@@ -187,7 +185,6 @@ C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\WebGrease.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\WebMatrix.Data.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\WebMatrix.WebData.dll
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\EntityFramework.xml
-C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\EntityFramework.SqlServer.xml
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\Newtonsoft.Json.xml
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\System.Web.Helpers.xml
 C:\Projetos\git\BT\Jogo\Jogo-BackOffice\bin\System.Web.Mvc.xml

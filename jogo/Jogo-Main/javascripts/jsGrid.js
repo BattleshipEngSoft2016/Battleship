@@ -50,7 +50,7 @@ function iniciaSocket(cNome, idNivel, idUser, tabuleiro, idTab) {
 
     tab = tabuleiro;
     idTab = idTab;
-    url = 'ws://localhost:26532/WebSocketsServer2.ashx?chatName=' + cNome + '&NivelId=' + idNivel + '&Id=' + idUser;
+    url = 'ws://192.168.0.12/Jogo-Main/WebSocketsServer2.ashx?chatName=' + cNome + '&NivelId=' + idNivel + '&Id=' + idUser;
     ws = new WebSocket(url);
 
     ws.onerror = function (e) {
@@ -103,7 +103,7 @@ function iniciaSocket(cNome, idNivel, idUser, tabuleiro, idTab) {
             alert('Você perdeu seu ' + TipoBarco);
         } else if (tipo == 13) {
             alert(oMessage.Mensagem);
-            window.location.replace("http://localhost:26532/Home/Index");
+            window.location.replace("http://192.168.0.12/Jogo-Main/Home/Index");
         } else {
             alert(oMessage.Mensagem);
         }
@@ -583,13 +583,13 @@ function startGame() {
         $.ajax({
             type: "POST",
             data: data,
-            url: "http://localhost:26532/GameOn/Cadastrar",
+            url: "http://192.168.0.12/Jogo-Main/GameOn/Cadastrar",
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
 
             success: function (output) {
                 // window.location = "../Game/Index";
-                window.location = "http://localhost:26532/Game/Index"
+                window.location = "http://192.168.0.12/Jogo-Main/Game/Index"
             }
         });
 
