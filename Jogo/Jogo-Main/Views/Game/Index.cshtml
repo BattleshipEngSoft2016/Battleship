@@ -67,9 +67,10 @@
 		var qtdCruzadores = @Html.Raw(ViewBag.Nivel.QtdNav04);
 		var qtdSubmarinos = @Html.Raw(ViewBag.Nivel.QtdNav05);
 		nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos);
-        var skins = @Html.Raw(ViewBag.Skin);
-        var tabuleiro =@Html.Raw(ViewBag.Tabuleiro);
+		var skins = @Html.Raw(ViewBag.Skin);
+		var idTab = @ViewBag.IdTab;
+        var tabuleiro = @Html.Raw(ViewBag.Tabuleiro);
         atualizaSkin();
-         iniciaSocket(cNome, idNivel, idUser, tabuleiro);
+         iniciaSocket(cNome, idNivel, idUser, tabuleiro, idTab);
     </script>
   </section>

@@ -46,6 +46,8 @@ namespace UsingWebSockets
                 Id = int.Parse(id);
             }
 
+            if (Conectado()) return;
+
             if (clients.Count >= 2)
             {
                 this.Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Mensagem, "Sala Cheia.... Você esta em Espera")));
@@ -73,7 +75,6 @@ namespace UsingWebSockets
                 clients.Broadcast(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Mensagem, string.Format("{0} entrou no Jogo", name))));
 
             }
-
         }
 
         public override void OnMessage(string message)
@@ -87,21 +88,36 @@ namespace UsingWebSockets
                         {
                             Barcos = new List<Barco>();
 
-                            foreach (var item in envio.Objeto)
+                            var firstOrDefault = envio.Objeto.FirstOrDefault();
+
+                            if (firstOrDefault != null)
                             {
-                                var itemParce = item as Newtonsoft.Json.Linq.JObject;
+                                var idTab = int.Parse(firstOrDefault.ToString());
 
-                                if (itemParce != null)
+                                using (var db = new TabuleirosContext())
                                 {
-                                    var barco = itemParce.ToObject<EnvioBarco>();
+                                    var tabuleiro = db.Tabuleiros.FirstOrDefault(x => x.Id == idTab);
 
-                                    Barcos.Add(new Barco(barco));
 
-                                    StatusTabuleiro = true;
+                                    var itens  = JsonConvert.DeserializeObject<List<EnvioBarco>>(tabuleiro.Dados);
+
+                                    foreach (var item in itens)
+                                    {
+                                  
+                                        Barcos.Add(new Barco(item));
+
+                                        StatusTabuleiro = true;
+
+                                    }
 
                                 }
+                            }else
+                            {
+
+                                Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Fail, "Você Erro !!!!")));
 
                             }
+
 
                             if (clients.All(x => ((MicrosoftWebSockets)x).StatusTabuleiro))
                             {
@@ -126,8 +142,6 @@ namespace UsingWebSockets
                             {
                                 var opoente = ObterOponente();
 
-
-
                                 if (opoente != null)
                                 {
                                     var barco = opoente.Barcos.FirstOrDefault(x => x.Coordenadas.Any(y => y.Valor == jogada.ToString() && !y.Destruido));
@@ -140,20 +154,22 @@ namespace UsingWebSockets
 
                                         opoente.Barcos.Add(barco);
 
-                                        AtualizarBarcos(opoente);
+                                        AtualizarBarcos(opoente, jogada.ToString());
 
                                         Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Acerto, "Você acerto !!!!!")));
 
+                                   
                                         if (barco.Coordenadas.All(x => x.Destruido))
                                         {
                                             opoente.Send(
-                                                JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Destruido, "Ops Você perdeu seu barco !!!")));
+                                                JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Destruido, string.Format("Ops Você perdeu seu barco !!! |{0}", barco.IdBarco))));
 
                                         }
 
                                     }
                                     else
                                     {
+                                        opoente.Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Tiro, string.Format("Tiro |{0}", jogada.ToString()))));
                                         Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Erro, "Você Erro !!!!")));
                                     }
                                 }
@@ -189,11 +205,11 @@ namespace UsingWebSockets
             clients.Broadcast(string.Format("{0} saiu da sala.", name));
         }
 
-        private void AtualizarBarcos(MicrosoftWebSockets client)
+        private void AtualizarBarcos(MicrosoftWebSockets client, string jogada)
         {
             ((MicrosoftWebSockets)clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id == client.Id)).Barcos = client.Barcos;
 
-            clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id == client.Id).Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Atingido, "Você foi atingindo !!!")));
+            clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id == client.Id).Send(JsonConvert.SerializeObject(new Retorno(TipoMensagemRetorno.Atingido, string.Format("Você foi atingindo !!! |{0}", jogada))));
 
 
         }
@@ -242,6 +258,11 @@ namespace UsingWebSockets
         private MicrosoftWebSockets ObterOponente()
         {
             return ((MicrosoftWebSockets)clients.FirstOrDefault(x => ((MicrosoftWebSockets)x).Id != Id));
+        }
+
+        private bool Conectado()
+        {
+            return clients.Any(x => ((MicrosoftWebSockets)x).Id == Id);
         }
 
     }

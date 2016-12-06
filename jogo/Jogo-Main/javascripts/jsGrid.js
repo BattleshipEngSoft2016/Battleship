@@ -14,6 +14,7 @@ var ships = [];
 var skins = {};
 var tempo;
 var tab;
+var idTab;
 function nivelGrid(nivelId, tamGrid, qtdPortaAvioes, qtdDestroiers, qtdEncouracados, qtdCruzadores, qtdSubmarinos) {
     nivelId = nivelId;
     tamGrid = tamGrid;
@@ -45,9 +46,10 @@ function atualizaSkin(skins,tabuleiro) {
 	tab = tabuleiro;
 }
 
-function iniciaSocket(cNome, idNivel, idUser, tabuleiro) {
+function iniciaSocket(cNome, idNivel, idUser, tabuleiro, idTab) {
 
     tab = tabuleiro;
+    idTab = idTab;
     url = 'ws://localhost:26532/WebSocketsServer2.ashx?chatName=' + cNome + '&NivelId=' + idNivel + '&Id=' + idUser;
     ws = new WebSocket(url);
 
@@ -71,13 +73,17 @@ function iniciaSocket(cNome, idNivel, idUser, tabuleiro) {
             $('#game-on').find('.lyt-position-boats').addClass('active');
 
             //var m = '{"TipoMensagem":1,"Objeto":[{"TipoBarco":"submarino","Coordenadas":["c10"],"IdBarco":5}]}';
-            var m = '{"TipoMensagem":1,"Objeto":' + tab + '}';
+            var m = '{"TipoMensagem":1,"Objeto":["' + idTab + '"]}';
             ws.send(m);
         } else if (tipo == 14) {
             lVez = true;
             alert('É a sua vez, você tem 15 segundos');
-            var t = '{"TipoMensagem" : 3, "Objeto":"Tempo esgotado"}';
-            tempo = setTimeout(function () { alert("Tempo esgotado!"); lVez = false; ws.send(t); }, 15000)
+            var t = '{"TipoMensagem" : 3, "Objeto":["Tempo esgotado"]}';
+            tempo = setTimeout(function() {
+                alert("Tempo esgotado!");
+                lVez = false;
+                ws.send(t);
+            }, 15000);
         } else if (tipo == 1) {
             alert(oMessage.Mensagem);
             $('#game-on').find('#' + lastShoot).addClass('hitLi');
@@ -188,9 +194,8 @@ $(document).ready(function () {
 	}
     var x;
     if (typeof tab != "undefined") {
-        x = JSON.parse(tab);
+        x = tab;
     }
-
 
     var lis = $(".bottom > .grid > li");
     var j = 0;
@@ -198,7 +203,7 @@ $(document).ready(function () {
     for (i = 0; i < lis.length; i++) {
         if (j < tamGrid) {
             lis[i].id = String.fromCharCode(97 + aux) + (j + 1);
-            j++
+            j++;
         }
         else {
             j = 0;

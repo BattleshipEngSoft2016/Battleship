@@ -436,6 +436,16 @@ html {
 
 }
 
+.hitLi {
+    background-color: red;
+    cursor: not-allowed;
+}
+
+.missLi {
+    background-color: blue;
+    cursor: not-allowed;
+}
+
 @keyframes expand {
 	0% {
 		width: 0px;
