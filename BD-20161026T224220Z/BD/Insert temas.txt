@@ -1,7 +1,10 @@
---insert de temas
+
+INSERT [dbo].[TB_SKINS_TEMA] ([ID_SKIN_TEMA], [DS_NOME_SKIN_TEMA], [DS_DESCRICAO_TEMA], [NR_VALOR_SKIN_TEMA], [DS_IMG_COORDENADA], [DS_IMG_NAVIO1], [DS_IMG_NAVIO2], [DS_IMG_NAVIO3], [DS_IMG_NAVIO4], [DS_IMG_NAVIO5]) VALUES 
+
+(2, N'Padrao', N'Padrao', 100, N'http://192.168.0.12/Jogo-Main/Images/mar.jpg', N'http://192.168.0.12/Jogo-Main/Images/normal/5.png', N'http://192.168.0.12/Jogo-Main/Images/normal/4.png', N'http://192.168.0.12/Jogo-Main/Images/normal/3.png', N'http://192.168.0.12/Jogo-Main/Images/normal/2.png', N'http://192.168.0.12/Jogo-Main/Images/normal/1.png')
 
 
-insert into TB_SKINS_TEMA values (1,
+insert into TB_SKINS_TEMA values (3,
 								 'Normal',
 								 'Barcos com tema Normal',
 								 100,
@@ -13,7 +16,7 @@ insert into TB_SKINS_TEMA values (1,
 								 'http://192.168.0.12/Jogo-Main/images/normal/1.png');
 
 
-insert into TB_SKINS_TEMA values (2,
+insert into TB_SKINS_TEMA values (4,
 								 'Pirata',
 								 'Barcos com tema Pirata',
 								 100,
@@ -24,7 +27,7 @@ insert into TB_SKINS_TEMA values (2,
 								 'http://192.168.0.12/Jogo-Main/images/pirata/2.png',
 								 'http://192.168.0.12/Jogo-Main/images/pirata/1.png');
 
-insert into TB_SKINS_TEMA values (3,
+insert into TB_SKINS_TEMA values (5,
 								 'Espacial',
 								 'Barcos são aeronaves, tema espacial',
 								 200,
@@ -35,7 +38,7 @@ insert into TB_SKINS_TEMA values (3,
 								 'http://192.168.0.12/Jogo-Main/images/aeronave/2.png',
 								 'http://192.168.0.12/Jogo-Main/images/aeronave/1.png');
 
-insert into TB_SKINS_TEMA values (4,
+insert into TB_SKINS_TEMA values (6,
 								 'Coca-Cola',
 								 'Barcos com tema da Coca-Cola',
 								 100,
@@ -46,7 +49,7 @@ insert into TB_SKINS_TEMA values (4,
 								 'http://192.168.0.12/Jogo-Main/images/coca/Coca229.png',
 								 'http://192.168.0.12/Jogo-Main/images/coca/Coca129.png');
 
-insert into TB_SKINS_TEMA values (5,
+insert into TB_SKINS_TEMA values (7,
 								 'Sushi',
 								 'Barcos com tema de Sushi',
 								 200,

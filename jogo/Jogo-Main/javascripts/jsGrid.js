@@ -199,13 +199,9 @@ $(document).ready(function () {
 								String.fromCharCode(97 + (i - ((tamGrid * (tamGrid - 1)) + 1))).toUpperCase() + "</span>");
         }
     }
+    
 
-    var ul = $('.grid')[0];
-    ul.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
-    ul.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
-    var ul2 = $('.grid')[1];
-    ul2.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
-    ul2.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
+    
 	if(typeof skins.ImagemCoordenada != "undefined"){
 		$('.bottom').css('cssText', 'background-image: url(' + skins.ImagemCoordenada + ');  !important;');
 	}
@@ -277,6 +273,14 @@ $(document).ready(function () {
             }
         }
     }
+    
+    var ul = $('.grid')[0];
+    ul.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
+    ul.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
+
+    var ul2 = $('.grid')[1];
+    ul2.style.width = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
+    ul2.style.height = tamGrid == 10 ? "300px" : "446px"; // width in PIXELS
 
     var lis = $(".top > .grid > li");
     var j = 0;
